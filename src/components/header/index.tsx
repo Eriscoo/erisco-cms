@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from 'react'
-import viteLogo from '../../assets/images/vite.svg'
 import LangSwitch from '../language-switch'
 import ThemeSwitch from '../theme-switch'
 import { useLocale } from '../../locales'
@@ -68,7 +67,7 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
           className="flex items-center gap-2 text-base md:text-lg font-bold text-white no-underline"
           onClick={(e) => { e.preventDefault(); navigate('/') }}
         >
-          <img src={viteLogo} alt="" className="w-4 h-4 md:w-5 md:h-5" />
+          <img src="/logo.svg" alt="" className="w-4 h-4 md:w-5 md:h-5" />
           <span className="hidden sm:inline">Erisco Blog</span>
         </a>
       </div>
