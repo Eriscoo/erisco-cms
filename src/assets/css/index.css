@@ -41,8 +41,45 @@ html.light {
 }
 
 body {
-  @apply bg-zinc-950 text-zinc-100;
+  @apply text-zinc-100;
+  background: #0f111b;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Subtle top glow */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 300px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(124, 58, 237, 0.06), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Dark mode surface replacement */
+.bg-zinc-950 {
+  background-color: #0f111b;
+}
+
+/* Slightly lighter surface for cards */
+.bg-zinc-900 {
+  background-color: #151722;
+}
+
+.bg-zinc-800 {
+  background-color: #1a1d2b;
+}
+
+.bg-white\/\[\.02\] {
+  background-color: rgba(255, 255, 255, 0.02);
 }
 
 @keyframes fade-in {

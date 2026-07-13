@@ -75,7 +75,7 @@ function Sidebar({ currentPath, navigate, open, onClose }: Props) {
     <>
       {open && <div className="fixed top-[67px] inset-x-0 bottom-0 bg-black/50 z-20 md:hidden" onClick={onClose} />}
 
-      <aside className={`${open ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 fixed md:relative top-[67px] md:top-0 bottom-0 z-30 md:z-auto overflow-hidden flex flex-col border-r border-white/5 bg-zinc-950 md:bg-white/[.02] transition-[transform,width] duration-300 ${collapsed ? 'md:w-[68px]' : 'md:w-60'} w-60`}>
+      <aside className={`${open ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 fixed md:relative top-[67px] md:top-0 bottom-0 z-30 md:z-auto overflow-hidden flex flex-col border-r border-white/5 bg-[#0f111b] md:bg-white/[.02] transition-[transform,width] duration-300 ${collapsed ? 'md:w-[68px]' : 'md:w-60'} w-60`}>
         <nav className="flex-1 px-3 py-4 flex flex-col gap-2">
           {menu.map((item) => (
             <button

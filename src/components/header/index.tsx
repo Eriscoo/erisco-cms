@@ -82,7 +82,7 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
       )}
 
       {variant === 'default' && (
-        <aside className={`fixed top-[67px] bottom-0 left-0 z-30 w-60 bg-zinc-950 border-r border-white/5 transition-transform duration-300 lg:hidden flex flex-col ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+        <aside className={`fixed top-[67px] bottom-0 left-0 z-30 w-60 bg-[#0f111b] border-r border-white/5 transition-transform duration-300 lg:hidden flex flex-col ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
           <nav className="flex-1 px-3 py-4 flex flex-col gap-2">
             {menuItems.map((item) => (
               <button
