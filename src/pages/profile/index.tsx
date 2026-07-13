@@ -3,6 +3,7 @@ import { useLocale } from '../../locales'
 import { api } from '../../utils/api'
 import { getProfile, updateProfile, type UpdateProfileReq } from '../../modules/profile/api'
 import { removeToken, decodeToken } from '../../modules/auth'
+import { ENV } from '../../constants/env'
 import Breadcrumb from '../../components/breadcrumb'
 import Sidebar from '../../components/sidebar'
 import Header from '../../components/header'
@@ -11,8 +12,6 @@ import Toast from '../../components/toast'
 interface Props {
   navigate: (path: string) => void
 }
-
-const BASE = 'http://localhost:8080'
 
 function Profile({ navigate }: Props) {
   const { t } = useLocale()
@@ -44,7 +43,7 @@ function Profile({ navigate }: Props) {
         const p = await getProfile(decoded.user_id)
         if (p) {
           setForm({ bio: p.bio, website: p.website, location: p.location, phone: p.phone, avatar_url: p.avatar_url })
-          if (p.avatar_url) setAvatarPreview(BASE + p.avatar_url)
+          if (p.avatar_url) setAvatarPreview(ENV.API_URL + p.avatar_url)
         }
       } catch {}
       setLoading(false)
@@ -101,7 +100,7 @@ function Profile({ navigate }: Props) {
     { key: 'phone', label: 'Phone', placeholder: '+62...', maxLength: 20 },
   ]
 
-  const avatarSrc = avatarPreview || (form.avatar_url ? BASE + form.avatar_url : null)
+  const avatarSrc = avatarPreview || (form.avatar_url ? ENV.API_URL + form.avatar_url : null)
 
   return (
     <div className="flex flex-col h-screen">
