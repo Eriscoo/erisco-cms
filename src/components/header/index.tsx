@@ -104,7 +104,7 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
       )}
 
       <nav className="h-[67px] flex items-center px-4 md:px-8 border-b border-white/5">
-      <div className="flex items-center gap-3 lg:gap-8">
+      <div className="flex-1 flex items-center gap-3">
         {(variant === 'dashboard' || variant === 'default') && (
           <button
             onClick={() => variant === 'dashboard' ? onMenuToggle?.() : setMobileMenuOpen(!mobileMenuOpen)}
@@ -119,29 +119,29 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
         )}
         <a
           href="/"
-          className="flex items-center gap-2 text-base md:text-lg font-bold text-white no-underline shrink-0"
+          className="flex items-center gap-2 text-base md:text-lg font-bold text-white no-underline"
           onClick={(e) => { e.preventDefault(); navigate('/') }}
         >
           <img src="/logo.svg" alt="" className="w-4 h-4 md:w-5 md:h-5" />
           <span className="hidden sm:inline">Erisco Blog</span>
         </a>
-
-        {variant === 'default' && (
-          <div className="hidden lg:flex items-center gap-3 ml-2">
-            {menuItems.map((item) => (
-              <button
-                key={item.path}
-                onClick={() => navigate(item.path)}
-                className={`px-2.5 py-1.5 rounded-md text-sm transition-colors cursor-pointer ${
-                  path === item.path ? 'bg-purple-500/15 text-purple-300 font-medium' : 'text-zinc-400 hover:text-zinc-200 hover:bg-white/5'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
+
+      {variant === 'default' && (
+        <div className="hidden lg:flex items-center gap-3 shrink-0">
+          {menuItems.map((item) => (
+            <button
+              key={item.path}
+              onClick={() => navigate(item.path)}
+              className={`px-3 py-1.5 rounded-md text-sm transition-colors cursor-pointer ${
+                path === item.path ? 'bg-purple-500/15 text-purple-300 font-medium' : 'text-zinc-400 hover:text-zinc-200 hover:bg-white/5'
+              }`}
+            >
+              {item.label}
+            </button>
+          ))}
+        </div>
+      )}
 
       <div className="flex-1 flex items-center gap-2 md:gap-3 justify-end">
         {variant === 'dashboard' ? (
