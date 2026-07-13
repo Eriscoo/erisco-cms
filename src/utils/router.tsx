@@ -1,6 +1,14 @@
-import { useState, useEffect, useRef } from 'react'
+import { createContext, useContext, useState, useEffect, useRef, type ReactNode } from 'react'
 
-export function useRouter() {
+interface RouterState {
+  path: string
+  navigate: (to: string) => void
+  navigating: boolean
+}
+
+const RouterContext = createContext<RouterState | null>(null)
+
+export function RouterProvider({ children }: { children: ReactNode }) {
   const [path, setPath] = useState(window.location.pathname)
   const [navigating, setNavigating] = useState(false)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -22,5 +30,15 @@ export function useRouter() {
     timerRef.current = setTimeout(() => setNavigating(false), 400)
   }
 
-  return { path, navigate, navigating }
+  return (
+    <RouterContext.Provider value={{ path, navigate, navigating }}>
+      {children}
+    </RouterContext.Provider>
+  )
+}
+
+export function useRouter() {
+  const ctx = useContext(RouterContext)
+  if (!ctx) throw new Error('useRouter must be used within RouterProvider')
+  return ctx
 }

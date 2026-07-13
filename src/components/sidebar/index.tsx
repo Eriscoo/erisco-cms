@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useLocale } from '../../locales'
+import LangSwitch from '../language-switch'
+import ThemeSwitch from '../theme-switch'
 
 interface MenuItem {
   key: string
@@ -11,14 +13,13 @@ interface MenuItem {
 interface Props {
   currentPath: string
   navigate: (path: string) => void
-  onLogout: () => void
   open: boolean
   onClose: () => void
 }
 
 const iconSize = 'w-4 h-4'
 
-function Sidebar({ currentPath, navigate, onLogout, open, onClose }: Props) {
+function Sidebar({ currentPath, navigate, open, onClose }: Props) {
   const { t } = useLocale()
   const [collapsed, setCollapsed] = useState(() => localStorage.getItem('sidebar_collapsed') === 'true')
 
@@ -74,7 +75,7 @@ function Sidebar({ currentPath, navigate, onLogout, open, onClose }: Props) {
     <>
       {open && <div className="fixed top-[67px] inset-x-0 bottom-0 bg-black/50 z-20 md:hidden" onClick={onClose} />}
 
-      <aside className={`${open ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 fixed md:relative top-[67px] md:top-0 bottom-0 z-30 md:z-auto overflow-hidden flex flex-col border-r border-white/5 bg-zinc-950 md:bg-white/[.02] transition-all duration-300 ${collapsed ? 'md:w-[68px]' : 'md:w-60'} w-60`}>
+      <aside className={`${open ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 fixed md:relative top-[67px] md:top-0 bottom-0 z-30 md:z-auto overflow-hidden flex flex-col border-r border-white/5 bg-zinc-950 md:bg-white/[.02] transition-[transform,width] duration-300 ${collapsed ? 'md:w-[68px]' : 'md:w-60'} w-60`}>
         <nav className="flex-1 px-3 py-4 flex flex-col gap-2">
           {menu.map((item) => (
             <button
@@ -89,7 +90,7 @@ function Sidebar({ currentPath, navigate, onLogout, open, onClose }: Props) {
               <span className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
                 {item.icon}
               </span>
-              <span className={`whitespace-nowrap transition-all duration-300 ${collapsed ? 'md:opacity-0 md:w-0 md:overflow-hidden' : 'md:opacity-100 md:w-auto'}`}>
+              <span className={`whitespace-nowrap transition-[opacity,width] duration-300 ${collapsed ? 'md:opacity-0 md:w-0 md:overflow-hidden' : 'md:opacity-100 md:w-auto'}`}>
                 {item.label}
               </span>
             </button>
@@ -104,26 +105,13 @@ function Sidebar({ currentPath, navigate, onLogout, open, onClose }: Props) {
                 <polyline points="15 18 9 12 15 6" />
               </svg>
             </span>
-            <span className={`whitespace-nowrap transition-all duration-300 ${collapsed ? 'md:opacity-0 md:w-0 md:overflow-hidden' : 'md:opacity-100 md:w-auto'}`}>{t.sidebar.collapse}</span>
+            <span className={`whitespace-nowrap transition-[opacity,width] duration-300 ${collapsed ? 'md:opacity-0 md:w-0 md:overflow-hidden' : 'md:opacity-100 md:w-auto'}`}>{t.sidebar.collapse}</span>
           </button>
         </nav>
 
-        <div className="px-3 py-4 border-t border-white/5 flex flex-col gap-2">
-          <button
-            onClick={() => { onLogout(); onClose() }}
-            className={`flex items-center h-10 rounded-lg text-sm cursor-pointer transition-colors w-full px-3 ${collapsed ? 'md:justify-center md:gap-0' : 'gap-2.5'} text-pink-400 hover:bg-pink-500/10`}
-          >
-            <span className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                <polyline points="16 17 21 12 16 7" />
-                <line x1="21" y1="12" x2="9" y2="12" />
-              </svg>
-            </span>
-            <span className={`whitespace-nowrap transition-all duration-300 ${collapsed ? 'md:opacity-0 md:w-0 md:overflow-hidden' : 'md:opacity-100 md:w-auto'}`}>
-              {t.dashboard.logout}
-            </span>
-          </button>
+        <div className="px-3 py-4 border-t border-white/5 flex items-center justify-center gap-3 md:hidden">
+          <ThemeSwitch />
+          <LangSwitch />
         </div>
       </aside>
     </>

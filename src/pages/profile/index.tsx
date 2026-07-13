@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, type FormEvent } from 'react'
 import { useLocale } from '../../locales'
 import { api } from '../../utils/api'
 import { getProfile, updateProfile, type UpdateProfileReq } from '../../modules/profile/api'
-import { removeToken, decodeToken } from '../../modules/auth'
+import { decodeToken } from '../../modules/auth'
 import { ENV } from '../../constants/env'
 import Breadcrumb from '../../components/breadcrumb'
 import Sidebar from '../../components/sidebar'
@@ -26,11 +26,6 @@ function Profile({ navigate }: Props) {
   const [toast, setToast] = useState<{ show: boolean; type: 'success' | 'error'; message: string }>({ show: false, type: 'success', message: '' })
   const fileRef = useRef<HTMLInputElement>(null)
   const fetchedRef = useRef(false)
-
-  function handleLogout() {
-    removeToken()
-    navigate('/login')
-  }
 
   useEffect(() => {
     if (fetchedRef.current) return
@@ -107,7 +102,7 @@ function Profile({ navigate }: Props) {
       <Header variant="dashboard" avatarUrl={form.avatar_url} navigate={navigate} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
 
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar currentPath="/dashboard/profile" navigate={navigate} onLogout={handleLogout} open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <Sidebar currentPath="/dashboard/profile" navigate={navigate} open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
         <main className="flex-1 p-6 md:p-8 overflow-y-auto">
           <Breadcrumb items={[{ label: t.dashboard.title, path: '/dashboard' }, { label: 'Profile' }]} navigate={navigate} />

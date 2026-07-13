@@ -40,6 +40,10 @@ const id: Locale = {
   },
   nav: {
     home: 'Beranda',
+    about: 'Tentang',
+    portfolio: 'Portofolio',
+    post: 'Postingan',
+    contact: 'Kontak',
     login: 'Masuk',
     dashboard: 'Dasbor',
     logout: 'Keluar',
@@ -60,11 +64,13 @@ const id: Locale = {
     signIn: 'Masuk',
     signingIn: 'Memproses...',
     loginFailed: 'Gagal masuk',
+    backToHome: 'Kembali ke Beranda',
   },
   dashboard: {
     title: 'Dasbor',
     welcome: 'Selamat datang kembali ke dasbor.',
     logout: 'Keluar',
+    profile: 'Profil',
     greeting: 'Halo,',
   },
   sidebar: {

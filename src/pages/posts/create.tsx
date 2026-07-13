@@ -6,7 +6,6 @@ import Header from '../../components/header'
 import { createPost } from '../../modules/posts/api'
 import { getCategories, type Category } from '../../modules/categories/api'
 import { getTags, type Tag } from '../../modules/tags/api'
-import { removeToken } from '../../modules/auth'
 import RichEditor from '../../components/rich-editor'
 import MultiSelect from '../../components/multi-select'
 import Toast from '../../components/toast'
@@ -39,11 +38,6 @@ function CreatePost({ navigate }: Props) {
   const [toast, setToast] = useState<{ show: boolean; type: 'success' | 'error'; message: string }>(
     { show: false, type: 'success', message: '' }
   )
-
-  function handleLogout() {
-    removeToken()
-    navigate('/login')
-  }
 
   const fetched = useRef(false)
   useEffect(() => {
@@ -118,8 +112,7 @@ function CreatePost({ navigate }: Props) {
     <div className="flex flex-col h-screen">
       <Header variant="dashboard" navigate={navigate} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar currentPath="/dashboard/posts" navigate={navigate} onLogout={handleLogout}
-          open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <Sidebar currentPath="/dashboard/posts" navigate={navigate} open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
         <main className="flex-1 p-6 md:p-8 overflow-y-auto">
           <Breadcrumb items={[
             { label: t.dashboard.title, path: '/dashboard' },

@@ -19,7 +19,6 @@ import {
   deleteCategory,
   type Category,
 } from '../../modules/categories/api'
-import { removeToken } from '../../modules/auth'
 import Pagination from '../../components/pagination'
 import Toast from '../../components/toast'
 
@@ -60,11 +59,6 @@ function Settings({ navigate }: Props) {
 
   function showToast(type: 'success' | 'error', message: string) {
     setToast({ show: true, type, message })
-  }
-
-  function handleLogout() {
-    removeToken()
-    navigate('/login')
   }
 
   async function fetchData() {
@@ -210,7 +204,7 @@ function Settings({ navigate }: Props) {
       <Header variant="dashboard" navigate={navigate} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
 
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar currentPath="/dashboard/settings" navigate={navigate} onLogout={handleLogout} open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        <Sidebar currentPath="/dashboard/settings" navigate={navigate} open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
         <main className="flex-1 p-6 md:p-8 flex flex-col gap-5 overflow-y-auto">
           <Breadcrumb items={[{ label: t.dashboard.title, path: '/dashboard' }, { label: t.sidebar.settings }]} navigate={navigate} />

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { removeToken } from '../../modules/auth'
 import { useLocale } from '../../locales'
 import Breadcrumb from '../../components/breadcrumb'
 import Sidebar from '../../components/sidebar'
@@ -13,11 +12,6 @@ function Dashboard({ navigate }: Props) {
   const { t } = useLocale()
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
-  function handleLogout() {
-    removeToken()
-    navigate('/login')
-  }
-
   return (
     <div className="flex flex-col h-screen">
       <Header variant="dashboard" navigate={navigate} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
@@ -26,7 +20,6 @@ function Dashboard({ navigate }: Props) {
         <Sidebar
           currentPath="/dashboard"
           navigate={navigate}
-          onLogout={handleLogout}
           open={sidebarOpen}
           onClose={() => setSidebarOpen(false)}
         />

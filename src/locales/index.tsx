@@ -17,7 +17,7 @@ const STORAGE_KEY = 'lang'
 function getInitialLang(): Lang {
   const stored = localStorage.getItem(STORAGE_KEY)
   if (stored === 'en' || stored === 'id') return stored
-  return 'id'
+  return 'en'
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {

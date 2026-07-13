@@ -54,6 +54,16 @@ body {
   animation: fade-in 0.2s ease;
 }
 
+/* ── Semantic text-on-brand utility ──────────
+   Gunakan class ini (bukan text-white) untuk teks
+   yang berada di atas background solid brand/purple,
+   misalnya di dalam button primary. Class ini SENGAJA
+   tidak ikut di-override oleh aturan tema light/dark,
+   supaya kontras tetap aman di kedua mode. */
+.text-on-brand {
+  color: #ffffff;
+}
+
 /* ── Light theme ───────────────────────────── */
 html.light body {
   background: #f8f9fa;
@@ -173,6 +183,20 @@ html.light .border-purple-400 {
 
 html.light .border-purple-600\/30 {
   border-color: rgba(98, 0, 238, .25);
+}
+
+/* Fix kontras: teks di atas background solid ungu/brand
+   HARUS tetap putih, di light maupun dark mode.
+   Ini menangani kasus button primary yang punya
+   class text-white tapi ketimpa aturan .text-white
+   di atas (yang jadi gelap saat light mode). */
+html.light .bg-purple-600.text-white,
+html.light .bg-purple-600 .text-white,
+html.light .bg-purple-500\/15.text-white,
+html.light .hover\:bg-purple-500:hover.text-white,
+html.light button[class*="bg-purple-"].text-white,
+html.light a[class*="bg-purple-"].text-white {
+  color: #ffffff !important;
 }
 
 html.light .text-pink-400 {

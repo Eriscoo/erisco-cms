@@ -38,6 +38,10 @@ const en = {
   },
   nav: {
     home: 'Home',
+    about: 'About',
+    portfolio: 'Portfolio',
+    post: 'Post',
+    contact: 'Contact',
     login: 'Login',
     dashboard: 'Dashboard',
     logout: 'Logout',
@@ -58,11 +62,13 @@ const en = {
     signIn: 'Sign In',
     signingIn: 'Signing in...',
     loginFailed: 'Login failed',
+    backToHome: 'Back to Home',
   },
   dashboard: {
     title: 'Dashboard',
     welcome: 'Welcome back to the dashboard.',
     logout: 'Logout',
+    profile: 'Profile',
     greeting: 'Hello,',
   },
   sidebar: {
