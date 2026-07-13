@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "deploy": ". ./.env && yarn build && rm -rf $DEPLOY_DIR/* && cp -r dist/* $DEPLOY_DIR/",
     "lint": "oxlint",
     "preview": "vite preview"
   },
