@@ -26,7 +26,7 @@ erisco-fe/
 │   │   ├── css/index.css         ← Global styles + Tailwind + light theme
 │   │   └── images/               ← Static images (vite logo, etc.)
 │   │
-│   ├── components/               ← Reusable UI components (per fitur)
+│   ├── components/               ← Reusable UI components (per feature)
 │   │   ├── header/               ← Unified Header (default / dashboard variant)
 │   │   ├── sidebar/              ← Collapsible sidebar nav
 │   │   ├── breadcrumb/           ← Breadcrumb nav
@@ -46,7 +46,7 @@ erisco-fe/
 │   │   ├── id.ts                 ← Indonesian translations
 │   │   └── index.tsx             ← I18nProvider + useLocale() hook
 │   │
-│   ├── modules/                  ← Feature modules (api + hooks per fitur)
+│   ├── modules/                  ← Feature modules (api + hooks per feature)
 │   │   ├── auth/api.ts           ← login(), register()
 │   │   ├── auth/token.ts         ← getToken, setToken, removeToken, isLoggedIn
 │   │   ├── auth/hooks/useAuth.ts ← useAuth() hook
@@ -115,9 +115,9 @@ yarn dev
 
 ## i18n Convention
 
-**Setiap fitur baru wajib menambahkan key di kedua file bahasa:**
+**Every new feature must add keys in both language files:**
 
 1. `src/locales/en.ts` — English
-2. `src/locales/id.ts` — Indonesia (salin key yang sama)
+2. `src/locales/id.ts` — Indonesian (copy the same key)
 
-> Key harus selalu sinkron, hanya value yang berbeda.
+> Keys must always be in sync, only values differ.
