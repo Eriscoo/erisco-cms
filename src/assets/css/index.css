@@ -1,0 +1,437 @@
+@import "tailwindcss";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+
+@theme {
+  --color-primary: #bb86fc;
+  --color-primary-dark: #9c5cfa;
+  --color-primary-darker: #7c3aed;
+  --color-primary-soft: #d4b8ff;
+  --color-primary-bg: rgba(187, 134, 252, 0.15);
+  --color-primary-bg-hover: rgba(187, 134, 252, 0.25);
+  --color-primary-border: rgba(187, 134, 252, 0.3);
+
+  --color-purple-200: #d4b8ff;
+  --color-purple-300: #bb86fc;
+  --color-purple-400: #bb86fc;
+  --color-purple-500: #9c5cfa;
+  --color-purple-600: #7c3aed;
+}
+
+:root {
+  --primary: #bb86fc;
+  --primary-dark: #9c5cfa;
+  --primary-darker: #7c3aed;
+  --primary-soft: #d4b8ff;
+  --primary-bg: rgba(187, 134, 252, 0.15);
+  --primary-bg-hover: rgba(187, 134, 252, 0.25);
+  --primary-border: rgba(187, 134, 252, 0.3);
+}
+
+html.light {
+  --primary: #6200ee;
+  --primary-dark: #3700b3;
+  --primary-darker: #240080;
+  --primary-soft: #bb86fc;
+  --primary-bg: rgba(98, 0, 238, 0.1);
+  --primary-bg-hover: rgba(98, 0, 238, 0.18);
+  --primary-border: rgba(98, 0, 238, 0.25);
+}
+
+body {
+  @apply bg-zinc-950 text-zinc-100;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateX(10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease;
+}
+
+/* ── Light theme ───────────────────────────── */
+html.light body {
+  background: #f8f9fa;
+  color: #1a1a2e;
+}
+
+/* Backgrounds */
+html.light .bg-zinc-950 {
+  background-color: #f8f9fa;
+}
+
+html.light .bg-zinc-900 {
+  background-color: #ffffff;
+}
+
+html.light .bg-zinc-800 {
+  background-color: #f1f3f5;
+}
+
+html.light .bg-white\/\[\.02\] {
+  background-color: #ffffff;
+}
+
+html.light .bg-white\/5 {
+  background-color: #f1f3f5;
+}
+
+html.light .bg-white\/\[\.04\] {
+  background-color: #f1f3f5;
+}
+
+html.light .hover\:bg-white\/5:hover {
+  background-color: #e9ecef;
+}
+
+html.light .hover\:bg-white\/10:hover {
+  background-color: #dee2e6;
+}
+
+/* Primary text */
+html.light .text-white {
+  color: #1a1a2e;
+}
+
+html.light .text-zinc-100 {
+  color: #1a1a2e;
+}
+
+html.light .text-zinc-200 {
+  color: #343a40;
+}
+
+html.light .text-zinc-300 {
+  color: #495057;
+}
+
+/* Muted text — sufficient contrast on #f8f9fa */
+html.light .text-zinc-400 {
+  color: #6c757d;
+}
+
+html.light .text-zinc-500 {
+  color: #868e96;
+}
+
+/* Borders */
+html.light .border-white\/5 {
+  border-color: #dee2e6;
+}
+
+html.light .border-white\/10 {
+  border-color: #ced4da;
+}
+
+html.light .border-white\/15 {
+  border-color: #adb5bd;
+}
+
+/* Purple accents — light theme */
+html.light .bg-purple-500\/15 {
+  background-color: rgba(98, 0, 238, .12);
+}
+
+html.light .bg-purple-600 {
+  background-color: #6200ee;
+}
+
+html.light .bg-purple-600\/30 {
+  background-color: rgba(98, 0, 238, .25);
+}
+
+html.light .bg-purple-600\/20 {
+  background-color: rgba(98, 0, 238, .18);
+}
+
+html.light .text-purple-200,
+html.light .text-purple-300 {
+  color: #6200ee;
+}
+
+html.light .text-purple-400 {
+  color: #6200ee;
+}
+
+html.light .hover\:bg-purple-500:hover {
+  background-color: #3700b3;
+}
+
+html.light .hover\:text-purple-200:hover,
+html.light .hover\:text-purple-300:hover {
+  color: #3700b3;
+}
+
+html.light .border-purple-400 {
+  border-color: #6200ee;
+}
+
+html.light .border-purple-600\/30 {
+  border-color: rgba(98, 0, 238, .25);
+}
+
+html.light .text-pink-400 {
+  color: #e64980;
+}
+
+html.light .bg-pink-500\/10 {
+  background-color: rgba(230, 73, 128, .08);
+}
+
+html.light .hover\:bg-pink-500\/10:hover {
+  background-color: rgba(230, 73, 128, .08);
+}
+
+/* Sticky thead shadow for light mode */
+html.light thead.sticky {
+  box-shadow: 0 1px 0 0 #dee2e6 !important;
+}
+
+/* Misc */
+html.light .text-white\/10 {
+  color: rgba(0, 0, 0, .06);
+}
+
+html.light .from-zinc-950\/60 {
+  --tw-gradient-from: rgba(248, 249, 250, 0.6);
+}
+
+html.light .text-purple-400 {
+  color: #6741d9;
+}
+
+/* ── TipTap / ProseMirror ──────────────────── */
+.ProseMirror {
+  min-height: 300px;
+  padding: 1rem;
+  outline: none;
+  line-height: 1.625;
+  color: inherit;
+  overflow-anchor: none;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #52525b;
+  pointer-events: none;
+  height: 0;
+}
+
+.ProseMirror a {
+  color: #a78bfa;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.ProseMirror a:hover {
+  color: #c4b5fd;
+}
+
+.ProseMirror img {
+  max-width: 100%;
+  border-radius: 0.5rem;
+}
+
+.ProseMirror ul,
+.ProseMirror ol,
+.post-body ul,
+.post-body ol {
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.post-body li {
+  margin: 0.25rem 0;
+}
+
+.post-body img {
+  margin: 1.5rem auto;
+  display: block;
+}
+
+.post-body p + img,
+.post-body img + p {
+  margin-top: 1.2rem;
+}
+
+html.light .ProseMirror p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+}
+
+.ProseMirror h2,
+.post-body h2 { font-size: 1.35rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
+.ProseMirror h3,
+.post-body h3 { font-size: 1.15rem; font-weight: 600; margin: 1rem 0 0.5rem; }
+.ProseMirror h4,
+.post-body h4 { font-size: 1rem;   font-weight: 600; margin: 0.75rem 0 0.5rem; }
+.ProseMirror p,
+.post-body p  { margin: 1rem 0; }
+
+.ProseMirror blockquote,
+.post-body blockquote {
+  border-left: 3px solid #a855f7;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #a1a1aa;
+  font-style: italic;
+}
+
+.ProseMirror pre {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-family: ui-monospace, monospace;
+  font-size: 0.875rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.ProseMirror code {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-family: ui-monospace, monospace;
+  font-size: 0.875rem;
+}
+
+.ProseMirror pre code {
+  background: none;
+  padding: 0;
+}
+
+.ProseMirror hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 1rem 0;
+}
+
+.ProseMirror ul[data-type="taskList"] {
+  list-style: none;
+  padding-left: 0;
+}
+
+.ProseMirror ul[data-type="taskList"] li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.ProseMirror ul[data-type="taskList"] li label {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.ProseMirror ul[data-type="taskList"] li[data-checked="true"] > div > p {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.ProseMirror s {
+  text-decoration: line-through;
+}
+
+.ProseMirror u {
+  text-decoration: underline;
+}
+
+.ProseMirror mark {
+  background: #a855f7;
+  color: #fff;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
+
+html.light .ProseMirror blockquote {
+  color: #6c757d;
+}
+
+html.light .ProseMirror pre {
+  background: #f1f3f5;
+  border-color: #dee2e6;
+}
+
+html.light .ProseMirror code {
+  background: #e9ecef;
+}
+
+html.light .ProseMirror hr {
+  border-color: #dee2e6;
+}
+
+/* ── Code block from editor HTML ──────────── */
+.hljs,
+.editor-code-block {
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace !important;
+  font-size: 0.875rem !important;
+  line-height: 1.7 !important;
+  overflow-x: auto !important;
+  display: block !important;
+}
+
+.editor-code-block {
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  border: 1px solid #27272a;
+  border-radius: 0.75rem;
+  background: #18181b;
+}
+
+html.light .editor-code-block {
+  background: #f8f9fa;
+  border-color: #dee2e6;
+}
+
+/* Override highlight.js theme defaults */
+.hljs {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* Copy button for code blocks */
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.375rem;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #a1a1aa;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #e4e4e7;
+}
+
+html.light .copy-btn {
+  background: rgba(0, 0, 0, 0.04);
+  color: #6c757d;
+}
+
+html.light .copy-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: #1a1a2e;
+}
+
+/* ── Editor light overrides ─────────────── */
+html.light .editor-root pre,
+html.light .editor-root code[class*="language-"],
+html.light .bg-zinc-800.code-block {
+  background: #f1f3f5 !important;
+  border-color: #dee2e6 !important;
+  color: #1a1a2e !important;
+}
