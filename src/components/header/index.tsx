@@ -6,6 +6,7 @@ import { useLocale } from '../../locales'
 import { removeToken, isLoggedIn, decodeToken } from '../../modules/auth'
 import { getProfile } from '../../modules/profile/api'
 import { ENV } from '../../constants/env'
+import { useIsLight } from '../../hooks/use-is-light'
 
 interface Props {
   variant: 'default' | 'dashboard'
@@ -19,6 +20,7 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
   const { t } = useLocale()
   const { path } = useRouter()
   const loggedIn = isLoggedIn()
+  const isLight = useIsLight()
   const [userName, setUserName] = useState(propUserName || '')
   const [localAvatarUrl, setLocalAvatarUrl] = useState('')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -119,11 +121,14 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
         )}
         <a
           href="/"
-          className="flex items-center gap-2 text-base md:text-lg font-bold text-white no-underline"
+          className="flex items-center no-underline"
           onClick={(e) => { e.preventDefault(); navigate('/') }}
         >
-          <img src="/logo.svg" alt="" className="w-4 h-4 md:w-5 md:h-5" />
-          <span className="hidden sm:inline">Erisco Blog</span>
+          <img
+            src={isLight ? '/assets/header/logo-dark.png' : '/assets/header/logo-light.png'}
+            alt="Erisco Blog"
+            className="h-6 md:h-8"
+          />
         </a>
       </div>
 

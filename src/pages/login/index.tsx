@@ -4,6 +4,7 @@ import { useAuth } from '../../modules/auth'
 import LangSwitch from '../../components/language-switch'
 import ThemeSwitch from '../../components/theme-switch'
 import Spinner from '../../components/spinner'
+import { useIsLight } from '../../hooks/use-is-light'
 
 interface Props {
   navigate: (path: string) => void
@@ -12,6 +13,7 @@ interface Props {
 function Login({ navigate }: Props) {
   const { t } = useLocale()
   const { login, loading } = useAuth()
+  const isLight = useIsLight()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [remember, setRemember] = useState(false)
@@ -37,9 +39,12 @@ function Login({ navigate }: Props) {
       </div>
 
       <form onSubmit={handleSubmit} className="bg-white/[.04] border border-white/5 rounded-2xl p-6 md:p-8 w-full max-w-sm flex flex-col gap-4 mx-4">
-        <div className="flex items-center justify-center gap-2">
-          <img src="/logo.svg" alt="" className="w-5 h-5 md:w-6 md:h-6" />
-          <h1 className="text-xl md:text-2xl font-bold text-white">{t.login.title}</h1>
+        <div className="flex items-center justify-center">
+          <img
+            src={isLight ? '/assets/header/logo-dark.png' : '/assets/header/logo-light.png'}
+            alt="Erisco Blog"
+            className="h-8"
+          />
         </div>
         <p className="text-center text-zinc-400 text-sm -mt-2">{t.login.subtitle}</p>
 
