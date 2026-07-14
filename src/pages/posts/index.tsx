@@ -161,6 +161,7 @@ function Posts({ navigate }: Props) {
                       },
                       {
                         key: 'title', label: t.posts.postName, sortable: true, className: 'bg-white/[.02]',
+                        cellClassName: 'max-w-[250px] truncate',
                         render: (item) => item.title
                           ? <a href={`/${item.slug}`} target="_blank" rel="noopener noreferrer"
                               className="text-purple-300 hover:text-purple-200 underline underline-offset-2 cursor-pointer">{item.title}</a>
@@ -168,6 +169,7 @@ function Posts({ navigate }: Props) {
                       },
                       {
                         key: 'slug', label: t.posts.slug, sortable: true, className: 'bg-white/[.02]',
+                        cellClassName: 'max-w-[200px] truncate',
                         render: (item) => item.slug || '\u2014',
                       },
                       {
