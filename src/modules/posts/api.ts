@@ -31,6 +31,10 @@ export function getPostBySlug(slug: string) {
   return api.get<Post>(`/api/v1/public/posts/${slug}`)
 }
 
+export function getPublicPosts() {
+  return api.get<Post[]>('/api/v1/public/posts/all')
+}
+
 export function createPost(data: { title: string; slug?: string; body?: string; image_url?: string; categories?: string; tags?: string; status?: string }) {
   return api.post<Post>('/api/v1/posts', data)
 }

@@ -79,6 +79,7 @@ const en = {
     categories: 'Categories',
     tagSettings: 'Tag Settings',
     categorySettings: 'Category Settings',
+    recentPosts: 'Recent Posts',
   },
   table: {
     id: 'ID',

@@ -3,6 +3,7 @@ import { useLocale } from '../../locales'
 import { getPostBySlug } from '../../modules/posts/api'
 import type { Post } from '../../modules/posts/api'
 import Header from '../../components/header'
+import PostSidebar from '../../components/post-sidebar'
 import Spinner from '../../components/spinner'
 import NotFound from '../../pages/not-found'
 import { ENV } from '../../constants/env'
@@ -115,7 +116,9 @@ function PostDetail({ navigate, slug }: Props) {
         </div>
       )}
 
-      <main className="flex-1 max-w-[1280px] w-full mx-auto px-4 md:px-8 py-8 md:py-12">
+      <div className="flex-1 max-w-[1280px] w-full mx-auto px-4 md:px-8 py-8 md:py-12">
+        <div className="flex flex-col lg:flex-row gap-14">
+        <main className="flex-1 min-w-0">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-xs text-zinc-500 mb-6">
           <button onClick={() => navigate('/')} className="hover:text-zinc-300 cursor-pointer bg-transparent border-0 p-0">
@@ -126,7 +129,7 @@ function PostDetail({ navigate, slug }: Props) {
         </nav>
 
         {/* Title */}
-        <h1 className="text-2xl md:text-4xl font-bold text-white leading-tight mb-4">
+        <h1 className="text-2xl md:text-4xl font-bold text-white leading-snug mb-6">
           {post.title}
         </h1>
 
@@ -172,6 +175,9 @@ function PostDetail({ navigate, slug }: Props) {
           <p className="text-zinc-500 italic">No content</p>
         )}
       </main>
+          <PostSidebar navigate={navigate} />
+        </div>
+      </div>
 
       {/* Lightbox */}
       {lightbox && (

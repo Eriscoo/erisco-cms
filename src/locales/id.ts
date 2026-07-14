@@ -81,6 +81,7 @@ const id: Locale = {
     categories: 'Kategori',
     tagSettings: 'Pengaturan Tag',
     categorySettings: 'Pengaturan Kategori',
+    recentPosts: 'Postingan Terbaru',
   },
   table: {
     id: 'ID',
