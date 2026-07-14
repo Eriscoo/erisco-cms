@@ -1,8 +1,72 @@
 @import "tailwindcss";
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/500.css";
-@import "@fontsource/inter/600.css";
-@import "@fontsource/inter/700.css";
+
+/* Inter latin (weights 400/500/600/700) with font-display: optional to prevent FOUT */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 400;
+  src: url('/fonts/inter-latin-400-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 500;
+  src: url('/fonts/inter-latin-500-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 600;
+  src: url('/fonts/inter-latin-600-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 700;
+  src: url('/fonts/inter-latin-700-normal.woff2') format('woff2');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/* Inter latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 400;
+  src: url('/fonts/inter-latin-ext-400-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 500;
+  src: url('/fonts/inter-latin-ext-500-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 600;
+  src: url('/fonts/inter-latin-ext-600-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 700;
+  src: url('/fonts/inter-latin-ext-700-normal.woff2') format('woff2');
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
 
 @theme {
   --color-primary: #bb86fc;
@@ -31,13 +95,13 @@
 }
 
 html.light {
-  --primary: #6200ee;
-  --primary-dark: #3700b3;
-  --primary-darker: #240080;
-  --primary-soft: #bb86fc;
-  --primary-bg: rgba(98, 0, 238, 0.1);
-  --primary-bg-hover: rgba(98, 0, 238, 0.18);
-  --primary-border: rgba(98, 0, 238, 0.25);
+  --primary: #6A5ACD;
+  --primary-dark: #5344B3;
+  --primary-darker: #3D3186;
+  --primary-soft: #B0A8E3;
+  --primary-bg: rgba(106, 90, 205, 0.1);
+  --primary-bg-hover: rgba(106, 90, 205, 0.18);
+  --primary-border: rgba(106, 90, 205, 0.25);
 }
 
 body {
@@ -181,45 +245,46 @@ html.light .border-white\/15 {
 
 /* Purple accents — light theme */
 html.light .bg-purple-500\/15 {
-  background-color: rgba(98, 0, 238, .12);
+  background-color: rgba(106, 90, 205, .12);
 }
 
 html.light .bg-purple-600 {
-  background-color: #6200ee;
+  background-color: #6A5ACD;
 }
 
 html.light .bg-purple-600\/30 {
-  background-color: rgba(98, 0, 238, .25);
+  background-color: rgba(106, 90, 205, .25);
 }
 
 html.light .bg-purple-600\/20 {
-  background-color: rgba(98, 0, 238, .18);
+  background-color: rgba(106, 90, 205, .18);
 }
 
 html.light .text-purple-200,
 html.light .text-purple-300 {
-  color: #6200ee;
+  color: #6A5ACD;
 }
 
 html.light .text-purple-400 {
-  color: #6200ee;
+  color: #6A5ACD;
 }
 
 html.light .hover\:bg-purple-500:hover {
-  background-color: #3700b3;
+  background-color: #5344B3;
 }
 
 html.light .hover\:text-purple-200:hover,
-html.light .hover\:text-purple-300:hover {
-  color: #3700b3;
+html.light .hover\:text-purple-300:hover,
+html.light .group:hover .group-hover\:text-purple-300 {
+  color: #5344B3;
 }
 
 html.light .border-purple-400 {
-  border-color: #6200ee;
+  border-color: #6A5ACD;
 }
 
 html.light .border-purple-600\/30 {
-  border-color: rgba(98, 0, 238, .25);
+  border-color: rgba(106, 90, 205, .25);
 }
 
 /* Fix kontras: teks di atas background solid ungu/brand
@@ -263,7 +328,7 @@ html.light .from-zinc-950\/60 {
 }
 
 html.light .text-purple-400 {
-  color: #6741d9;
+  color: #6A5ACD;
 }
 
 /* ── TipTap / ProseMirror ──────────────────── */
@@ -332,7 +397,7 @@ html.light .ProseMirror p.is-editor-empty:first-child::before {
 .ProseMirror h4,
 .post-body h4 { font-size: 1rem;   font-weight: 600; margin: 0.75rem 0 0.5rem; }
 .ProseMirror p,
-.post-body p  { margin: 1rem 0; }
+.post-body p  { margin: 1rem 0 0 0; }
 
 .ProseMirror blockquote,
 .post-body blockquote {

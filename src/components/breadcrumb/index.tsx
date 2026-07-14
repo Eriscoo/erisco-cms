@@ -29,7 +29,7 @@ function Breadcrumb({ items, navigate }: Props) {
                 {item.label}
               </button>
             ) : (
-              <span className={isLast ? 'text-zinc-200' : 'text-zinc-500'}>
+              <span className={isLast ? 'text-zinc-200 font-semibold' : 'text-zinc-500'}>
                 {item.label}
               </span>
             )}

@@ -22,10 +22,10 @@ function PostDetail({ navigate, slug }: Props) {
   const [error, setError] = useState('')
   const [lightbox, setLightbox] = useState('')
 
-  const fetched = useRef(false)
   useEffect(() => {
-    if (fetched.current) return
-    fetched.current = true
+    setFetching(true)
+    setError('')
+    setPost(null)
     getPostBySlug(slug)
       .then((p) => {
         setPost(p)
@@ -118,15 +118,15 @@ function PostDetail({ navigate, slug }: Props) {
       )}
 
       <div className="flex-1 max-w-[1280px] w-full mx-auto px-4 md:px-8 py-8 md:py-12">
-        <div className="flex flex-col lg:flex-row gap-14">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-14">
         <main className="flex-1 min-w-0">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-xs text-zinc-500 mb-6">
+        <nav className="flex items-center gap-2 text-sm text-zinc-500 mb-6">
           <button onClick={() => navigate('/')} className="hover:text-zinc-300 cursor-pointer bg-transparent border-0 p-0">
             {t.nav.home}
           </button>
           <span>/</span>
-          <span className="text-zinc-400 truncate">{post.title}</span>
+          <span className="text-zinc-200 truncate">{post.title}</span>
         </nav>
 
         {/* Title */}
@@ -135,7 +135,7 @@ function PostDetail({ navigate, slug }: Props) {
         </h1>
 
         {/* Meta: Author + Date + Categories + Tags */}
-        <div className="flex items-center justify-between gap-4 mb-8 pb-6 border-b border-white/5 flex-wrap">
+        <div className="flex items-center justify-between gap-4 mb-8 pb-4 border-b border-white/5 flex-wrap">
           <div className="flex items-center gap-3">
             {post.author_avatar_url ? (
               <img src={`${ENV.API_URL}${post.author_avatar_url}`} alt={post.created_by_name}
@@ -169,7 +169,7 @@ function PostDetail({ navigate, slug }: Props) {
         {/* Body */}
         {post.body ? (
           <div ref={bodyRef} onClick={handleBodyClick}
-            className="post-body prose prose-invert prose-zinc max-w-none text-zinc-300 leading-relaxed [&_img]:w-full [&_img]:rounded-lg [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_a]:text-purple-400 [&_blockquote]:border-l-purple-500 [&_blockquote]:text-zinc-400"
+            className="post-body prose prose-invert prose-zinc max-w-none text-zinc-300 leading-relaxed [&_img]:w-full [&_img]:rounded-lg [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_a]:text-purple-400 [&_blockquote]:border-l-purple-500 [&_blockquote]:text-zinc-400 [&_p]:mb-0"
             dangerouslySetInnerHTML={{ __html: processedBody }}
           />
         ) : (
