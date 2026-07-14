@@ -193,7 +193,7 @@ function PostDetail({ navigate, slug }: Props) {
       )}
 
       {/* Footer */}
-      <Footer />
+      <Footer navigate={navigate} />
     </div>
   )
 }
