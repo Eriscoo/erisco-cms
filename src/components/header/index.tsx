@@ -8,6 +8,8 @@ import { getProfile } from '../../modules/profile/api'
 import { ENV } from '../../constants/env'
 import { useIsLight } from '../../hooks/use-is-light'
 
+const avatarCache: Record<number, string> = {}
+
 interface Props {
   variant: 'default' | 'dashboard'
   userName?: string
@@ -36,10 +38,17 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
     if (!decoded) return
     if (!propUserName) setUserName(decoded.name || '')
     if (propAvatarUrl) return
+    if (avatarCache[decoded.user_id]) {
+      setLocalAvatarUrl(avatarCache[decoded.user_id])
+      return
+    }
     if (fetched.current) return
     fetched.current = true
     getProfile(decoded.user_id).then((p) => {
-      if (p?.avatar_url) setLocalAvatarUrl(p.avatar_url)
+      if (p?.avatar_url) {
+        avatarCache[decoded.user_id] = p.avatar_url
+        setLocalAvatarUrl(p.avatar_url)
+      }
     }).catch(() => {})
   }, [variant, propUserName, propAvatarUrl])
 
