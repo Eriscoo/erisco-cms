@@ -111,9 +111,10 @@ function PostDetail({ navigate, slug }: Props) {
       <Header variant="default" navigate={navigate} />
 
       {post.image_url && (
-        <div className="w-full h-64 md:h-96 overflow-hidden">
+        <div className="relative w-full h-64 md:h-96 overflow-hidden">
           <img src={`${ENV.API_URL}${post.image_url}`} alt={post.title}
             className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/40 via-zinc-950/5 to-transparent" />
         </div>
       )}
 

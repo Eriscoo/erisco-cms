@@ -323,8 +323,24 @@ html.light .text-white\/10 {
   color: rgba(0, 0, 0, .06);
 }
 
+html.light .from-zinc-950\/40 {
+  --tw-gradient-from: rgba(248, 249, 250, 0.4);
+}
+
+html.light .via-zinc-950\/5 {
+  --tw-gradient-to: rgba(248, 249, 250, 0.05);
+}
+
 html.light .from-zinc-950\/60 {
   --tw-gradient-from: rgba(248, 249, 250, 0.6);
+}
+
+html.light .from-zinc-950\/70 {
+  --tw-gradient-from: rgba(248, 249, 250, 0.7);
+}
+
+html.light .via-zinc-950\/10 {
+  --tw-gradient-to: rgba(248, 249, 250, 0.1);
 }
 
 html.light .text-purple-400 {
