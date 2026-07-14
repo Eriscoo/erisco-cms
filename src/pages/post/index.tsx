@@ -5,6 +5,7 @@ import type { Post } from '../../modules/posts/api'
 import Header from '../../components/header'
 import PostSidebar from '../../components/post-sidebar'
 import Spinner from '../../components/spinner'
+import Footer from '../../components/footer'
 import NotFound from '../../pages/not-found'
 import { ENV } from '../../constants/env'
 import hljs from 'highlight.js'
@@ -191,9 +192,7 @@ function PostDetail({ navigate, slug }: Props) {
       )}
 
       {/* Footer */}
-      <footer className="border-t border-white/5 py-6 text-center text-xs text-zinc-600">
-        Erisco Blog &copy; {new Date().getFullYear()}
-      </footer>
+      <Footer />
     </div>
   )
 }
