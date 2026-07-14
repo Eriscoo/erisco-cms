@@ -115,7 +115,7 @@ function PostDetail({ navigate, slug }: Props) {
         </div>
       )}
 
-      <main className="flex-1 max-w-5xl w-full mx-auto px-4 md:px-8 py-8 md:py-12">
+      <main className="flex-1 max-w-[1280px] w-full mx-auto px-4 md:px-8 py-8 md:py-12">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-xs text-zinc-500 mb-6">
           <button onClick={() => navigate('/')} className="hover:text-zinc-300 cursor-pointer bg-transparent border-0 p-0">

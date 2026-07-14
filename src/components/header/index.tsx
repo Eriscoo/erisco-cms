@@ -105,8 +105,9 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
         </aside>
       )}
 
-      <nav className="h-[67px] flex items-center px-4 md:px-8 border-b border-white/5">
-      <div className="flex-1 flex items-center gap-3">
+      <nav className={`h-[67px] flex items-center border-b border-white/5 bg-zinc-950 ${variant === 'default' ? 'sticky top-0 z-40' : ''}`}>
+      <div className={`flex items-center justify-between px-4 md:px-8 w-full ${variant === 'default' ? 'max-w-[1280px] mx-auto' : ''}`}>
+      <div className="flex items-center gap-2 lg:gap-6">
         {(variant === 'dashboard' || variant === 'default') && (
           <button
             onClick={() => variant === 'dashboard' ? onMenuToggle?.() : setMobileMenuOpen(!mobileMenuOpen)}
@@ -130,27 +131,26 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
             className="h-6 md:h-8"
           />
         </a>
+        {variant === 'default' && (
+          <div className="hidden lg:flex items-center gap-2">
+            {menuItems.map((item) => (
+              <button
+                key={item.path}
+                onClick={() => navigate(item.path)}
+                className={`px-3 py-1.5 rounded-md text-sm transition-colors cursor-pointer ${
+                  path === item.path ? 'bg-purple-500/15 text-purple-300 font-medium' : 'text-zinc-400 hover:text-zinc-200 hover:bg-white/5'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
-      {variant === 'default' && (
-        <div className="hidden lg:flex items-center gap-3 shrink-0">
-          {menuItems.map((item) => (
-            <button
-              key={item.path}
-              onClick={() => navigate(item.path)}
-              className={`px-3 py-1.5 rounded-md text-sm transition-colors cursor-pointer ${
-                path === item.path ? 'bg-purple-500/15 text-purple-300 font-medium' : 'text-zinc-400 hover:text-zinc-200 hover:bg-white/5'
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
-        </div>
-      )}
-
-      <div className="flex-1 flex items-center gap-2 md:gap-3 justify-end">
+      <div className="flex items-center gap-2">
         {variant === 'dashboard' ? (
-          <div className="hidden md:flex items-center gap-2 md:gap-3">
+          <div className="hidden md:flex items-center gap-2">
             <ThemeSwitch />
             <LangSwitch />
           </div>
@@ -218,6 +218,7 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
             )}
           </div>
         )}
+      </div>
       </div>
     </nav>
     </>

@@ -87,7 +87,7 @@ function Login({ navigate }: Props) {
           </button>
         </div>
 
-        <button type="submit" disabled={loading} className="py-2.5 rounded-lg border-0 bg-gradient-to-r from-purple-600 to-teal-400 text-white font-semibold text-sm cursor-pointer disabled:opacity-50">
+        <button type="submit" disabled={loading} className="py-2.5 rounded-lg border-0 bg-purple-600 text-white font-semibold text-sm cursor-pointer disabled:opacity-50 hover:bg-purple-500">
           {loading ? <span className="flex items-center justify-center gap-2"><Spinner /> {t.login.signingIn}</span> : t.login.signIn}
         </button>
 
