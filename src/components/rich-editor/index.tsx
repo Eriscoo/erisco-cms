@@ -21,6 +21,7 @@ import { $generateHtmlFromNodes, $generateNodesFromDOM } from '@lexical/html'
 import { $getRoot, $getSelection, $isRangeSelection, $isTextNode, $createLineBreakNode, KEY_ENTER_COMMAND, COMMAND_PRIORITY_CRITICAL } from 'lexical'
 import { $isLinkNode, $toggleLink } from '@lexical/link'
 import { registerCodeHighlighting } from '@lexical/code'
+import { $isCodeNode } from '@lexical/code'
 
 const extensions = [
   boldExtension,
@@ -53,6 +54,7 @@ function EditorInner({ value, onChange }: Props) {
   const [isUl, setIsUl] = useState(false)
   const [isOl, setIsOl] = useState(false)
   const [isQuote, setIsQuote] = useState(false)
+  const [codeLang, setCodeLang] = useState('')
   const [mode, setMode] = useState<'visual' | 'html'>('visual')
   const [htmlContent, setHtmlContent] = useState('')
   const htmlRef = useRef<HTMLTextAreaElement>(null)
@@ -142,6 +144,14 @@ function EditorInner({ value, onChange }: Props) {
         setIsUl(ul)
         setIsOl(ol)
         setIsQuote(quote)
+        let codeLangFound = ''
+        current = node
+        while (current) {
+          if ($isCodeNode(current)) { codeLangFound = current.getLanguage() || ''; break }
+          if (current.getType() === 'root') break
+          current = current.getParent()!
+        }
+        setCodeLang(codeLangFound)
       }
     })
   }
@@ -272,6 +282,28 @@ html.light .editor-root .editor-code-block { background: #f1f3f5; border-color: 
         {sep()}
         {tb('Quote', ic('M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z'), isQuote, () => commands.toggleQuote())}
         {tb('Code Block', ic('M16 18l6-6-6-6M8 6l-6 6 6 6'), activeStates.isInCodeBlock, () => commands.toggleCodeBlock())}
+        {activeStates.isInCodeBlock && (
+          <input
+            type="text"
+            value={codeLang}
+            onChange={(e) => {
+              const lang = e.target.value
+              setCodeLang(lang)
+              editor.update(() => {
+                const sel = $getSelection()
+                if (!$isRangeSelection(sel)) return
+                let node = sel.anchor.getNode()
+                while (node) {
+                  if ($isCodeNode(node)) { node.setLanguage(lang || null); break }
+                  if (node.getType() === 'root') break
+                  node = node.getParent()!
+                }
+              })
+            }}
+            placeholder="e.g. app.tsx"
+            className="w-28 h-7 px-2 text-xs bg-transparent border border-white/10 rounded text-zinc-300 placeholder:text-zinc-600 outline-none focus:border-purple-500/50"
+          />
+        )}
         {tb('Horizontal Rule', ic('M3 12h18'), false, () => commands.insertHorizontalRule())}
         {tb('Image', ic('M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12'), false, () => fileRef.current?.click())}
         <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleImagePick} />

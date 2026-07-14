@@ -51,6 +51,11 @@ const id: Locale = {
   home: {
     welcome: 'Selamat Datang di Erisco Blog',
     subtitle: 'Cerita, pemikiran, dan ide.',
+    hero: {
+      headline: 'Jelajahi Dunia Teknologi',
+      description: 'Wawasan, tutorial, dan sudut pandang seputar web development, programming, dan lanskap digital yang terus berkembang.',
+      cta: 'Jelajahi Postingan',
+    },
   },
   login: {
     title: 'Erisco Blog',

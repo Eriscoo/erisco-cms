@@ -62,11 +62,12 @@ function PostDetail({ navigate, slug }: Props) {
       const code = withNewlines.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ').trim()
       if (!code) return
       const result = hljs.highlightAuto(code)
-      const highlighted = '<code class="hljs' + (result.language ? ' language-' + result.language : '') + '">' + result.value + '</code>'
+      const manualLang = el.getAttribute('data-language')
+      const langLabel = manualLang || result.language || 'text'
+      const highlighted = '<pre class="code-block-pre"><code class="hljs' + (result.language ? ' language-' + result.language : '') + '">' + result.value + '</code></pre>'
       const btn = '<button class="copy-btn" title="Copy code" data-code="' + code.replace(/"/g, '&quot;') + '">' + copyBtnSvg + '</button>'
-      el.innerHTML = highlighted + btn
-      el.className = 'editor-code-block'
-      el.setAttribute('style', 'position: relative')
+      const headerHtml = '<div class="code-block-header"><span class="code-block-lang">' + langLabel + '</span>' + btn + '</div>'
+      el.outerHTML = '<div class="editor-code-block">' + headerHtml + highlighted + '</div>'
     })
     return dom.body.innerHTML
   }, [post?.body])
@@ -114,7 +115,6 @@ function PostDetail({ navigate, slug }: Props) {
         <div className="relative w-full h-64 md:h-96 overflow-hidden">
           <img src={`${ENV.API_URL}${post.image_url}`} alt={post.title}
             className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/40 via-zinc-950/5 to-transparent" />
         </div>
       )}
 
@@ -123,11 +123,11 @@ function PostDetail({ navigate, slug }: Props) {
         <main className="flex-1 min-w-0">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-zinc-500 mb-6">
-          <button onClick={() => navigate('/')} className="hover:text-zinc-300 cursor-pointer bg-transparent border-0 p-0">
+          <button onClick={() => navigate('/')} className="hover:text-purple-300 cursor-pointer bg-transparent border-0 p-0">
             {t.nav.home}
           </button>
           <span>/</span>
-          <span className="text-zinc-200 truncate">{post.title}</span>
+          <span className="text-zinc-200 font-semibold truncate">{post.title}</span>
         </nav>
 
         {/* Title */}
@@ -154,13 +154,13 @@ function PostDetail({ navigate, slug }: Props) {
           <div className="flex flex-wrap items-center gap-2">
             {post.category_names && post.category_names.split(', ').filter(Boolean).map((cat) => (
               <span key={cat}
-                className="text-xs px-2.5 py-1 rounded-full bg-purple-600/20 text-purple-300 border border-purple-600/30">
+                className="text-xs px-2.5 py-1 rounded-full bg-purple-600/20 text-purple-300 border border-purple-600/30 hover:bg-purple-600/30 hover:text-purple-200 transition-colors cursor-pointer">
                 {cat}
               </span>
             ))}
             {post.tag_names && post.tag_names.split(', ').filter(Boolean).map((tag) => (
               <span key={tag}
-                className="text-xs px-2.5 py-1 rounded-full bg-zinc-800 text-zinc-300 border border-white/5">
+                className="text-xs px-2.5 py-1 rounded-full bg-zinc-800 text-zinc-300 border border-white/5 hover:bg-zinc-700 hover:text-zinc-100 transition-colors cursor-pointer">
                 #{tag}
               </span>
             ))}

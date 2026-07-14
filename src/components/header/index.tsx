@@ -114,7 +114,7 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
         </aside>
       )}
 
-      <nav className={`h-[67px] flex items-center border-b border-white/5 bg-zinc-950 ${variant === 'default' ? 'sticky top-0 z-40' : ''}`}>
+      <nav className={`h-[67px] flex items-center border-b border-white/5 ${variant === 'default' ? 'sticky top-0 z-40 bg-zinc-950/70 backdrop-blur-md' : 'bg-zinc-950'}`}>
       <div className={`flex items-center justify-between px-4 md:px-8 w-full ${variant === 'default' ? 'max-w-[1280px] mx-auto' : ''}`}>
       <div className="flex items-center gap-2 lg:gap-6">
         {(variant === 'dashboard' || variant === 'default') && (

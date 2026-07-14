@@ -24,7 +24,7 @@ function Breadcrumb({ items, navigate }: Props) {
             {item.path && !isLast ? (
               <button
                 onClick={() => navigate(item.path!)}
-                className="text-zinc-500 hover:text-zinc-200 cursor-pointer transition-colors"
+                className="text-zinc-500 hover:text-purple-400 cursor-pointer transition-colors font-normal"
               >
                 {item.label}
               </button>

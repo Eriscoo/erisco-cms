@@ -49,6 +49,11 @@ const en = {
   home: {
     welcome: 'Welcome to Erisco Blog',
     subtitle: 'Stories, thoughts, and ideas.',
+    hero: {
+      headline: 'Explore the World of Technology',
+      description: 'Insights, tutorials, and perspectives on web development, programming, and the ever-evolving digital landscape.',
+      cta: 'Explore Posts',
+    },
   },
   login: {
     title: 'Erisco Blog',

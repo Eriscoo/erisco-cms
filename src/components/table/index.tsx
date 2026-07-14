@@ -20,7 +20,7 @@ function Table<T extends { id: number }>({ columns, data, sortKey, sortDir, onSo
   return (
     <div className="overflow-x-auto rounded-lg border border-white/5">
       <table className="w-full text-sm">
-        <thead className="sticky top-0 z-10 bg-zinc-950 shadow-[0_1px_0_0_rgba(255,255,255,0.05)]">
+        <thead className="sticky top-0 z-10 shadow-[0_1px_0_0_rgba(255,255,255,0.05)]" style={{ background: '#131620' }}>
           <tr className="h-12">
             {columns.map((col) => (
               <th key={col.key} className={`text-left px-4 text-zinc-400 font-medium ${col.headerClassName ?? ''} ${col.className ?? ''}`}>
