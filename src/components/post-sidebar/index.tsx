@@ -21,11 +21,33 @@ function PostSidebar({ navigate }: Props) {
   const [loading, setLoading] = useState(true)
   const recent = posts.slice(0, 5)
 
-  function formatDate(dateStr: string | null) {
+  function formatRelativeTime(dateStr: string | null) {
     if (!dateStr) return ''
-    const d = new Date(dateStr)
-    return d.toLocaleDateString('en-CA', { timeZone: 'Asia/Jakarta' }) + ' ' +
-      d.toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit' })
+    const now = new Date()
+    const then = new Date(dateStr)
+    const diffMs = now.getTime() - then.getTime()
+    const diffSec = Math.floor(diffMs / 1000)
+    const diffMin = Math.floor(diffSec / 60)
+    const diffHr = Math.floor(diffMin / 60)
+    const diffDay = Math.floor(diffHr / 24)
+    const diffWeek = Math.floor(diffDay / 7)
+    const diffMonth = Math.floor(diffDay / 30)
+    const diffYear = Math.floor(diffDay / 365)
+
+    if (diffSec < 60) return t.time.now
+    if (diffMin < 60) return formatUnit(diffMin, 'minute')
+    if (diffHr < 24) return formatUnit(diffHr, 'hour')
+    if (diffDay < 7) return formatUnit(diffDay, 'day')
+    if (diffWeek < 5) return formatUnit(diffWeek, 'week')
+    if (diffMonth < 12) return formatUnit(diffMonth, 'month')
+    return formatUnit(diffYear, 'year')
+  }
+
+  function formatUnit(n: number, unit: string) {
+    const raw = t.time[unit as keyof typeof t.time]
+    if (!raw.includes('|')) return `${n} ${raw}`
+    const [singular, plural] = raw.split('|').map(s => s.trim())
+    return `${n} ${n === 1 ? singular : plural}`
   }
 
   useEffect(() => {
@@ -61,7 +83,7 @@ function PostSidebar({ navigate }: Props) {
                       {post.title}
                     </h4>
                     <p className="text-xs text-zinc-500 mt-1.5">
-                      {formatDate(post.published_at || post.created_at)}
+                      {formatRelativeTime(post.published_at || post.created_at)}
                     </p>
                   </div>
                   <div className="w-[74px] h-[74px] rounded-lg overflow-hidden shrink-0 bg-white/5 flex items-center justify-center">

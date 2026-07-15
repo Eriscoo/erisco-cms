@@ -76,33 +76,11 @@ function PostDetail({ navigate, slug }: Props) {
     }
   }, [])
 
-  function formatRelativeTime(dateStr: string | null) {
+  function formatDateTime(dateStr: string | null) {
     if (!dateStr) return ''
-    const now = new Date()
-    const then = new Date(dateStr)
-    const diffMs = now.getTime() - then.getTime()
-    const diffSec = Math.floor(diffMs / 1000)
-    const diffMin = Math.floor(diffSec / 60)
-    const diffHr = Math.floor(diffMin / 60)
-    const diffDay = Math.floor(diffHr / 24)
-    const diffWeek = Math.floor(diffDay / 7)
-    const diffMonth = Math.floor(diffDay / 30)
-    const diffYear = Math.floor(diffDay / 365)
-
-    if (diffSec < 60) return t.time.now
-    if (diffMin < 60) return formatUnit(diffMin, 'minute')
-    if (diffHr < 24) return formatUnit(diffHr, 'hour')
-    if (diffDay < 7) return formatUnit(diffDay, 'day')
-    if (diffWeek < 5) return formatUnit(diffWeek, 'week')
-    if (diffMonth < 12) return formatUnit(diffMonth, 'month')
-    return formatUnit(diffYear, 'year')
-  }
-
-  function formatUnit(n: number, unit: string) {
-    const raw = t.time[unit as keyof typeof t.time]
-    if (!raw.includes('|')) return `${n} ${raw}`
-    const [singular, plural] = raw.split('|').map(s => s.trim())
-    return `${n} ${n === 1 ? singular : plural}`
+    const d = new Date(dateStr)
+    return d.toLocaleDateString('en-CA', { timeZone: 'Asia/Jakarta' }) + ' ' +
+      d.toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit' })
   }
 
   const copyBtnSvg = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'
@@ -203,7 +181,7 @@ function PostDetail({ navigate, slug }: Props) {
             )}
             <div className="flex flex-col gap-1">
               <p className="text-sm text-zinc-200 font-medium">{post.created_by_name}</p>
-              <p className="text-xs text-zinc-500">{formatRelativeTime(post.created_at)}</p>
+              <p className="text-xs text-zinc-500">{formatDateTime(post.created_at)}</p>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2">
