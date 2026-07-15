@@ -248,7 +248,7 @@ function EditPost({ navigate, postId }: Props) {
                       className={`${btn} border border-white/10 text-zinc-300 hover:bg-white/5`}>
                       {saving ? t.posts.saving : t.posts.saveDraft}
                     </button>
-                  <button type="button" onClick={() => save(status)} disabled={!!saving}
+                  <button type="button" onClick={() => save('published')} disabled={!!saving}
                       className={`${btn} bg-purple-600 text-white hover:bg-purple-500`}>
                       {saving ? t.posts.saving : t.posts.publish}
                     </button>
