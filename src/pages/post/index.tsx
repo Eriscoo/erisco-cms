@@ -94,8 +94,9 @@ function PostDetail({ navigate, slug }: Props) {
       const code = withNewlines.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ').trim()
       if (!code) return
       const manualLang = el.getAttribute('data-language')
-      const result = manualLang
-        ? hljs.highlight(code, { language: manualLang, ignoreIllegals: true })
+      const validLang = manualLang && hljs.getLanguage(manualLang) ? manualLang : null
+      const result = validLang
+        ? hljs.highlight(code, { language: validLang, ignoreIllegals: true })
         : hljs.highlightAuto(code)
       const langLabel = manualLang || result.language || 'text'
       const highlighted = '<pre class="code-block-pre"><code class="hljs' + (result.language ? ' language-' + result.language : '') + '">' + result.value + '</code></pre>'
@@ -145,13 +146,6 @@ function PostDetail({ navigate, slug }: Props) {
     <div className="min-h-screen flex flex-col">
       <Header variant="default" navigate={navigate} />
 
-      {post.image_url && (
-        <div className="relative w-full h-64 md:h-96 overflow-hidden">
-          <img src={`${ENV.API_URL}${post.image_url}`} alt={post.title}
-            className="w-full h-full object-cover" />
-        </div>
-      )}
-
       <div className="flex-1 max-w-[1280px] w-full mx-auto px-4 md:px-8 py-8 md:py-12">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-14">
         <main className="flex-1 min-w-0">
@@ -173,13 +167,13 @@ function PostDetail({ navigate, slug }: Props) {
           <div className="flex items-center gap-3">
             {post.author_avatar_url ? (
               <img src={`${ENV.API_URL}${post.author_avatar_url}`} alt={post.created_by_name}
-                className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+                className="w-8 h-8 rounded-full object-cover flex-shrink-0" />
             ) : (
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-teal-400 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-teal-400 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">
                 {post.created_by_name ? post.created_by_name.charAt(0).toUpperCase() : 'U'}
               </div>
             )}
-            <div className="flex flex-col gap-1">
+            <div className="flex items-baseline gap-3">
               <p className="text-sm text-zinc-200 font-medium">{post.created_by_name}</p>
               <p className="text-xs text-zinc-500">{formatDateTime(post.created_at)}</p>
             </div>
@@ -193,6 +187,13 @@ function PostDetail({ navigate, slug }: Props) {
             ))}
           </div>
         </div>
+
+        {post.image_url && (
+          <div className="w-full aspect-video rounded-lg overflow-hidden mb-8 cursor-pointer" onClick={() => setLightbox(`${ENV.API_URL}${post.image_url}`)}>
+            <img src={`${ENV.API_URL}${post.image_url}`} alt={post.title}
+              className="w-full h-full object-cover hover:opacity-90 transition-opacity" />
+          </div>
+        )}
 
         {/* Body */}
         {post.body ? (
