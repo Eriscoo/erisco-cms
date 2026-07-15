@@ -564,11 +564,20 @@ html.light .ProseMirror p.is-editor-empty:first-child::before {
 }
 
 .ProseMirror h2,
-.post-body h2 { font-size: 1.75rem; font-weight: 700; margin: 1.5rem 0 0.8rem; }
+.post-body h2 { font-size: 1.35rem; font-weight: 700; margin: 1.5rem 0 0.8rem; }
 .ProseMirror h3,
-.post-body h3 { font-size: 1.50rem; font-weight: 700; margin: 1.5rem 0 0.8rem; }
+.post-body h3 { font-size: 1.20rem; font-weight: 700; margin: 1.5rem 0 0.8rem; }
 .ProseMirror h4,
-.post-body h4 { font-size: 1.35rem; font-weight: 700; margin: 1.0rem 0 0.8rem; }
+.post-body h4 { font-size: 1.10rem; font-weight: 700; margin: 1.0rem 0 0.8rem; }
+
+@media (min-width: 768px) {
+  .ProseMirror h2,
+  .post-body h2 { font-size: 1.75rem; }
+  .ProseMirror h3,
+  .post-body h3 { font-size: 1.50rem; }
+  .ProseMirror h4,
+  .post-body h4 { font-size: 1.35rem; }
+}
 .ProseMirror p,
 .post-body p  { margin: 1rem 0 0 0; }
 

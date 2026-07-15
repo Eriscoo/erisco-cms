@@ -133,6 +133,9 @@ const id: Locale = {
     month: 'bulan yang lalu',
     year: 'tahun yang lalu',
   },
+  post: {
+    postedOn: 'Diposting pada',
+  },
 }
 
 export default id

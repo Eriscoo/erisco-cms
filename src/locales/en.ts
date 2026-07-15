@@ -131,6 +131,9 @@ const en = {
     month: 'month ago | months ago',
     year: 'year ago | years ago',
   },
+  post: {
+    postedOn: 'Posted on',
+  },
 }
 
 export type Locale = typeof en

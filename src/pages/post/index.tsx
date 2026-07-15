@@ -167,21 +167,21 @@ function PostDetail({ navigate, slug }: Props) {
           <div className="flex items-center gap-3">
             {post.author_avatar_url ? (
               <img src={`${ENV.API_URL}${post.author_avatar_url}`} alt={post.created_by_name}
-                className="w-8 h-8 rounded-full object-cover flex-shrink-0" />
+                className="w-9 h-9 rounded-full object-cover flex-shrink-0" />
             ) : (
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-teal-400 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">
+              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-purple-500 to-teal-400 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">
                 {post.created_by_name ? post.created_by_name.charAt(0).toUpperCase() : 'U'}
               </div>
             )}
-            <div className="flex items-baseline gap-3">
+            <div className="flex flex-col gap-12px">
               <p className="text-sm text-zinc-200 font-medium">{post.created_by_name}</p>
-              <p className="text-xs text-zinc-500">{formatDateTime(post.created_at)}</p>
+              <p className="text-xs text-zinc-500">{t.post.postedOn} {formatDateTime(post.created_at)}</p>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2">
             {post.category_names && post.category_names.split(', ').filter(Boolean).map((cat) => (
               <span key={cat}
-                className="text-xs px-2.5 py-1 rounded-full bg-purple-600/20 text-purple-300 border border-purple-600/30 hover:bg-purple-600/30 hover:text-purple-200 transition-colors cursor-pointer">
+                className="text-xs px-2.5 py-1 rounded-lg bg-purple-600/20 text-purple-300 border border-purple-600/30 hover:bg-purple-600/30 hover:text-purple-200 transition-colors cursor-pointer">
                 {cat}
               </span>
             ))}
