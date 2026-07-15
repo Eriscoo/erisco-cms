@@ -529,12 +529,24 @@ html.light .footer-copyright-section {
 .ProseMirror ol,
 .post-body ul,
 .post-body ol {
-  padding-left: 1.5rem;
-  margin: 0.5rem 0;
+  padding-left: 2.5rem;
+  margin: 20px 0 24px 0;
+}
+
+.post-body ul {
+  list-style-type: disc;
+}
+
+.post-body ol {
+  list-style-type: decimal;
 }
 
 .post-body li {
-  margin: 0.25rem 0;
+  margin: 0.15rem 0;
+}
+
+.post-body li::marker {
+  color: #9ca3af;
 }
 
 .post-body img {
@@ -552,11 +564,11 @@ html.light .ProseMirror p.is-editor-empty:first-child::before {
 }
 
 .ProseMirror h2,
-.post-body h2 { font-size: 1.35rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
+.post-body h2 { font-size: 1.75rem; font-weight: 700; margin: 1.5rem 0 0.8rem; }
 .ProseMirror h3,
-.post-body h3 { font-size: 1.15rem; font-weight: 600; margin: 1rem 0 0.5rem; }
+.post-body h3 { font-size: 1.50rem; font-weight: 700; margin: 1.5rem 0 0.8rem; }
 .ProseMirror h4,
-.post-body h4 { font-size: 1rem;   font-weight: 600; margin: 0.75rem 0 0.5rem; }
+.post-body h4 { font-size: 1.35rem; font-weight: 700; margin: 1.0rem 0 0.8rem; }
 .ProseMirror p,
 .post-body p  { margin: 1rem 0 0 0; }
 
@@ -577,11 +589,27 @@ html.light .post-body a:hover {
 
 .ProseMirror blockquote,
 .post-body blockquote {
-  border-left: 3px solid #a855f7;
-  padding-left: 1rem;
-  margin: 1rem 0;
-  color: #a1a1aa;
+  border-left: 4px solid #a855f7;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0 1.25rem 0;
+  background: rgba(168, 85, 247, 0.05);
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: #d4d4d8;
   font-style: italic;
+  position: relative;
+}
+
+.post-body blockquote::before {
+  content: '\201C';
+  position: absolute;
+  top: -0.375rem;
+  left: 0.75rem;
+  font-size: 2.5rem;
+  color: rgba(168, 85, 247, 0.15);
+  font-family: Georgia, serif;
+  line-height: 1;
+  font-style: normal;
+  pointer-events: none;
 }
 
 .ProseMirror pre {
