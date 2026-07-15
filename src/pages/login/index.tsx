@@ -3,7 +3,7 @@ import { useLocale } from '../../locales'
 import { useAuth } from '../../modules/auth'
 import LangSwitch from '../../components/language-switch'
 import ThemeSwitch from '../../components/theme-switch'
-import Spinner from '../../components/spinner'
+import Button from '../../components/button'
 import { useIsLight } from '../../hooks/use-is-light'
 
 interface Props {
@@ -91,17 +91,17 @@ function Login({ navigate }: Props) {
           </button>
         </div>
 
-        <button type="submit" disabled={loading} className="py-2.5 rounded-lg border-0 bg-purple-600 text-white font-semibold text-sm cursor-pointer disabled:opacity-50 hover:bg-purple-500">
-          {loading ? <span className="flex items-center justify-center gap-2"><Spinner /> {t.login.signingIn}</span> : t.login.signIn}
-        </button>
+        <Button type="submit" loading={loading} size="lg">
+          {loading ? t.login.signingIn : t.login.signIn}
+        </Button>
 
-        <button type="button" onClick={() => navigate('/')} className="py-2 rounded-lg border border-white/10 bg-transparent text-zinc-400 text-sm cursor-pointer hover:text-zinc-200 hover:bg-white/5 transition-colors flex items-center justify-center gap-1.5">
+        <Button variant="outline" size="lg" onClick={() => navigate('/')}>
           <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="19" y1="12" x2="5" y2="12" />
             <polyline points="12 19 5 12 12 5" />
           </svg>
           {t.login.backToHome}
-        </button>
+        </Button>
       </form>
     </div>
   )

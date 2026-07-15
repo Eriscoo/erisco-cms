@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useLocale } from '../../locales'
 import Header from '../../components/header'
+import Button from '../../components/button'
 
 interface Props {
   navigate: (path: string) => void
@@ -44,21 +45,15 @@ function Home({ navigate }: Props) {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center gap-3 justify-center lg:justify-start">
-                  <button
-                    onClick={() => navigate('/post')}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white font-medium rounded-lg transition-colors cursor-pointer border-0"
-                  >
+                  <Button variant="gradient" size="lg" onClick={() => navigate('/post')}>
                     {t.home.hero.cta}
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
-                  </button>
-                  <button
-                    onClick={() => navigate('/dashboard')}
-                    className="inline-flex items-center gap-2 px-6 py-3 border border-white/10 hover:border-white/20 text-zinc-300 hover:text-white font-medium rounded-lg transition-colors cursor-pointer bg-transparent"
-                  >
+                  </Button>
+                  <Button variant="outline" size="lg" onClick={() => navigate('/dashboard')}>
                     Dashboard
-                  </button>
+                  </Button>
                 </div>
               </div>
 

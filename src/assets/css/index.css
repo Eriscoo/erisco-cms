@@ -429,6 +429,17 @@ html.light a[class*="bg-purple-"].text-white {
   color: #ffffff !important;
 }
 
+/* Primary button text-white on colored backgrounds — light mode */
+html.light button[class*="bg-red-"].text-white,
+html.light button[class*="bg-green-"].text-white,
+html.light button[class*="bg-blue-"].text-white,
+html.light button[class*="from-red-"].text-white,
+html.light button[class*="from-green-"].text-white,
+html.light button[class*="from-blue-"].text-white,
+html.light button[class*="from-purple-"].text-white {
+  color: #ffffff !important;
+}
+
 html.light .text-pink-400 {
   color: #e64980;
 }
@@ -547,6 +558,21 @@ html.light .ProseMirror p.is-editor-empty:first-child::before {
 .post-body h4 { font-size: 1rem;   font-weight: 600; margin: 0.75rem 0 0.5rem; }
 .ProseMirror p,
 .post-body p  { margin: 1rem 0 0 0; }
+
+html.light .post-body a {
+  color: #6A5ACD;
+}
+html.light .post-body a:hover {
+  color: #3D3186;
+}
+
+.lightbox-close {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, .4) !important;
+}
+.lightbox-close:hover {
+  background-color: rgba(255, 255, 255, .55) !important;
+}
 
 .ProseMirror blockquote,
 .post-body blockquote {

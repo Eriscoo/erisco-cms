@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useRouter } from '../../utils/router'
 import LangSwitch from '../language-switch'
 import ThemeSwitch from '../theme-switch'
+import Button from '../button'
 import { useLocale } from '../../locales'
 import { removeToken, isLoggedIn, decodeToken } from '../../modules/auth'
 import { getProfile } from '../../modules/profile/api'
@@ -65,8 +66,6 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
   const initials = userName
     ? userName.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2)
     : ''
-
-  const btnClass = 'px-2.5 md:px-4 py-1.5 rounded-md border border-white/10 bg-white/5 text-xs md:text-sm text-zinc-200 cursor-pointer hover:bg-white/10 whitespace-nowrap'
 
   function handleLogout() {
     removeToken()
@@ -143,15 +142,14 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
         {variant === 'default' && (
           <div className="hidden lg:flex items-center gap-2">
             {menuItems.map((item) => (
-              <button
+              <Button
                 key={item.path}
+                variant={path === item.path ? 'secondary' : 'ghost'}
+                size="sm"
                 onClick={() => navigate(item.path)}
-                className={`px-3 py-1.5 rounded-md text-sm transition-colors cursor-pointer ${
-                  path === item.path ? 'bg-purple-500/15 text-purple-300 font-medium' : 'text-zinc-400 hover:text-zinc-200 hover:bg-white/5'
-                }`}
               >
                 {item.label}
-              </button>
+              </Button>
             ))}
           </div>
         )}
@@ -173,11 +171,11 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
         {variant === 'default' ? (
           loggedIn ? (
             <>
-              <button className={btnClass} onClick={() => navigate('/dashboard')}>{t.nav.dashboard}</button>
-              <button className={btnClass} onClick={handleLogout}>{t.nav.logout}</button>
+              <Button variant="outline" size="sm" onClick={() => navigate('/dashboard')}>{t.nav.dashboard}</Button>
+              <Button variant="outline" size="sm" onClick={handleLogout}>{t.nav.logout}</Button>
             </>
           ) : (
-            <button className={btnClass} onClick={() => navigate('/login')}>{t.nav.login}</button>
+            <Button variant="outline" size="sm" onClick={() => navigate('/login')}>{t.nav.login}</Button>
           )
         ) : (
           <div ref={dropdownRef} className="relative">

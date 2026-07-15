@@ -170,7 +170,7 @@ function PostDetail({ navigate, slug }: Props) {
         {/* Body */}
         {post.body ? (
           <div ref={bodyRef} onClick={handleBodyClick}
-            className="post-body prose prose-invert prose-zinc max-w-none text-zinc-300 leading-relaxed [&_img]:w-full [&_img]:rounded-lg [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_a]:text-purple-400 [&_blockquote]:border-l-purple-500 [&_blockquote]:text-zinc-400 [&_p]:mb-0 [&_h3]:mt-5 [&_h4]:mt-4"
+            className="post-body prose prose-invert prose-zinc max-w-none text-zinc-300 leading-relaxed [&_img]:w-full [&_img]:rounded-lg [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_a]:text-purple-500 [&_a]:hover:text-purple-300 [&_a]:transition-colors [&_blockquote]:border-l-purple-500 [&_blockquote]:text-zinc-400 [&_p]:mb-0 [&_h3]:mt-5 [&_h4]:mt-4"
             dangerouslySetInnerHTML={{ __html: processedBody }}
           />
         ) : (
@@ -185,7 +185,7 @@ function PostDetail({ navigate, slug }: Props) {
       {lightbox && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80" onClick={() => setLightbox('')}>
           <button onClick={() => setLightbox('')}
-            className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center cursor-pointer hover:bg-white/20 text-lg">
+            className="lightbox-close absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 text-white flex items-center justify-center cursor-pointer hover:bg-white/20 text-lg">
             &times;
           </button>
           <img src={lightbox} alt="" className="max-w-[90vw] max-h-[90vh] rounded-lg object-contain" onClick={(e) => e.stopPropagation()} />
