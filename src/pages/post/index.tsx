@@ -7,6 +7,7 @@ import PostSidebar from '../../components/post-sidebar'
 import Spinner from '../../components/spinner'
 import Footer from '../../components/footer'
 import NotFound from '../../pages/not-found'
+import Breadcrumb from '../../components/breadcrumb'
 import { ENV } from '../../constants/env'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/atom-one-dark-reasonable.css'
@@ -122,13 +123,12 @@ function PostDetail({ navigate, slug }: Props) {
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-14">
         <main className="flex-1 min-w-0">
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-zinc-500 mb-6">
-          <button onClick={() => navigate('/')} className="hover:text-purple-300 cursor-pointer bg-transparent border-0 p-0">
-            {t.nav.home}
-          </button>
-          <span>/</span>
-          <span className="text-zinc-200 font-semibold truncate">{post.title}</span>
-        </nav>
+        <Breadcrumb
+          variant="default"
+          items={[{ label: t.nav.home, path: '/' }, { label: post.title }]}
+          navigate={navigate}
+          className="mb-6"
+        />
 
         {/* Title */}
         <h1 className="text-2xl md:text-4xl font-bold text-white leading-snug mb-6">
@@ -170,7 +170,7 @@ function PostDetail({ navigate, slug }: Props) {
         {/* Body */}
         {post.body ? (
           <div ref={bodyRef} onClick={handleBodyClick}
-            className="post-body prose prose-invert prose-zinc max-w-none text-zinc-300 leading-relaxed [&_img]:w-full [&_img]:rounded-lg [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_a]:text-purple-400 [&_blockquote]:border-l-purple-500 [&_blockquote]:text-zinc-400 [&_p]:mb-0"
+            className="post-body prose prose-invert prose-zinc max-w-none text-zinc-300 leading-relaxed [&_img]:w-full [&_img]:rounded-lg [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_a]:text-purple-400 [&_blockquote]:border-l-purple-500 [&_blockquote]:text-zinc-400 [&_p]:mb-0 [&_h3]:mt-5 [&_h4]:mt-4"
             dangerouslySetInnerHTML={{ __html: processedBody }}
           />
         ) : (

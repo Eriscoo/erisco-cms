@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useLocale } from '../../locales'
 import Header from '../../components/header'
 
@@ -7,6 +8,10 @@ interface Props {
 
 function Home({ navigate }: Props) {
   const { t } = useLocale()
+
+  useEffect(() => {
+    document.title = 'Eriscoo | Blog, portfolio & hobbies'
+  }, [])
 
   return (
     <div>

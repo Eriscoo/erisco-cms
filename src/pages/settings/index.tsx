@@ -35,6 +35,10 @@ function Settings({ navigate }: Props) {
   const [page, setPage] = useState(1)
   const PER_PAGE = 20
 
+  useEffect(() => {
+    document.title = t.settings.documentTitle
+  }, [t])
+
 
 
   // data

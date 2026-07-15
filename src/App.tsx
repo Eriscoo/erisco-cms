@@ -18,7 +18,7 @@ function App() {
   const loggedIn = isLoggedIn()
 
   useEffect(() => {
-    document.title = 'Erisco Blog'
+    document.title = 'Eriscoo'
   }, [path])
 
   function renderPage() {

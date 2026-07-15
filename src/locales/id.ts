@@ -2,6 +2,7 @@ import type { Locale } from './en'
 
 const id: Locale = {
   posts: {
+    documentTitle: 'Postingan | Eriscoo',
     create: 'Buat Postingan',
     listTitle: 'Postingan',
     createPost: 'Buat Postingan',
@@ -58,6 +59,7 @@ const id: Locale = {
     },
   },
   login: {
+    documentTitle: 'Masuk | Eriscoo',
     title: 'Erisco Blog',
     subtitle: 'Masuk untuk melanjutkan',
     email: 'Email',
@@ -72,6 +74,7 @@ const id: Locale = {
     backToHome: 'Kembali ke Beranda',
   },
   dashboard: {
+    documentTitle: 'Dasbor | Eriscoo',
     title: 'Dasbor',
     welcome: 'Selamat datang kembali ke dasbor.',
     logout: 'Keluar',
@@ -110,7 +113,11 @@ const id: Locale = {
     deleted: 'Berhasil dihapus',
     failed: 'Gagal',
   },
+  settings: {
+    documentTitle: 'Pengaturan | Eriscoo',
+  },
   notFound: {
+    documentTitle: '404 Halaman tidak ditemukan',
     title: 'Halaman Tidak Ditemukan',
     subtitle: 'Halaman ini tidak ada atau telah dipindahkan.',
     checkUrl: 'Periksa URL atau kembali ke halaman utama.',

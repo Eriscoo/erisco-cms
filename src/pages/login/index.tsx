@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useState, type FormEvent, useEffect } from 'react'
 import { useLocale } from '../../locales'
 import { useAuth } from '../../modules/auth'
 import LangSwitch from '../../components/language-switch'
@@ -13,6 +13,10 @@ interface Props {
 function Login({ navigate }: Props) {
   const { t } = useLocale()
   const { login, loading } = useAuth()
+
+  useEffect(() => {
+    document.title = t.login.documentTitle
+  }, [t])
   const isLight = useIsLight()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

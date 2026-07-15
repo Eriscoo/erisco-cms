@@ -18,6 +18,10 @@ function Posts({ navigate }: Props) {
   const { t } = useLocale()
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [posts, setPosts] = useState<Post[]>([])
+
+  useEffect(() => {
+    document.title = t.posts.documentTitle
+  }, [t])
   const [fetching, setFetching] = useState(true)
   const [fetchError, setFetchError] = useState('')
   const [page, setPage] = useState(1)

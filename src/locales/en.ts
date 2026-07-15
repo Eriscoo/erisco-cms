@@ -1,5 +1,6 @@
 const en = {
   posts: {
+    documentTitle: 'Posts | Eriscoo',
     create: 'Create Post',
     listTitle: 'Posts',
     createPost: 'Create Post',
@@ -56,6 +57,7 @@ const en = {
     },
   },
   login: {
+    documentTitle: 'Login | Eriscoo',
     title: 'Erisco Blog',
     subtitle: 'Sign in to continue',
     email: 'Email',
@@ -70,6 +72,7 @@ const en = {
     backToHome: 'Back to Home',
   },
   dashboard: {
+    documentTitle: 'Dashboard | Eriscoo',
     title: 'Dashboard',
     welcome: 'Welcome back to the dashboard.',
     logout: 'Logout',
@@ -108,7 +111,11 @@ const en = {
     deleted: 'Deleted successfully',
     failed: 'Failed',
   },
+  settings: {
+    documentTitle: 'Settings | Eriscoo',
+  },
   notFound: {
+    documentTitle: '404 Page not found',
     title: 'Page Not Found',
     subtitle: 'This page doesn\'t exist or has been moved.',
     checkUrl: 'Check the URL or navigate back to the homepage.',
