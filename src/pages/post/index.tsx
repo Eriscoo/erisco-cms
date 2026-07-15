@@ -30,11 +30,11 @@ function PostDetail({ navigate, slug }: Props) {
     getPostBySlug(slug)
       .then((p) => {
         setPost(p)
-        document.title = p.title + ' | Erisco Blog'
+        document.title = p.title + ' | Eriscoo'
       })
       .catch((err) => setError(err instanceof Error ? err.message : 'Post not found'))
       .finally(() => setFetching(false))
-    return () => { document.title = 'Erisco Blog' }
+    return () => { document.title = 'Eriscoo' }
   }, [slug])
 
   const bodyRef = useRef<HTMLDivElement>(null)

@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useRouter } from './utils/router'
 import { isLoggedIn } from './modules/auth'
 import Spinner from './components/spinner'
@@ -16,10 +15,6 @@ import NotFound from './pages/not-found'
 function App() {
   const { path, navigate, navigating } = useRouter()
   const loggedIn = isLoggedIn()
-
-  useEffect(() => {
-    document.title = 'Eriscoo'
-  }, [path])
 
   function renderPage() {
     if (path === '/login') {
