@@ -8,6 +8,7 @@ import Spinner from '../../components/spinner'
 import Footer from '../../components/footer'
 import NotFound from '../../pages/not-found'
 import Breadcrumb from '../../components/breadcrumb'
+import DisqusComments from '../../components/disqus-comments'
 import { ENV } from '../../constants/env'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/atom-one-dark-reasonable.css'
@@ -176,6 +177,9 @@ function PostDetail({ navigate, slug }: Props) {
         ) : (
           <p className="text-zinc-500 italic">No content</p>
         )}
+
+        <hr className="border-white/5 my-8" />
+        <DisqusComments shortname="eriscoo-com" identifier={slug} />
       </main>
           <PostSidebar navigate={navigate} />
         </div>
