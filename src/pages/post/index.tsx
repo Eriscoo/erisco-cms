@@ -179,7 +179,7 @@ function PostDetail({ navigate, slug }: Props) {
         )}
 
         <hr className="border-white/5 my-8" />
-        <DisqusComments shortname="eriscoo-com" identifier={slug} />
+        <DisqusComments identifier={slug} />
       </main>
           <PostSidebar navigate={navigate} />
         </div>

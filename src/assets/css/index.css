@@ -106,6 +106,7 @@ html.light {
 
 body {
   @apply text-zinc-100;
+  color: #e4e4e7;
   background: #131620;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
