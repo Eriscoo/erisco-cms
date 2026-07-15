@@ -1,16 +1,18 @@
+import { lazy, Suspense } from 'react'
 import { useRouter } from './utils/router'
 import { isLoggedIn } from './modules/auth'
 import Spinner from './components/spinner'
-import Home from './pages/home'
-import Login from './pages/login'
-import Dashboard from './pages/dashboard'
-import Posts from './pages/posts'
-import CreatePost from './pages/posts/create'
-import EditPost from './pages/posts/edit'
-import PostDetail from './pages/post'
-import Settings from './pages/settings'
-import Profile from './pages/profile'
-import NotFound from './pages/not-found'
+
+const Home = lazy(() => import('./pages/home'))
+const Login = lazy(() => import('./pages/login'))
+const Dashboard = lazy(() => import('./pages/dashboard'))
+const Posts = lazy(() => import('./pages/posts'))
+const CreatePost = lazy(() => import('./pages/posts/create'))
+const EditPost = lazy(() => import('./pages/posts/edit'))
+const PostDetail = lazy(() => import('./pages/post'))
+const Settings = lazy(() => import('./pages/settings'))
+const Profile = lazy(() => import('./pages/profile'))
+const NotFound = lazy(() => import('./pages/not-found'))
 
 function App() {
   const { path, navigate, navigating } = useRouter()
@@ -90,7 +92,9 @@ function App() {
 
   return (
     <>
-      {renderPage()}
+      <Suspense fallback={null}>
+        {renderPage()}
+      </Suspense>
       {navigating && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-950/60">
           <Spinner className="w-8 h-8 text-purple-400" />

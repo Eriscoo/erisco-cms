@@ -10,7 +10,37 @@ import NotFound from '../../pages/not-found'
 import Breadcrumb from '../../components/breadcrumb'
 import DisqusComments from '../../components/disqus-comments'
 import { ENV } from '../../constants/env'
-import hljs from 'highlight.js'
+import hljs from 'highlight.js/lib/core'
+import javascript from 'highlight.js/lib/languages/javascript'
+import typescript from 'highlight.js/lib/languages/typescript'
+import python from 'highlight.js/lib/languages/python'
+import go from 'highlight.js/lib/languages/go'
+import bash from 'highlight.js/lib/languages/bash'
+import json from 'highlight.js/lib/languages/json'
+import css from 'highlight.js/lib/languages/css'
+import xml from 'highlight.js/lib/languages/xml'
+import sql from 'highlight.js/lib/languages/sql'
+import yaml from 'highlight.js/lib/languages/yaml'
+import markdown from 'highlight.js/lib/languages/markdown'
+import rust from 'highlight.js/lib/languages/rust'
+import java from 'highlight.js/lib/languages/java'
+import csharp from 'highlight.js/lib/languages/csharp'
+
+hljs.registerLanguage('javascript', javascript)
+hljs.registerLanguage('typescript', typescript)
+hljs.registerLanguage('python', python)
+hljs.registerLanguage('go', go)
+hljs.registerLanguage('bash', bash)
+hljs.registerLanguage('json', json)
+hljs.registerLanguage('css', css)
+hljs.registerLanguage('xml', xml)
+hljs.registerLanguage('html', xml)
+hljs.registerLanguage('sql', sql)
+hljs.registerLanguage('yaml', yaml)
+hljs.registerLanguage('markdown', markdown)
+hljs.registerLanguage('rust', rust)
+hljs.registerLanguage('java', java)
+hljs.registerLanguage('csharp', csharp)
 import 'highlight.js/styles/atom-one-dark-reasonable.css'
 interface Props {
   navigate: (path: string) => void
@@ -85,8 +115,10 @@ function PostDetail({ navigate, slug }: Props) {
       const withNewlines = el.innerHTML.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '')
       const code = withNewlines.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ').trim()
       if (!code) return
-      const result = hljs.highlightAuto(code)
       const manualLang = el.getAttribute('data-language')
+      const result = manualLang
+        ? hljs.highlight(code, { language: manualLang, ignoreIllegals: true })
+        : hljs.highlightAuto(code)
       const langLabel = manualLang || result.language || 'text'
       const highlighted = '<pre class="code-block-pre"><code class="hljs' + (result.language ? ' language-' + result.language : '') + '">' + result.value + '</code></pre>'
       const btn = '<button class="copy-btn" title="Copy code" data-code="' + code.replace(/"/g, '&quot;') + '">' + copyBtnSvg + '</button>'
