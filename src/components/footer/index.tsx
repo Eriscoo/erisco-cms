@@ -10,14 +10,14 @@ function Footer({ navigate }: Props) {
         <div className="max-w-[1280px] mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-3">
           <span className="text-center text-zinc-400">
             Copyright &copy; {new Date().getFullYear()}{' '}
-            <button onClick={() => navigate('/')} className="text-zinc-400 hover:text-purple-300 transition-colors cursor-pointer bg-transparent border-0 p-0 font-semibold">Eriscoo.com</button>
+            <button onClick={() => navigate('/')} className="text-zinc-400 hover:text-purple-300 transition-colors cursor-pointer bg-transparent border-0 p-0">Eriscoo.com</button>
             {' '}| All Rights Reserved.
           </span>
           <span className="flex items-center gap-4">
-            <button onClick={() => navigate('/privacy-policy')} className="text-zinc-400 hover:text-purple-300 transition-colors cursor-pointer bg-transparent border-0 p-0 font-semibold">
+            <button onClick={() => navigate('/privacy-policy')} className="text-purple-400 hover:text-purple-200 transition-colors cursor-pointer bg-transparent border-0 p-0 font-semibold">
               Privacy Policy
             </button>
-            <button onClick={() => navigate('/terms-and-conditions')} className="text-zinc-400 hover:text-purple-300 transition-colors cursor-pointer bg-transparent border-0 p-0 font-semibold">
+            <button onClick={() => navigate('/terms-and-conditions')} className="text-purple-400 hover:text-purple-200 transition-colors cursor-pointer bg-transparent border-0 p-0 font-semibold">
               T&amp;C
             </button>
           </span>

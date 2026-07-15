@@ -36,13 +36,14 @@ function Login({ navigate }: Props) {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4">
+    <div className="flex flex-col min-h-screen">
       <div className="fixed top-4 right-4 z-10 flex items-center gap-2">
         <ThemeSwitch />
         <LangSwitch />
       </div>
 
-      <form onSubmit={handleSubmit} className="bg-white/[.04] border border-white/5 rounded-2xl p-6 md:p-8 w-full max-w-sm flex flex-col gap-4 mx-4">
+      <div className="flex-1 flex items-center justify-center p-4">
+      <form onSubmit={handleSubmit} className="rounded-2xl p-6 md:p-8 w-full max-w-sm flex flex-col gap-4 mx-4">
         <div className="flex items-center justify-center">
           <img
             src={isLight ? '/assets/header/logo-dark.png' : '/assets/header/logo-light.png'}
@@ -103,6 +104,14 @@ function Login({ navigate }: Props) {
           {t.login.backToHome}
         </Button>
       </form>
+      </div>
+
+      <div className="text-center text-xs text-zinc-500 py-6 px-4">
+        Copyright &copy; 2026{' '}
+        <button onClick={() => navigate('/')} className="text-zinc-400 hover:text-purple-300 transition-colors cursor-pointer bg-transparent border-0 p-0">Eriscoo.com</button>
+        <span className="hidden sm:inline"> | All Rights Reserved.</span>
+        <span className="sm:hidden"><br />All Rights Reserved.</span>
+      </div>
     </div>
   )
 }

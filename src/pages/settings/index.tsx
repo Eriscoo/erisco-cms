@@ -5,6 +5,7 @@ import Sidebar from '../../components/sidebar'
 import Header from '../../components/header'
 import Table from '../../components/table'
 import Modal from '../../components/modal'
+import Button from '../../components/button'
 import {
   getTags,
   createTag,
@@ -226,13 +227,13 @@ function Settings({ navigate }: Props) {
             <>
               <div className="flex justify-between items-center -mt-1">
                 <h1 className="text-lg md:text-xl font-semibold text-white">{tab === 'tags' ? t.sidebar.tagSettings : t.sidebar.categorySettings}</h1>
-                <button onClick={openCreate} className="flex items-center gap-1.5 px-3 h-10 rounded-lg bg-purple-600 text-white text-xs cursor-pointer hover:bg-purple-500 transition-colors">
+                <Button variant="primary" size="lg" onClick={openCreate}>
                   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                     <line x1="12" y1="5" x2="12" y2="19" />
                     <line x1="5" y1="12" x2="19" y2="12" />
                   </svg>
                   {t.table.create} {tab === 'tags' ? t.sidebar.tags : t.sidebar.categories}
-                </button>
+                </Button>
               </div>
 
               <Table
@@ -286,10 +287,10 @@ function Settings({ navigate }: Props) {
           </label>
           {formError && <p className="text-pink-400 text-xs">{formError}</p>}
           <div className="flex justify-end gap-2">
-            <button type="button" onClick={() => setModalOpen(false)} className="px-4 py-1.5 rounded-lg text-sm text-zinc-400 cursor-pointer hover:bg-white/5">{t.table.cancel}</button>
-            <button type="submit" disabled={saving} className="px-4 py-1.5 rounded-lg bg-purple-600 text-white text-sm cursor-pointer disabled:opacity-50 hover:bg-purple-500">
+            <Button variant="ghost" size="sm" type="button" onClick={() => setModalOpen(false)}>{t.table.cancel}</Button>
+            <Button variant="primary" size="sm" type="submit" loading={saving}>
               {saving ? t.table.saving : t.table.save}
-            </button>
+            </Button>
           </div>
         </form>
       </Modal>
@@ -301,10 +302,10 @@ function Settings({ navigate }: Props) {
             {t.table.confirmDelete} <strong className="text-white">&quot;{deleting?.name}&quot;</strong>?
           </p>
           <div className="flex justify-end gap-2">
-            <button onClick={() => setDeleting(null)} className="px-4 py-1.5 rounded-lg text-sm text-zinc-400 cursor-pointer hover:bg-white/5">{t.table.cancel}</button>
-            <button onClick={confirmDelete} disabled={deletingLoading} className="px-4 py-1.5 rounded-lg bg-pink-600 text-white text-sm cursor-pointer disabled:opacity-50 hover:bg-pink-500">
+            <Button variant="ghost" size="sm" onClick={() => setDeleting(null)}>{t.table.cancel}</Button>
+            <Button variant="primary" color="danger" size="sm" onClick={confirmDelete} loading={deletingLoading}>
               {deletingLoading ? t.table.deleting : t.table.delete}
-            </button>
+            </Button>
           </div>
         </div>
       </Modal>

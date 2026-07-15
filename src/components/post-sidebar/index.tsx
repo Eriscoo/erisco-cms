@@ -34,7 +34,7 @@ function PostSidebar({ navigate }: Props) {
   return (
     <aside className="w-full lg:w-[324px] shrink-0">
       <div className="sticky top-[115px]">
-        <h3 className="text-2xl font-bold text-zinc-200 mb-2 pb-2 border-b border-white/5">
+        <h3 className="text-lg md:text-2xl font-bold text-zinc-200 mb-2 pb-2 border-b border-white/5">
           {t.sidebar.recentPosts}
         </h3>
         <div className="flex flex-col">

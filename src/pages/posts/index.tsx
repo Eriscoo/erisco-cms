@@ -5,6 +5,7 @@ import Sidebar from '../../components/sidebar'
 import Header from '../../components/header'
 import Table from '../../components/table'
 import Modal from '../../components/modal'
+import Button from '../../components/button'
 import { getPosts, deletePost } from '../../modules/posts/api'
 import type { Post } from '../../modules/posts/api'
 import Pagination from '../../components/pagination'
@@ -119,22 +120,20 @@ function Posts({ navigate }: Props) {
           ) : fetchError ? (
             <div className="flex flex-col items-center justify-center py-20 gap-3">
               <p className="text-pink-400 text-sm">{fetchError}</p>
-              <button onClick={fetchData}
-                className="px-4 py-1.5 rounded-lg text-xs text-zinc-400 cursor-pointer hover:bg-white/5 transition-colors border border-white/10">
+              <Button variant="outline" size="sm" onClick={fetchData}>
                 {t.posts.retry}
-              </button>
+              </Button>
             </div>
           ) : (
             <>
               <div className="flex justify-between items-center">
                 <h1 className="text-lg md:text-xl font-semibold text-white">{t.sidebar.posts}</h1>
-                <button onClick={() => navigate('/dashboard/posts/create')}
-                  className="flex items-center gap-1.5 px-3 h-10 rounded-lg bg-purple-600 text-white text-xs cursor-pointer hover:bg-purple-500 transition-colors">
+                <Button variant="primary" size="lg" onClick={() => navigate('/dashboard/posts/create')}>
                   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                     <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
                   </svg>
                   {t.posts.createPost}
-                </button>
+                </Button>
               </div>
 
               {posts.length === 0 ? (
@@ -145,10 +144,9 @@ function Posts({ navigate }: Props) {
                     <line x1="12" y1="18" x2="12" y2="12" /><line x1="9" y1="15" x2="15" y2="15" />
                   </svg>
                   <p className="text-zinc-500 text-sm">{t.posts.noPostsYet}</p>
-                  <button onClick={() => navigate('/dashboard/posts/create')}
-                    className="px-4 py-1.5 rounded-lg bg-purple-600 text-white text-xs cursor-pointer hover:bg-purple-500 transition-colors">
+                  <Button variant="primary" size="lg" onClick={() => navigate('/dashboard/posts/create')}>
                     {t.posts.createFirstPost}
-                  </button>
+                  </Button>
                 </div>
               ) : (
                 <>
@@ -241,14 +239,12 @@ function Posts({ navigate }: Props) {
             {t.table.confirmDelete} <strong className="text-white">&quot;{deleting?.title}&quot;</strong>?
           </p>
           <div className="flex justify-end gap-2">
-            <button onClick={() => setDeleting(null)}
-              className="px-4 py-1.5 rounded-lg text-sm text-zinc-400 cursor-pointer hover:bg-white/5">
+            <Button variant="ghost" size="sm" onClick={() => setDeleting(null)}>
               {t.table.cancel}
-            </button>
-            <button onClick={confirmDelete} disabled={deletingLoading}
-              className="px-4 py-1.5 rounded-lg bg-pink-600 text-white text-sm cursor-pointer disabled:opacity-50 hover:bg-pink-500">
+            </Button>
+            <Button variant="primary" color="danger" size="sm" onClick={confirmDelete} loading={deletingLoading}>
               {deletingLoading ? t.table.deleting : t.table.delete}
-            </button>
+            </Button>
           </div>
         </div>
       </Modal>
