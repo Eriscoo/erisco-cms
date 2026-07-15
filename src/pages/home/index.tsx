@@ -24,7 +24,7 @@ function Home({ navigate }: Props) {
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
 
-          <div className="max-w-[1280px] mx-auto px-4 md:px-8 py-20 md:py-32">
+          <div className="max-w-[1280px] mx-auto px-4 md:px-8 py-28">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
               {/* Left Content */}
               <div className="flex-1 text-center lg:text-left">
@@ -34,9 +34,9 @@ function Home({ navigate }: Props) {
                 </div>
 
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                  <span className="text-white">{t.home.hero.headline.split(' ').slice(0, 3).join(' ')} </span>
+                  <span className="text-white">{t.home.hero.headline.split(' ').slice(0, 2).join(' ')} </span>
                   <span className="bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text text-transparent">
-                    {t.home.hero.headline.split(' ').slice(3).join(' ')}
+                    {t.home.hero.headline.split(' ').slice(2).join(' ')}
                   </span>
                 </h1>
 
@@ -66,17 +66,26 @@ function Home({ navigate }: Props) {
                       <div className="w-3 h-3 rounded-full bg-red-500/60" />
                       <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
                       <div className="w-3 h-3 rounded-full bg-green-500/60" />
-                      <span className="ml-2 text-xs text-zinc-500">index.tsx</span>
+                      <span className="ml-2 text-xs text-zinc-500">main.go</span>
                     </div>
-                    <div className="p-5 text-sm font-mono leading-relaxed">
-                      <div><span className="text-purple-400">import</span> <span className="text-green-400">{'{'}</span> <span className="text-blue-300">useState</span> <span className="text-green-400">{'}'}</span> <span className="text-purple-400">from</span> <span className="text-yellow-300">'react'</span></div>
-                      <div className="my-2" />
-                      <div><span className="text-purple-400">const</span> <span className="text-blue-300">App</span> = <span className="text-green-400">{'()'}</span> <span className="text-pink-400">{'=>'}</span> {'{'}</div>
-                      <div className="ml-4"><span className="text-purple-400">const</span> [<span className="text-blue-300">ready</span>, <span className="text-blue-300">setReady</span>] = <span className="text-yellow-300">useState</span>(<span className="text-orange-400">false</span>)</div>
+                      <div className="p-5 text-sm font-mono leading-relaxed">
+                      <div><span className="text-purple-400">package</span> <span className="text-yellow-300">main</span></div>
                       <div className="my-1" />
-                      <div className="ml-4"><span className="text-purple-400">return</span> {'<'}<span className="text-pink-400">div</span>{'>'}</div>
-                      <div className="ml-8"><span className="text-green-400">{'{'}</span><span className="text-zinc-400">/* Build the future */</span><span className="text-green-400">{'}'}</span></div>
-                      <div className="ml-4">{'</'}<span className="text-pink-400">div</span>{'>'}</div>
+                      <div><span className="text-purple-400">import</span> (<span className="text-green-400">"fmt"</span>)</div>
+                      <div className="my-2" />
+                      <div><span className="text-purple-400">type</span> <span className="text-blue-300">Future</span><span className="text-green-400">[T any]</span> <span className="text-purple-400">struct</span> {'{'}</div>
+                      <div className="ml-4"><span className="text-blue-300">result</span> <span className="text-pink-400">chan</span> <span className="text-yellow-300">T</span></div>
+                      <div>{'}'}</div>
+                      <div className="my-1" />
+                      <div><span className="text-purple-400">func</span> (f <span className="text-blue-300">Future</span>[<span className="text-yellow-300">T</span>]) <span className="text-blue-300">Await</span>() <span className="text-yellow-300">T</span> {'{'}</div>
+                      <div className="ml-4"><span className="text-purple-400">return</span> &lt;-<span className="text-blue-300">f</span>.<span className="text-blue-300">result</span></div>
+                      <div>{'}'}</div>
+                      <div className="my-2" />
+                      <div><span className="text-purple-400">func</span> <span className="text-blue-300">main</span>() {'{'}</div>
+                      <div className="ml-4"><span className="text-zinc-400">// The future is async, but awaits you</span></div>
+                      <div className="ml-4"><span className="text-blue-300">res</span> := <span className="text-yellow-300">make</span>(<span className="text-pink-400">chan</span> <span className="text-yellow-300">string</span>)</div>
+                      <div className="ml-4"><span className="text-purple-400">go</span> <span className="text-purple-400">func</span>() {'{'} <span className="text-blue-300">res</span> &lt;- <span className="text-orange-400">"Hello, World!"</span>{'}'}()</div>
+                      <div className="ml-4"><span className="text-yellow-300">fmt</span>.<span className="text-blue-300">Println</span>(&lt;-<span className="text-blue-300">res</span>)</div>
                       <div>{'}'}</div>
                     </div>
                   </div>
@@ -97,7 +106,12 @@ function Home({ navigate }: Props) {
             <h2 className="text-lg font-semibold text-zinc-300">{t.home.subtitle}</h2>
             <div className="h-px flex-1 bg-white/5" />
           </div>
-          <p className="text-center text-zinc-500 text-sm">{t.home.hero.cta} →</p>
+          <p className="text-center text-zinc-500 text-sm flex items-center justify-center gap-1">
+            {t.home.recentPosts}
+            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 5v14M5 12l7 7 7-7" />
+            </svg>
+          </p>
         </section>
       </main>
     </div>

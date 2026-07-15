@@ -24,7 +24,8 @@ function PostSidebar({ navigate }: Props) {
   function formatDate(dateStr: string | null) {
     if (!dateStr) return ''
     const d = new Date(dateStr)
-    return d.toLocaleDateString('en-CA', { timeZone: 'Asia/Jakarta' })
+    return d.toLocaleDateString('en-CA', { timeZone: 'Asia/Jakarta' }) + ' ' +
+      d.toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit' })
   }
 
   useEffect(() => {

@@ -48,12 +48,13 @@ const en = {
     logout: 'Logout',
   },
   home: {
-    welcome: 'Welcome to Erisco Blog',
+    welcome: 'Welcome to Eriscoo',
     subtitle: 'Stories, thoughts, and ideas.',
+    recentPosts: 'My latest posts',
     hero: {
-      headline: 'Explore the World of Technology',
-      description: 'Insights, tutorials, and perspectives on web development, programming, and the ever-evolving digital landscape.',
-      cta: 'Explore Posts',
+      headline: 'Digital Works, Real Stories',
+      description: 'Developer thoughts, project showcases, and tech insights. Sometimes serious, sometimes casual.',
+      cta: 'My Portfolio',
     },
   },
   login: {
@@ -120,6 +121,15 @@ const en = {
     subtitle: 'This page doesn\'t exist or has been moved.',
     checkUrl: 'Check the URL or navigate back to the homepage.',
     backHome: 'Back to Home',
+  },
+  time: {
+    now: 'just now',
+    minute: 'minute ago | minutes ago',
+    hour: 'hour ago | hours ago',
+    day: 'day ago | days ago',
+    week: 'week ago | weeks ago',
+    month: 'month ago | months ago',
+    year: 'year ago | years ago',
   },
 }
 

@@ -50,12 +50,13 @@ const id: Locale = {
     logout: 'Keluar',
   },
   home: {
-    welcome: 'Selamat Datang di Erisco Blog',
+    welcome: 'Selamat Datang di Eriscoo',
     subtitle: 'Cerita, pemikiran, dan ide.',
+    recentPosts: 'Postingan terbaru saya',
     hero: {
-      headline: 'Jelajahi Dunia Teknologi',
-      description: 'Wawasan, tutorial, dan sudut pandang seputar web development, programming, dan lanskap digital yang terus berkembang.',
-      cta: 'Jelajahi Postingan',
+      headline: 'Karya Digital, Cerita Nyata',
+      description: 'Curhatan developer, showcase karya, dan insight teknologi yang kadang serius kadang santai.',
+      cta: 'Portofolio Saya',
     },
   },
   login: {
@@ -122,6 +123,15 @@ const id: Locale = {
     subtitle: 'Halaman ini tidak ada atau telah dipindahkan.',
     checkUrl: 'Periksa URL atau kembali ke halaman utama.',
     backHome: 'Kembali ke Beranda',
+  },
+  time: {
+    now: 'baru saja',
+    minute: 'menit yang lalu',
+    hour: 'jam yang lalu',
+    day: 'hari yang lalu',
+    week: 'minggu yang lalu',
+    month: 'bulan yang lalu',
+    year: 'tahun yang lalu',
   },
 }
 
