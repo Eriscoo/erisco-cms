@@ -198,7 +198,7 @@ function PostDetail({ navigate, slug }: Props) {
         {/* Body */}
         {post.body ? (
           <div ref={bodyRef} onClick={handleBodyClick}
-            className="post-body prose prose-invert prose-zinc max-w-none text-zinc-300 leading-relaxed [&_img]:w-full [&_img]:rounded-lg [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_a]:text-purple-500 [&_a]:hover:text-purple-300 [&_a]:transition-colors [&_p]:mb-0 [&_h3]:mt-5 [&_h4]:mt-4"
+            className="post-body prose prose-invert prose-zinc max-w-none text-zinc-300 leading-relaxed [&_img]:w-full [&_img]:rounded-lg [&_img]:cursor-pointer [&_img]:hover:opacity-90 [&_img]:transition-opacity [&_a]:text-purple-500 [&_a]:hover:text-purple-300 [&_a]:transition-colors [&_p]:mb-0 [&_h3]:mt-5 [&_h4]:mt-4 [&_li]:pl-2"
             dangerouslySetInnerHTML={{ __html: processedBody }}
           />
         ) : (
