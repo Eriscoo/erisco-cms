@@ -15,7 +15,7 @@ function PostSidebar({ navigate }: Props) {
   useEffect(() => {
     if (fetched.current) return
     fetched.current = true
-    getPublicPosts().then(setPosts).catch(() => {})
+    getPublicPosts().then(res => setPosts(res.posts)).catch(() => {})
   }, [])
 
   const [loading, setLoading] = useState(true)

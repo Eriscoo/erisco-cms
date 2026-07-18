@@ -19,6 +19,13 @@ export interface Post {
   updated_at: string
 }
 
+export interface PaginatedPosts {
+  posts: Post[]
+  page: number
+  limit: number
+  total: number
+}
+
 export function getPosts() {
   return api.get<Post[]>('/api/v1/posts')
 }
@@ -31,8 +38,8 @@ export function getPostBySlug(slug: string) {
   return api.get<Post>(`/api/v1/public/posts/${slug}`)
 }
 
-export function getPublicPosts() {
-  return api.get<Post[]>('/api/v1/public/posts/all')
+export function getPublicPosts(page = 1, limit = 10) {
+  return api.get<PaginatedPosts>(`/api/v1/public/posts/all?page=${page}&limit=${limit}`)
 }
 
 export function createPost(data: { title: string; slug?: string; body?: string; image_url?: string; categories?: string; tags?: string; status?: string }) {
