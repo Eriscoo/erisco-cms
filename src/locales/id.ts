@@ -139,7 +139,6 @@ const id: Locale = {
   portfolio: {
     documentTitle: 'Portofolio | Eriscoo',
     hero: {
-      badge: 'Software Engineer',
       description:
         'Seorang pengembang yang sangat termotivasi dan adaptif dengan <strong class="highlight">dasar kuat</strong> di bidang Pengembangan Perangkat Lunak, Quality Assurance, dan Desain UI/UX. Berpengalaman dalam membangun aplikasi web/desktop yang skalabel dengan teknologi seperti React, Java & .NET. Terampil dalam pengujian otomatisasi menggunakan Selenium, Appium, Cypress, Robot Framework & Playwright.',
     },
@@ -147,6 +146,12 @@ const id: Locale = {
       title: 'Kelebihan',
       subtitle: 'Yang mendorong kualitas pekerjaan saya',
       seeMyExpertise: 'Lihat Keahlian',
+      items: {
+        detailOriented: 'Berorientasi Detail',
+        strongCollaboration: 'Kolaborasi Kuat',
+        continuousLearner: 'Pembelajar Berkelanjutan',
+        wellOrganized: 'Terorganisir & Terdokumentasi',
+      },
     },
     experience: {
       title: 'Pengalaman Kerja',
@@ -155,6 +160,23 @@ const id: Locale = {
     education: {
       title: 'Pendidikan',
       subtitle: 'Latar belakang akademik saya',
+      labels: {
+        university: 'Universitas',
+        seniorHighSchool: 'SMA/SMK',
+        juniorHighSchool: 'SMP',
+        elementarySchool: 'SD',
+      },
+      schools: {
+        university: 'Universitas Teknologi Yogyakarta',
+        vocational: 'SMKN 1 Sintang',
+        juniorHigh: 'SMPN 1 Sanggau',
+        elementary: 'SDN 68 Liku',
+      },
+      degrees: {
+        civilEngineering: 'S1 Teknik Sipil',
+        computerNetwork: 'Teknik Komputer & Jaringan',
+        general: 'Umum',
+      },
     },
     expertise: {
       title: 'Keahlian Saya',
@@ -163,12 +185,20 @@ const id: Locale = {
     projects: {
       title: 'Proyek Portofolio',
       subtitle: 'Proyek terpilih yang telah saya kontribusikan',
+      visitWebsite: 'Kunjungi website',
+    },
+    stats: {
+      experience: 'Pengalaman',
+      projects: 'Proyek',
+      roles: 'Peran',
+      expertise: 'Keahlian',
     },
     cta: {
-      title: 'Mari Bekerja Sama',
+      title: 'Mari Bekerja Sama ✨',
       text: 'Mari bangun sesuatu yang hebat bersama. Saya selalu bersemangat menjelajahi tantangan baru dan kolaborasi yang bermakna.',
       contact: 'Kontak',
     },
+    backToTop: 'Kembali ke atas',
   },
 }
 

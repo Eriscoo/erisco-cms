@@ -137,7 +137,6 @@ const en = {
   portfolio: {
     documentTitle: 'Portfolio | Eriscoo',
     hero: {
-      badge: 'Software Engineer',
       description:
         'A highly motivated and adaptable developer with a <strong class="highlight">strong foundation</strong> in Software Development, Quality Assurance, and UI/UX Design. Experienced in building scalable web/desktop applications with technologies such as React, Java & .NET. Skilled in automation testing using Selenium, Appium, Cypress, Robot Framework & Playwright.',
     },
@@ -145,6 +144,12 @@ const en = {
       title: 'Strengths',
       subtitle: 'What drives the quality of my work',
       seeMyExpertise: 'View Expertise',
+      items: {
+        detailOriented: 'Detail-Oriented',
+        strongCollaboration: 'Strong Collaboration',
+        continuousLearner: 'Continuous Learner',
+        wellOrganized: 'Well Organized & Documented',
+      },
     },
     experience: {
       title: 'Work Experience',
@@ -153,6 +158,23 @@ const en = {
     education: {
       title: 'Education',
       subtitle: 'My academic background',
+      labels: {
+        university: 'University',
+        seniorHighSchool: 'Senior High School',
+        juniorHighSchool: 'Junior High School',
+        elementarySchool: 'Elementary School',
+      },
+      schools: {
+        university: 'Universitas Teknologi Yogyakarta',
+        vocational: 'SMKN 1 Sintang',
+        juniorHigh: 'SMPN 1 Sanggau',
+        elementary: 'SDN 68 Liku',
+      },
+      degrees: {
+        civilEngineering: 'S1 Teknik Sipil',
+        computerNetwork: 'Teknik Komputer & Jaringan',
+        general: 'General',
+      },
     },
     expertise: {
       title: 'My Expertise',
@@ -161,12 +183,20 @@ const en = {
     projects: {
       title: 'Portfolio Projects',
       subtitle: 'Selected projects I\'ve contributed to',
+      visitWebsite: 'Visit website',
+    },
+    stats: {
+      experience: 'Experience',
+      projects: 'Projects',
+      roles: 'Roles',
+      expertise: 'Expertise',
     },
     cta: {
-      title: 'Let\'s Work Together',
+      title: 'Let\'s Work Together ✨',
       text: 'Let\'s build something great together. I\'m always excited to explore new challenges and meaningful collaborations.',
       contact: 'Contact',
     },
+    backToTop: 'Back to top',
   },
 }
 

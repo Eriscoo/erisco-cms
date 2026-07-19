@@ -267,10 +267,10 @@ function Portfolio({ navigate }: Props) {
               {/* Quick Stats */}
               <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
                 {[
-                  { label: 'Experience', value: '5+ Years' },
-                  { label: 'Projects', value: '5' },
-                  { label: 'Roles', value: '4' },
-                  { label: 'Expertise', value: '12' },
+                  { label: t.portfolio.stats.experience, value: '6+ Years' },
+                  { label: t.portfolio.stats.projects, value: '10+' },
+                  { label: t.portfolio.stats.roles, value: '4' },
+                  { label: t.portfolio.stats.expertise, value: '12' },
                 ].map((stat) => (
                   <div
                     key={stat.label}
@@ -398,10 +398,10 @@ function Portfolio({ navigate }: Props) {
               <div className="bg-zinc-900 border border-white/5 rounded-xl overflow-hidden hover:border-purple-500/20 transition-all duration-300">
                 {[
                   {
-                    school: 'Universitas Teknologi Yogyakarta',
-                    degree: 'S1 Teknik Sipil',
+                    school: t.portfolio.education.schools.university,
+                    degree: t.portfolio.education.degrees.civilEngineering,
                     year: '2019',
-                    label: 'University',
+                    label: t.portfolio.education.labels.university,
                     icon: (
                       <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
@@ -410,10 +410,10 @@ function Portfolio({ navigate }: Props) {
                     ),
                   },
                   {
-                    school: 'SMKN 1 Sintang',
-                    degree: 'Teknik Komputer & Jaringan',
+                    school: t.portfolio.education.schools.vocational,
+                    degree: t.portfolio.education.degrees.computerNetwork,
                     year: '2014',
-                    label: 'Senior High School',
+                    label: t.portfolio.education.labels.seniorHighSchool,
                     icon: (
                       <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
@@ -423,10 +423,10 @@ function Portfolio({ navigate }: Props) {
                     ),
                   },
                   {
-                    school: 'SMPN 1 Sanggau',
-                    degree: 'General',
+                    school: t.portfolio.education.schools.juniorHigh,
+                    degree: t.portfolio.education.degrees.general,
                     year: '2011',
-                    label: 'Junior High School',
+                    label: t.portfolio.education.labels.juniorHighSchool,
                     icon: (
                       <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
@@ -435,10 +435,10 @@ function Portfolio({ navigate }: Props) {
                     ),
                   },
                   {
-                    school: 'SDN 68 Liku',
-                    degree: 'General',
-                    year: '2005',
-                    label: 'Elementary School',
+                    school: t.portfolio.education.schools.elementary,
+                    degree: t.portfolio.education.degrees.general,
+                    year: '2008',
+                    label: t.portfolio.education.labels.elementarySchool,
                     icon: (
                       <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z" />
@@ -476,7 +476,7 @@ function Portfolio({ navigate }: Props) {
               <div
                 key={tech.name}
                 title={tech.name}
-                className="h-18 w-auto rounded-xl bg-zinc-800 border border-white/5 flex items-center justify-center p-5 hover:border-purple-500/30 hover:bg-zinc-700 transition-all duration-300"
+                className="h-12 md:h-18 w-auto rounded-xl bg-zinc-800 border border-white/5 flex items-center justify-center p-3 md:p-5 hover:border-purple-500/30 hover:bg-zinc-700 transition-all duration-300"
               >
                 <img src={!isLight && tech.darkIcon ? tech.darkIcon : tech.icon} alt={tech.name} className="h-full w-auto object-contain" />
               </div>
@@ -572,7 +572,7 @@ function Portfolio({ navigate }: Props) {
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 text-sm text-purple-400 hover:text-purple-300 transition-colors"
                           >
-                            Visit website
+                            {t.portfolio.projects.visitWebsite}
                             <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                               <polyline points="15 3 21 3 21 9" />
