@@ -12,6 +12,7 @@ const EditPost = lazy(() => import('./pages/posts/edit'))
 const PostDetail = lazy(() => import('./pages/post'))
 const Settings = lazy(() => import('./pages/settings'))
 const Profile = lazy(() => import('./pages/profile'))
+const Portfolio = lazy(() => import('./pages/portfolio'))
 const NotFound = lazy(() => import('./pages/not-found'))
 
 function App() {
@@ -75,6 +76,10 @@ function App() {
         return null
       }
       return <Profile navigate={navigate} />
+    }
+
+    if (path === '/portfolio') {
+      return <Portfolio navigate={navigate} />
     }
 
     if (path === '/') {

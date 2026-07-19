@@ -136,6 +136,40 @@ const id: Locale = {
   post: {
     postedOn: 'Diposting pada',
   },
+  portfolio: {
+    documentTitle: 'Portofolio | Eriscoo',
+    hero: {
+      badge: 'Software Engineer',
+      description:
+        'Seorang pengembang yang sangat termotivasi dan adaptif dengan <strong class="highlight">dasar kuat</strong> di bidang Pengembangan Perangkat Lunak, Quality Assurance, dan Desain UI/UX. Berpengalaman dalam membangun aplikasi web/desktop yang skalabel dengan teknologi seperti React, Java & .NET. Terampil dalam pengujian otomatisasi menggunakan Selenium, Appium, Cypress, Robot Framework & Playwright.',
+    },
+    strengths: {
+      title: 'Kelebihan',
+      subtitle: 'Yang mendorong kualitas pekerjaan saya',
+      seeMyExpertise: 'Lihat Keahlian',
+    },
+    experience: {
+      title: 'Pengalaman Kerja',
+      subtitle: 'Perjalanan profesional dan pertumbuhan karir',
+    },
+    education: {
+      title: 'Pendidikan',
+      subtitle: 'Latar belakang akademik saya',
+    },
+    expertise: {
+      title: 'Keahlian Saya',
+      subtitle: 'Teknologi dan tools yang biasa saya gunakan',
+    },
+    projects: {
+      title: 'Proyek Portofolio',
+      subtitle: 'Proyek terpilih yang telah saya kontribusikan',
+    },
+    cta: {
+      title: 'Mari Bekerja Sama',
+      text: 'Mari bangun sesuatu yang hebat bersama. Saya selalu bersemangat menjelajahi tantangan baru dan kolaborasi yang bermakna.',
+      contact: 'Kontak',
+    },
+  },
 }
 
 export default id

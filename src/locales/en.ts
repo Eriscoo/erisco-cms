@@ -134,6 +134,40 @@ const en = {
   post: {
     postedOn: 'Posted on',
   },
+  portfolio: {
+    documentTitle: 'Portfolio | Eriscoo',
+    hero: {
+      badge: 'Software Engineer',
+      description:
+        'A highly motivated and adaptable developer with a <strong class="highlight">strong foundation</strong> in Software Development, Quality Assurance, and UI/UX Design. Experienced in building scalable web/desktop applications with technologies such as React, Java & .NET. Skilled in automation testing using Selenium, Appium, Cypress, Robot Framework & Playwright.',
+    },
+    strengths: {
+      title: 'Strengths',
+      subtitle: 'What drives the quality of my work',
+      seeMyExpertise: 'View Expertise',
+    },
+    experience: {
+      title: 'Work Experience',
+      subtitle: 'Professional journey and career growth',
+    },
+    education: {
+      title: 'Education',
+      subtitle: 'My academic background',
+    },
+    expertise: {
+      title: 'My Expertise',
+      subtitle: 'The technology and tools I usually use',
+    },
+    projects: {
+      title: 'Portfolio Projects',
+      subtitle: 'Selected projects I\'ve contributed to',
+    },
+    cta: {
+      title: 'Let\'s Work Together',
+      text: 'Let\'s build something great together. I\'m always excited to explore new challenges and meaningful collaborations.',
+      contact: 'Contact',
+    },
+  },
 }
 
 export type Locale = typeof en

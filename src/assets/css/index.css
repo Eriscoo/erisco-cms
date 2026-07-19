@@ -797,3 +797,18 @@ html.light .bg-zinc-800.code-block {
   border-color: #dee2e6 !important;
   color: #1a1a2e !important;
 }
+
+.highlight {
+  background: linear-gradient(to right, rgba(168, 85, 247, 0.15), rgba(168, 85, 247, 0.08));
+  padding: 0.1em 0.2em;
+  border-radius: 0rem;
+  font-weight: 700;
+}
+
+html.light .highlight {
+  background: linear-gradient(to right, rgba(106, 90, 205, 0.15), rgba(106, 90, 205, 0.08));
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
