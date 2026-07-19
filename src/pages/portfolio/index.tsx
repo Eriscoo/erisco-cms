@@ -106,6 +106,7 @@ const strengths = [
 const expertise = [
   { name: 'React.js', icon: '/assets/portfolio/react.png', level: 'advanced', pct: 90 },
   { name: 'Vue.js', icon: '/assets/portfolio/vue.png', level: 'advanced', pct: 90 },
+  { name: 'Go', icon: '/assets/portfolio/golang.png', level: 'intermediate', pct: 70 },
   { name: '.NET', icon: '/assets/portfolio/netframework.png', level: 'intermediate', pct: 85 },
   { name: 'Java', icon: '/assets/portfolio/java.png', level: 'intermediate', pct: 80 },
   { name: 'Figma', icon: '/assets/portfolio/figma.png', darkIcon: '/assets/portfolio/Fima_dark.png', level: 'advanced', pct: 90 },
@@ -270,11 +271,11 @@ function Portfolio({ navigate }: Props) {
                   { label: t.portfolio.stats.experience, value: '6+ Years' },
                   { label: t.portfolio.stats.projects, value: '10+' },
                   { label: t.portfolio.stats.roles, value: '4' },
-                  { label: t.portfolio.stats.expertise, value: '12' },
+                  { label: t.portfolio.stats.expertise, value: '12+' },
                 ].map((stat) => (
                   <div
                     key={stat.label}
-                    className="bg-zinc-900 border border-white/5 rounded-xl px-5 py-3.5 min-w-[96px] hover:border-purple-500/20 transition-all duration-300"
+                    className="bg-zinc-900 border border-white/5 rounded-xl px-5 py-3.5 min-w-[96px] hover:border-purple-500/20 transition-shadow duration-300"
                   >
                     <div className="text-lg md:text-xl font-bold text-purple-400">{stat.value}</div>
                     <div className="text-[11px] text-zinc-500 mt-0.5">{stat.label}</div>
@@ -302,9 +303,9 @@ function Portfolio({ navigate }: Props) {
             {strengths.map((s) => (
               <div
                 key={s.name}
-                className="group bg-zinc-900 border border-white/5 rounded-xl p-6 text-center hover:border-purple-500/20 hover:bg-white/5 transition-all duration-300"
+                className="group bg-zinc-900 border border-white/5 rounded-xl p-6 text-center hover:border-purple-500/20 hover:bg-white/5 transition-shadow duration-300"
               >
-                <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/15 transition-colors">
+                <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/15">
                   {s.icon}
                 </div>
                 <h3 className="text-white text-sm font-semibold">{s.name}</h3>
@@ -360,7 +361,7 @@ function Portfolio({ navigate }: Props) {
 
                     {/* Card */}
                     <div className="flex-1 ml-12 md:ml-0">
-                      <div className="bg-zinc-900 border border-white/5 rounded-xl p-5 md:p-6 hover:border-purple-500/20 transition-all duration-300">
+                      <div className="bg-zinc-900 border border-white/5 rounded-xl p-5 md:p-6 hover:border-purple-500/20">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-xs font-medium text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-full">
                             {exp.period}
@@ -395,7 +396,7 @@ function Portfolio({ navigate }: Props) {
               <p className="text-zinc-400 text-sm md:text-base">{t.portfolio.education.subtitle}</p>
             </div>
             <div className="max-w-3xl mx-auto">
-              <div className="bg-zinc-900 border border-white/5 rounded-xl overflow-hidden hover:border-purple-500/20 transition-all duration-300">
+              <div className="bg-zinc-900 border border-white/5 rounded-xl overflow-hidden hover:border-purple-500/20">
                 {[
                   {
                     school: t.portfolio.education.schools.university,
@@ -447,7 +448,7 @@ function Portfolio({ navigate }: Props) {
                     ),
                   },
                 ].map((edu, idx) => (
-                  <div key={edu.school} className={`flex items-center gap-4 px-5 py-4 hover:bg-white/[0.02] transition-colors ${idx < 3 ? 'border-b border-white/5' : ''}`}>
+                  <div key={edu.school} className={`flex items-center gap-4 px-5 py-4 hover:bg-white/[0.02] ${idx < 3 ? 'border-b border-white/5' : ''}`}>
                     <div className="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
                       {edu.icon}
                     </div>
@@ -476,24 +477,24 @@ function Portfolio({ navigate }: Props) {
               <div
                 key={tech.name}
                 title={tech.name}
-                className="h-12 md:h-18 w-auto rounded-xl bg-zinc-800 border border-white/5 flex items-center justify-center p-3 md:p-5 hover:border-purple-500/30 hover:bg-zinc-700 transition-all duration-300"
+                className="h-12 md:h-18 w-auto rounded-xl border border-white/5 flex items-center justify-center p-3 md:p-5 hover:border-purple-500/30"
               >
                 <img src={!isLight && tech.darkIcon ? tech.darkIcon : tech.icon} alt={tech.name} className="h-full w-auto object-contain" />
               </div>
             ))}
           </div>
 
-          <div className="mt-14 max-w-3xl mx-auto space-y-4">
+          <div className="mt-14 max-w-3xl mx-auto space-y-3">
             {expertise.map((tech) => (
-              <div key={tech.name} className="flex items-center gap-3">
-                <span className="text-xs text-zinc-400 w-28 flex-shrink-0 text-right">{tech.name}</span>
+              <div key={tech.name} className="flex items-center gap-3 group cursor-default">
+                <span className="text-xs text-zinc-400 w-28 flex-shrink-0 text-right group-hover:text-zinc-200">{tech.name}</span>
                 <div className="flex-1 h-1.5 rounded-full bg-zinc-600 overflow-hidden">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-purple-500 to-purple-400 transition-all duration-700"
+                    className="h-full rounded-full bg-gradient-to-r from-purple-500 to-purple-400 transition-all duration-700 group-hover:from-purple-400 group-hover:to-purple-300 group-hover:shadow-[0_0_8px_rgba(168,85,247,0.3)]"
                     style={{ width: `${tech.pct}%` }}
                   />
                 </div>
-                <span className="text-xs text-zinc-500 w-8 flex-shrink-0">{tech.pct}%</span>
+                <span className="text-xs text-zinc-500 w-8 flex-shrink-0 group-hover:text-purple-400 group-hover:font-semibold">{tech.pct}%</span>
               </div>
             ))}
           </div>
@@ -530,7 +531,7 @@ function Portfolio({ navigate }: Props) {
                   <button
                     key={idx}
                     onClick={() => setActiveProject(idx)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 cursor-pointer border-0 p-0 ${
+                    className={`w-2.5 h-2.5 rounded-full cursor-pointer border-0 p-0 ${
                       idx === activeProject
                         ? 'bg-purple-500 shadow-lg shadow-purple-500/30'
                         : 'bg-zinc-700 hover:bg-zinc-500'
@@ -557,7 +558,7 @@ function Portfolio({ navigate }: Props) {
                         <div className="absolute -top-4 -right-4 w-14 h-14 border border-purple-500/20 rounded-xl rotate-12 pointer-events-none hidden lg:block" />
                       </div>
 
-                      <div className="lg:w-2/5 w-full bg-zinc-900 border border-white/5 rounded-xl p-5 md:p-6 hover:border-purple-500/20 transition-all duration-300">
+                      <div className="lg:w-2/5 w-full bg-zinc-900 border border-white/5 rounded-xl p-5 md:p-6 hover:border-purple-500/20">
                         <h3 className="text-white font-semibold text-base md:text-lg leading-tight mb-3">
                           {project.title}
                         </h3>
@@ -591,7 +592,7 @@ function Portfolio({ navigate }: Props) {
                     <button
                       key={idx}
                       onClick={() => setActiveProject(idx)}
-                      className={`w-2.5 h-2.5 rounded-full transition-all duration-300 border-0 p-0 ${
+                      className={`w-2.5 h-2.5 rounded-full border-0 p-0 ${
                         idx === activeProject ? 'bg-purple-500 shadow-lg shadow-purple-500/30' : 'bg-zinc-600'
                       }`}
                     />
