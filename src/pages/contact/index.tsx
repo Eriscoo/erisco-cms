@@ -175,65 +175,69 @@ function Contact({ navigate }: Props) {
           {t.contact.title}
         </h1>
 
-        <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-8 max-w-xl">
+        <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-8 md:w-2/3">
           {t.contact.description}
         </p>
 
-        <form onSubmit={handleSubmit} className="w-full md:w-1/2 flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="w-full md:w-2/3 flex flex-col gap-4">
 
-          <label className="flex flex-col gap-1 text-sm text-zinc-400">
-            <span>{t.contact.name}</span>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className={inputClass}
-              placeholder={t.contact.namePlaceholder}
-            />
-          </label>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <label className="flex flex-col gap-1 text-sm text-zinc-400">
+              <span>{t.contact.name}</span>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className={inputClass}
+                placeholder={t.contact.namePlaceholder}
+              />
+            </label>
 
-          <label className="flex flex-col gap-1 text-sm text-zinc-400">
-            <span>{t.contact.email}<span className="text-red-400"> *</span></span>
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => { setEmail(e.target.value); if (errors.email) setErrors({}) }}
-              className={inputClass + (errors.email ? ' border-pink-500/50' : '')}
-              placeholder={t.contact.emailPlaceholder}
-            />
-            {errors.email && (
-              <span className="text-pink-400 text-xs">{errors.email}</span>
-            )}
-          </label>
+            <label className="flex flex-col gap-1 text-sm text-zinc-400">
+              <span>{t.contact.email}<span className="text-red-400"> *</span></span>
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => { setEmail(e.target.value); if (errors.email) setErrors({}) }}
+                className={inputClass + (errors.email ? ' border-pink-500/50' : '')}
+                placeholder={t.contact.emailPlaceholder}
+              />
+              {errors.email && (
+                <span className="text-pink-400 text-xs">{errors.email}</span>
+              )}
+            </label>
+          </div>
 
-          <label className="flex flex-col gap-1 text-sm text-zinc-400">
-            <span>{t.contact.subject}</span>
-            <input
-              type="text"
-              value={subject}
-              onChange={(e) => setSubject(e.target.value)}
-              className={inputClass}
-              placeholder={t.contact.subjectPlaceholder}
-            />
-          </label>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <label className="flex flex-col gap-1 text-sm text-zinc-400">
+              <span>{t.contact.subject}</span>
+              <input
+                type="text"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+                className={inputClass}
+                placeholder={t.contact.subjectPlaceholder}
+              />
+            </label>
 
-          <label className="flex flex-col gap-1 text-sm text-zinc-400">
-            <span>{t.contact.phone}</span>
-            <input
-              type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className={inputClass}
-              placeholder={t.contact.phonePlaceholder}
-            />
-          </label>
+            <label className="flex flex-col gap-1 text-sm text-zinc-400">
+              <span>{t.contact.phone}</span>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className={inputClass}
+                placeholder={t.contact.phonePlaceholder}
+              />
+            </label>
+          </div>
 
           <label className="flex flex-col gap-1 text-sm text-zinc-400">
             <span>{t.contact.message}</span>
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              rows={4}
+              rows={6}
               className={inputClass + ' resize-y'}
               placeholder={t.contact.messagePlaceholder}
             />

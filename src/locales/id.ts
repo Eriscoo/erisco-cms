@@ -142,7 +142,7 @@ const id: Locale = {
   contact: {
     documentTitle: 'Kontak | Eriscoo',
     title: 'Kontak',
-    description: 'Punya pertanyaan, ide proyek, atau hanya ingin menyapa? Isi formulir di bawah dan saya akan menghubungi Anda kembali secepatnya.',
+    description: 'Punya pertanyaan, ide proyek, atau hanya ingin menyapa? Isi formulir di bawah dan saya akan menghubungi Anda kembali secepatnya. 👋',
     name: 'Nama',
     namePlaceholder: 'Nama Anda',
     email: 'Email',

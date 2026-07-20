@@ -140,7 +140,7 @@ const en = {
   contact: {
     documentTitle: 'Contact | Eriscoo',
     title: 'Contact',
-    description: 'Have a question, project idea, or just want to say hello? Fill out the form below and I\'ll get back to you as soon as possible.',
+    description: 'Have a question, project idea, or just want to say hello? Fill out the form below and I\'ll get back to you as soon as possible. 👋',
     name: 'Name',
     namePlaceholder: 'Your name',
     email: 'Email',
