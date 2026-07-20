@@ -81,7 +81,7 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
     { label: t.nav.home, path: '/' },
     { label: t.nav.about, path: '/about' },
     { label: t.nav.portfolio, path: '/portfolio' },
-    { label: t.nav.post, path: '/post/all' },
+    { label: t.nav.post, path: '/posts' },
     { label: t.nav.contact, path: '/contact' },
   ]
 

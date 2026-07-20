@@ -164,6 +164,15 @@ const id: Locale = {
     okButton: 'OK',
     failedMessage: 'Gagal mengirim pesan. Silakan coba lagi.',
   },
+  allPosts: {
+    documentTitle: 'Semua Postingan | Eriscoo',
+    title: 'Semua Postingan',
+    description: 'Jelajahi semua artikel dan pemikiran. Dari wawasan teknologi hingga cerita proyek.',
+    loadMore: 'Muat Lebih Banyak',
+    noPosts: 'Belum ada postingan.',
+    retry: 'Coba Lagi',
+    failed: 'Gagal memuat postingan.',
+  },
   portfolio: {
     documentTitle: 'Portofolio | Eriscoo',
     hero: {
