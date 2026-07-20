@@ -104,8 +104,8 @@ const strengths = [
 ]
 
 const expertise = [
-  { name: 'React.js', icon: '/assets/portfolio/react.png', level: 'advanced', pct: 90 },
-  { name: 'Vue.js', icon: '/assets/portfolio/vue.png', level: 'advanced', pct: 90 },
+  { name: 'React.js', icon: '/assets/portfolio/react.png', level: 'advanced', pct: 85 },
+  { name: 'Vue.js', icon: '/assets/portfolio/vue.png', level: 'advanced', pct: 85 },
   { name: 'Go', icon: '/assets/portfolio/golang.png', level: 'intermediate', pct: 70 },
   { name: 'TypeScript', icon: '/assets/portfolio/typescript.png', level: 'intermediate', pct: 85 },
   { name: '.NET', icon: '/assets/portfolio/netframework.png', level: 'intermediate', pct: 85 },
