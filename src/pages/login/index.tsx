@@ -4,6 +4,7 @@ import { useAuth } from '../../modules/auth'
 import LangSwitch from '../../components/language-switch'
 import ThemeSwitch from '../../components/theme-switch'
 import Button from '../../components/button'
+import Footer from '../../components/footer'
 import { useIsLight } from '../../hooks/use-is-light'
 
 interface Props {
@@ -22,10 +23,35 @@ function Login({ navigate }: Props) {
   const [password, setPassword] = useState('')
   const [remember, setRemember] = useState(false)
   const [error, setError] = useState('')
+  const [emailError, setEmailError] = useState('')
+  const [passwordError, setPasswordError] = useState('')
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+  function validate(): boolean {
+    let valid = true
+    if (!email.trim()) {
+      setEmailError(t.login.emailRequired)
+      valid = false
+    } else if (!emailPattern.test(email.trim())) {
+      setEmailError(t.login.emailInvalid)
+      valid = false
+    } else {
+      setEmailError('')
+    }
+    if (!password.trim()) {
+      setPasswordError(t.login.passwordRequired)
+      valid = false
+    } else {
+      setPasswordError('')
+    }
+    return valid
+  }
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     setError('')
+
+    if (!validate()) return
 
     try {
       await login(email, password, remember)
@@ -60,14 +86,16 @@ function Login({ navigate }: Props) {
         <label className="flex flex-col gap-1 text-sm text-zinc-400">
           <span>{t.login.email}<span className="text-red-400"> *</span></span>
           <input
-            type="email"
+            type="text"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="px-3 py-2.5 rounded-lg border border-white/10 bg-white/5 text-zinc-100 text-sm outline-none focus:border-purple-500/50"
+            onChange={(e) => { setEmail(e.target.value); if (emailError) setEmailError('') }}
+            className={'px-3 py-2.5 rounded-lg border border-white/10 bg-white/5 text-zinc-100 text-sm outline-none focus:border-purple-500/50' + (emailError ? ' border-pink-500/50' : '')}
             placeholder={t.login.emailPlaceholder}
-            required
             autoFocus
           />
+          {emailError && (
+            <span className="text-pink-400 text-xs">{emailError}</span>
+          )}
         </label>
 
         <label className="flex flex-col gap-1 text-sm text-zinc-400">
@@ -75,11 +103,13 @@ function Login({ navigate }: Props) {
           <input
             type="password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="px-3 py-2.5 rounded-lg border border-white/10 bg-white/5 text-zinc-100 text-sm outline-none focus:border-purple-500/50"
+            onChange={(e) => { setPassword(e.target.value); if (passwordError) setPasswordError('') }}
+            className={'px-3 py-2.5 rounded-lg border border-white/10 bg-white/5 text-zinc-100 text-sm outline-none focus:border-purple-500/50' + (passwordError ? ' border-pink-500/50' : '')}
             placeholder={t.login.passwordPlaceholder}
-            required
           />
+          {passwordError && (
+            <span className="text-pink-400 text-xs">{passwordError}</span>
+          )}
         </label>
 
         <div className="flex justify-between items-center text-sm">
@@ -106,12 +136,7 @@ function Login({ navigate }: Props) {
       </form>
       </div>
 
-      <div className="text-center text-xs text-zinc-500 py-6 px-4">
-        Copyright &copy; 2026{' '}
-        <button onClick={() => navigate('/')} className="text-zinc-400 hover:text-purple-300 transition-colors cursor-pointer bg-transparent border-0 p-0">Eriscoo.com</button>
-        <span className="hidden sm:inline"> | All Rights Reserved.</span>
-        <span className="sm:hidden"><br />All Rights Reserved.</span>
-      </div>
+      <Footer navigate={navigate} />
     </div>
   )
 }

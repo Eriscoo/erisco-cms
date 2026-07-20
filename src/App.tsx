@@ -13,6 +13,7 @@ const PostDetail = lazy(() => import('./pages/post'))
 const Settings = lazy(() => import('./pages/settings'))
 const Profile = lazy(() => import('./pages/profile'))
 const Portfolio = lazy(() => import('./pages/portfolio'))
+const Contact = lazy(() => import('./pages/contact'))
 const NotFound = lazy(() => import('./pages/not-found'))
 
 function App() {
@@ -80,6 +81,10 @@ function App() {
 
     if (path === '/portfolio') {
       return <Portfolio navigate={navigate} />
+    }
+
+    if (path === '/contact') {
+      return <Contact navigate={navigate} />
     }
 
     if (path === '/') {

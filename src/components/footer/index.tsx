@@ -35,7 +35,7 @@ function Footer({ navigate }: Props) {
                 </div>
               </button>
               <span className="text-zinc-400">
-                Copyright &copy; {new Date().getFullYear()} Eriscoo.com | All Rights Reserved.
+                &copy; {new Date().getFullYear()} Eriscoo.com | All Rights Reserved.
               </span>
             </span>
             <span className="flex items-center gap-4">
@@ -50,7 +50,7 @@ function Footer({ navigate }: Props) {
 
           {/* Mobile text */}
           <span className="text-center text-zinc-400 text-xs md:hidden">
-            Copyright &copy; {new Date().getFullYear()} Eriscoo.com<br />All Rights Reserved.
+            &copy; {new Date().getFullYear()} Eriscoo.com | All Rights Reserved.
           </span>
           <span className="flex items-center gap-4 md:hidden">
             <button onClick={() => navigate('/privacy-policy')} className="text-purple-400 hover:text-purple-200 transition-colors cursor-pointer bg-transparent border-0 p-0 font-semibold text-xs">
