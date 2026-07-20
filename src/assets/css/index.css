@@ -493,7 +493,7 @@ html.light .text-purple-400 {
 
 /* Footer overrides */
 html.light .footer-copyright-section {
-  background-color: #F0EFFA !important;
+  background-color: transparent !important;
 }
 
 /* ── TipTap / ProseMirror ──────────────────── */

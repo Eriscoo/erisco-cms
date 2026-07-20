@@ -9,7 +9,7 @@ function Footer({ navigate }: Props) {
 
   return (
     <footer className="text-xs text-zinc-600">
-      <div className="bg-zinc-950 footer-copyright-section border-t border-white/5 py-6">
+      <div className="bg-transparent footer-copyright-section pb-6">
         <div className="max-w-[1280px] mx-auto px-4 md:px-8 flex flex-col items-center gap-3">
           {/* Logo */}
           <button onClick={() => navigate('/')} className="cursor-pointer bg-transparent border-0 p-0 md:hidden">
@@ -23,7 +23,7 @@ function Footer({ navigate }: Props) {
           </button>
 
           {/* Desktop row */}
-          <div className="hidden md:flex items-center justify-between w-full">
+          <div className="hidden md:flex items-center justify-between w-full border-t border-white/5 pt-6">
             <span className="flex items-center gap-3 text-zinc-400">
               <button onClick={() => navigate('/')} className="cursor-pointer bg-transparent border-0 p-0">
                 <div className="h-5 w-20 flex-shrink-0">

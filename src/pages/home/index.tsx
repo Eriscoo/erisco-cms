@@ -86,9 +86,6 @@ function Home({ navigate }: Props) {
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </Button>
-                  <Button variant="outline" size="lg" onClick={() => navigate('/dashboard')}>
-                    Dashboard
-                  </Button>
                 </div>
               </div>
 
