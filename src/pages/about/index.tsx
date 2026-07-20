@@ -31,8 +31,18 @@ function About({ navigate }: Props) {
           {t.about.title}
         </h1>
 
-        <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
-          {t.about.comingSoon}
+        <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-5">
+          {t.about.p1}
+        </p>
+        <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-5">
+          {t.about.p2}
+        </p>
+
+        <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-5">
+          {t.about.p3}
+        </p>
+        <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-5">
+          {t.about.p4}
         </p>
       </div>
 

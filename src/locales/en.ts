@@ -51,8 +51,8 @@ const en = {
   },
   home: {
     welcome: 'Welcome to Eriscoo',
-    subtitle: 'Stories, thoughts, and ideas.',
-    recentPosts: 'My latest posts',
+    subtitle: 'See my latest posts',
+    recentPosts: 'Stories, thoughts, and ideas.',
     hero: {
       headline: 'Digital Works, Real Stories',
       description: 'Developer thoughts, project showcases, and tech insights. Sometimes serious, sometimes casual.',
@@ -325,7 +325,10 @@ const en = {
   about: {
     documentTitle: 'About | Eriscoo',
     title: 'About Me',
-    comingSoon: 'Sorry, the about me page is under development.',
+    p1: "I'm Erisco Berto, originally from Kabupaten Sanggau, a small town in West Kalimantan. I grew up surrounded by rivers and forests, far from the tech hubs you usually hear about, which probably shaped how I see things. I'm a software developer who enjoys building things for the web, but this page is more about the person behind the code: the hobbies, the random interests, and the stuff that keeps me going when the screen turns off.",
+    p2: "Outside of work, I'm into photography. I like capturing everyday moments that most people walk past without noticing. Weird shadows, quiet streets, the way light hits a wall at sunset. Nothing too serious, just a way to slow down and pay attention. Music is another big part of my life. I lean heavily toward progressive rock and metal: Dream Theater, Toto, Eric Martin, Aerosmith, that kind of stuff. There's something about a 12-minute song with five time signature changes that just hits different. When I'm not taking photos or getting lost in an album, I'm probably gaming. Open-world titles pull me in the most. The freedom to wander, explore, and get sidetracked for hours. I also enjoy action games and the occasional horror title, the kind that makes you jump and then laugh at yourself afterward.",
+    p3: "I follow tech news pretty regularly, not obsessively, but enough to stay in the loop. It could be a new browser API, a shift in how people deploy applications, or just a Twitter thread about an approach I hadn't considered before. I like reading about how other developers solve problems: their thought process, the trade-offs they make, the mistakes they run into. Some of it sticks, some of it fades, but it's always interesting to see how fast things move and how creative people get with the tools they have. I don't chase every new framework, but I do appreciate when something genuinely makes life easier.",
+    p4: "I enjoy conversations that go somewhere, whether it's about photography techniques, game lore, music rabbit holes, or random takes on everyday life. I'm the kind of person who can go from discussing Elden Ring boss strategies to debating which Dream Theater album has the best guitar solo in the span of five minutes. The best chats, I think, are the ones where nobody's trying to prove anything, just two people genuinely curious about what the other has to say. No pretension, no one-upping, just a good back-and-forth. So if you ever feel like talking about progressive rock deep cuts, horror game recommendations, street photography tips, or just saying hello, drop me a message anytime😁",
   },
   portfolio: {
     documentTitle: 'Portfolio | Eriscoo',

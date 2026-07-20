@@ -133,17 +133,12 @@ function Home({ navigate }: Props) {
 
         {/* Recent posts section */}
         <section className="max-w-[1280px] mx-auto px-4 md:px-8 py-16 md:py-20">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-px flex-1 bg-white/5" />
-            <h2 className="text-2xl md:text-3xl font-bold text-white">{t.home.subtitle}</h2>
-            <div className="h-px flex-1 bg-white/5" />
-          </div>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+            {t.home.subtitle}
+          </h2>
 
-          <p className="text-center text-zinc-400 text-sm md:text-base flex items-center justify-center gap-1 mb-8">
+          <p className="text-zinc-400 text-sm md:text-base mb-8">
             {t.home.recentPosts}
-            <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 5v14M5 12l7 7 7-7" />
-            </svg>
           </p>
 
           {loading ? (
@@ -187,7 +182,7 @@ function Home({ navigate }: Props) {
                         {t.post.postedOn} {formatDate(post.published_at || post.created_at)}
                       </span>
 
-                      <p className="text-zinc-400 text-sm leading-relaxed line-clamp-3 flex-1">
+                      <p className="text-zinc-400 text-sm leading-relaxed line-clamp-2 flex-1">
                         {preview}
                       </p>
                     </div>

@@ -104,6 +104,10 @@ html.light {
   --primary-border: rgba(106, 90, 205, 0.25);
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   @apply text-zinc-100;
   color: #e4e4e7;

@@ -53,8 +53,8 @@ const id: Locale = {
   },
   home: {
     welcome: 'Selamat Datang di Eriscoo',
-    subtitle: 'Cerita, pemikiran, dan ide.',
-    recentPosts: 'Postingan terbaru saya',
+    subtitle: 'Lihat postingan terbaru saya',
+    recentPosts: 'Cerita, pemikiran, dan ide.',
     hero: {
       headline: 'Karya Digital, Cerita Nyata',
       description: 'Curhatan developer, showcase karya, dan insight teknologi yang kadang serius kadang santai.',
@@ -327,7 +327,10 @@ const id: Locale = {
   about: {
     documentTitle: 'Tentang | Eriscoo',
     title: 'Tentang Saya',
-    comingSoon: 'Maaf, halaman tentang saya sedang dalam pengembangan.',
+    p1: 'Saya Erisco Berto, berasal dari Kabupaten Sanggau, sebuah kota kecil di Kalimantan Barat. Tumbuh besar dikelilingi sungai dan hutan, jauh dari pusat teknologi yang biasa Anda dengar, mungkin membentuk cara saya melihat banyak hal. Saya seorang pengembang perangkat lunak yang senang membangun berbagai hal untuk web, tapi halaman ini lebih tentang siapa saya di balik kode, hobi, minat acak, dan hal-hal yang membuat saya tetap semangat setelah layar mati.',
+    p2: 'Di luar pekerjaan, saya suka fotografi. Saya senang mengabadikan momen-momen sederhana yang sering dilewati begitu saja, bayangan aneh, jalanan sepi, cara cahaya jatuh di dinding saat matahari terbenam. Bukan yang serius-serius amat, cuma cara untuk memperlambat ritme dan lebih memperhatikan sekitar. Musik juga bagian besar dari hidup saya. Saya banyak mendengarkan progressive rock dan metal, Dream Theater, Toto, Eric Martin, Aerosmith, dan sejenisnya. Ada sesuatu dari lagu 12 menit dengan lima kali pergantian time signature yang rasanya berbeda. Kalau sedang tidak motret atau tenggelam dalam sebuah album, biasanya saya lagi main game. Genre open-world paling menarik buat saya, kebebasan untuk menjelajah, tersesat, dan lupa waktu berjam-jam. Saya juga menikmati game action dan sesekali horror, yang bikin loncat kaget lalu ketawa sendiri setelahnya.',
+    p3: 'Saya mengikuti berita teknologi secara rutin, bukan yang obsesif, tapi cukup untuk tetap update. Bisa soal API baru di browser, perubahan cara orang deploy aplikasi, atau sekadar utas Twitter tentang pendekatan yang belum pernah terpikir sebelumnya. Saya suka membaca bagaimana developer lain menyelesaikan masalah, cara berpikir mereka, kompromi yang diambil, kesalahan yang ditemui. Ada yang nempel, ada yang lewat begitu saja, tapi selalu seru melihat seberapa cepat dunia ini bergerak dan sekreatif apa orang-orang memanfaatkan tools yang ada. Saya tidak mengejar setiap framework baru, tapi saya menghargai ketika sesuatu benar-benar membuat hidup lebih mudah.',
+    p4: 'Saya menikmati obrolan yang mengalir, entah tentang teknik fotografi, lore game, seluk-beluk musik, atau pemikiran random soal keseharian. Saya tipe orang yang bisa pindah dari diskusi strategi boss Elden Ring ke debat album Dream Theater mana yang punya solo gitar terbaik dalam waktu lima menit. Obrolan paling asyik menurut saya adalah ketika tidak ada yang mencoba membuktikan apa-apa, hanya dua orang yang benar-benar penasaran dengan apa yang disampaikan satu sama lain. Tanpa pretensi, tanpa adu pamer, hanya obrolan yang mengalir bolak-balik. Jadi kalau kamu ingin ngobrolin progressive rock deep cuts, rekomendasi game horror, tips street photography, atau sekadar menyapa, kirim pesan kapan saja😁',
   },
   portfolio: {
     documentTitle: 'Portofolio | Eriscoo',
