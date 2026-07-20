@@ -171,6 +171,11 @@ const en = {
     retry: 'Retry',
     failed: 'Failed to load posts.',
   },
+  about: {
+    documentTitle: 'About | Eriscoo',
+    title: 'About Me',
+    comingSoon: 'Sorry, the about me page is under development.',
+  },
   portfolio: {
     documentTitle: 'Portfolio | Eriscoo',
     hero: {

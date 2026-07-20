@@ -1,32 +1,67 @@
-import { useEffect } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { useLocale } from '../../locales'
+import { ENV } from '../../constants/env'
+import { getPublicPosts, type Post } from '../../modules/posts/api'
 import Header from '../../components/header'
+import Footer from '../../components/footer'
 import Button from '../../components/button'
+import Spinner from '../../components/spinner'
 
 interface Props {
   navigate: (path: string) => void
 }
 
+function stripHtml(html: string): string {
+  const el = document.createElement('div')
+  el.innerHTML = html
+  return el.textContent || el.innerText || ''
+}
+
+function truncate(text: string, max: number): string {
+  if (text.length <= max) return text
+  return text.slice(0, max).replace(/\s+\S*$/, '') + '...'
+}
+
+function formatDate(dateStr: string | null): string {
+  if (!dateStr) return ''
+  const d = new Date(dateStr)
+  const date = d.toLocaleDateString('en-CA', { timeZone: 'Asia/Jakarta' })
+  const time = d.toLocaleTimeString('en-CA', { timeZone: 'Asia/Jakarta', hour: '2-digit', minute: '2-digit', hour12: false }).replace(':', '.')
+  return `${date} ${time}`
+}
+
 function Home({ navigate }: Props) {
   const { t } = useLocale()
+  const [posts, setPosts] = useState<Post[]>([])
+  const [loading, setLoading] = useState(true)
+
+  const fetchPosts = useCallback(async () => {
+    try {
+      const data = await getPublicPosts(1, 3)
+      setPosts(data.posts)
+    } catch {
+      // silent fail — just show empty
+    } finally {
+      setLoading(false)
+    }
+  }, [])
 
   useEffect(() => {
     document.title = 'Eriscoo | Blog, portfolio & hobbies'
-  }, [])
+    fetchPosts()
+  }, [fetchPosts])
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Header variant="default" navigate={navigate} />
-      <main>
+      <main className="flex-1">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
-          {/* Background glow */}
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
 
           <div className="max-w-[1280px] mx-auto px-4 md:px-8 py-28">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-              {/* Left Content */}
               <div className="flex-1 text-center lg:text-left">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-purple-500/20 bg-purple-500/10 text-purple-300 text-xs md:text-sm font-medium mb-6">
                   <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
@@ -57,10 +92,8 @@ function Home({ navigate }: Props) {
                 </div>
               </div>
 
-              {/* Right Decorative */}
               <div className="flex-1 max-w-md lg:max-w-none">
                 <div className="relative">
-                  {/* Code snippet card */}
                   <div className="bg-zinc-900 border border-white/10 rounded-xl overflow-hidden shadow-2xl shadow-purple-500/5">
                     <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5">
                       <div className="w-3 h-3 rounded-full bg-red-500/60" />
@@ -90,7 +123,6 @@ function Home({ navigate }: Props) {
                     </div>
                   </div>
 
-                  {/* Floating decorative elements */}
                   <div className="absolute -top-6 -right-6 w-16 h-16 border border-purple-500/20 rounded-xl rotate-12 hidden lg:block" />
                   <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-purple-500/10 rounded-lg -rotate-6 hidden lg:block" />
                 </div>
@@ -99,21 +131,75 @@ function Home({ navigate }: Props) {
           </div>
         </section>
 
-        {/* Recent posts section placeholder */}
-        <section className="max-w-[1280px] mx-auto px-4 md:px-8 py-16">
-          <div className="flex items-center gap-3 mb-8">
+        {/* Recent posts section */}
+        <section className="max-w-[1280px] mx-auto px-4 md:px-8 py-16 md:py-20">
+          <div className="flex items-center gap-3 mb-4">
             <div className="h-px flex-1 bg-white/5" />
-            <h2 className="text-lg font-semibold text-zinc-300">{t.home.subtitle}</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">{t.home.subtitle}</h2>
             <div className="h-px flex-1 bg-white/5" />
           </div>
-          <p className="text-center text-zinc-500 text-sm flex items-center justify-center gap-1">
+
+          <p className="text-center text-zinc-400 text-sm md:text-base flex items-center justify-center gap-1 mb-8">
             {t.home.recentPosts}
             <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M12 5v14M5 12l7 7 7-7" />
             </svg>
           </p>
+
+          {loading ? (
+            <div className="flex justify-center py-12">
+              <Spinner className="w-6 h-6 text-purple-400" />
+            </div>
+          ) : posts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {posts.map((post) => {
+                const preview = truncate(stripHtml(post.body), 120)
+                return (
+                  <div
+                    key={post.id}
+                    className="group flex flex-col bg-zinc-900 border border-white/5 rounded-xl overflow-hidden hover:border-purple-500/20 transition-shadow duration-300 cursor-pointer"
+                    onClick={() => navigate(`/${post.slug}`)}
+                  >
+                    <div className="aspect-video flex-shrink-0 overflow-hidden">
+                      {post.image_url ? (
+                        <img
+                          src={`${ENV.API_URL}${post.image_url}`}
+                          alt={post.title}
+                          className="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-zinc-800 flex items-center justify-center group-hover:bg-zinc-700 transition-colors duration-300">
+                          <svg className="w-10 h-10 text-zinc-600 group-hover:text-zinc-400 transition-colors duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" />
+                            <polyline points="21 15 16 10 5 21" />
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="flex flex-col flex-1 p-4 md:p-5">
+                      <h3 className="text-sm md:text-base font-semibold text-white truncate mb-1.5 group-hover:text-purple-300 transition-colors">
+                        {post.title}
+                      </h3>
+
+                      <span className="text-xs text-zinc-500 mb-3">
+                        {t.post.postedOn} {formatDate(post.published_at || post.created_at)}
+                      </span>
+
+                      <p className="text-zinc-400 text-sm leading-relaxed line-clamp-3 flex-1">
+                        {preview}
+                      </p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          ) : null}
         </section>
       </main>
+
+      <Footer navigate={navigate} />
     </div>
   )
 }

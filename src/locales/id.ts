@@ -173,6 +173,11 @@ const id: Locale = {
     retry: 'Coba Lagi',
     failed: 'Gagal memuat postingan.',
   },
+  about: {
+    documentTitle: 'Tentang | Eriscoo',
+    title: 'Tentang Saya',
+    comingSoon: 'Maaf, halaman tentang saya sedang dalam pengembangan.',
+  },
   portfolio: {
     documentTitle: 'Portofolio | Eriscoo',
     hero: {

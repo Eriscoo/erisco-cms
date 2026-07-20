@@ -15,6 +15,7 @@ const Profile = lazy(() => import('./pages/profile'))
 const Portfolio = lazy(() => import('./pages/portfolio'))
 const Contact = lazy(() => import('./pages/contact'))
 const AllPosts = lazy(() => import('./pages/all-posts'))
+const About = lazy(() => import('./pages/about'))
 const NotFound = lazy(() => import('./pages/not-found'))
 
 function App() {
@@ -86,6 +87,10 @@ function App() {
 
     if (path === '/contact') {
       return <Contact navigate={navigate} />
+    }
+
+    if (path === '/about') {
+      return <About navigate={navigate} />
     }
 
     if (path === '/posts') {
