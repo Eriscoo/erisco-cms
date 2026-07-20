@@ -133,11 +133,11 @@ function Home({ navigate }: Props) {
 
         {/* Recent posts section */}
         <section className="max-w-[1280px] mx-auto px-4 md:px-8 py-16 md:py-20">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 text-center md:text-left">
             {t.home.subtitle}
           </h2>
 
-          <p className="text-zinc-400 text-sm md:text-base mb-8">
+          <p className="text-zinc-400 text-sm md:text-base mb-8 text-center md:text-left">
             {t.home.recentPosts}
           </p>
 

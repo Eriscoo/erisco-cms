@@ -2,6 +2,7 @@ import { useState, type FormEvent, useEffect, useRef, useCallback } from 'react'
 import { useLocale } from '../../locales'
 import { ENV } from '../../constants/env'
 import { submitContact } from '../../modules/contact/api'
+import { useIsLight } from '../../hooks/use-is-light'
 import Header from '../../components/header'
 import Footer from '../../components/footer'
 import Breadcrumb from '../../components/breadcrumb'
@@ -18,6 +19,7 @@ declare global {
     turnstile: {
       render: (container: string | HTMLElement, opts: Record<string, unknown>) => string
       reset: (widgetId: string) => void
+      remove: (widgetId: string) => void
       getResponse: (widgetId: string) => string | undefined
     }
     onTurnstileLoad?: () => void
@@ -26,6 +28,7 @@ declare global {
 
 function Contact({ navigate }: Props) {
   const { t } = useLocale()
+  const isLight = useIsLight()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [subject, setSubject] = useState('')
@@ -79,16 +82,23 @@ function Contact({ navigate }: Props) {
 
   const renderTurnstile = useCallback(() => {
     if (!turnstileContainerRef.current) return
-    if (window.turnstile && !widgetIdRef.current) {
-      widgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
-        sitekey: ENV.TURNSTILE_SITE_KEY,
-        theme: 'dark',
-      })
+    if (!window.turnstile) return
+    if (widgetIdRef.current) {
+      window.turnstile.remove(widgetIdRef.current)
+      widgetIdRef.current = null
     }
-  }, [])
+    if (turnstileContainerRef.current) {
+      turnstileContainerRef.current.innerHTML = ''
+    }
+    widgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
+      sitekey: ENV.TURNSTILE_SITE_KEY,
+      theme: isLight ? 'light' : 'dark',
+    })
+  }, [isLight])
 
   useEffect(() => {
-    if (document.querySelector('script[src*="turnstile"]')) {
+    const existing = document.querySelector('script[src*="turnstile"]')
+    if (existing) {
       renderTurnstile()
       return
     }
@@ -98,19 +108,25 @@ function Contact({ navigate }: Props) {
     script.async = true
     script.defer = true
 
-    window.onTurnstileLoad = renderTurnstile
-
-    script.onload = () => {
+    const onLoad = () => {
       if (!window.turnstile) return
       setTimeout(renderTurnstile, 0)
     }
+    window.onTurnstileLoad = onLoad
+    script.onload = onLoad
 
     document.body.appendChild(script)
 
     return () => {
       delete window.onTurnstileLoad
     }
-  }, [renderTurnstile])
+  }, [])
+
+  useEffect(() => {
+    if (widgetIdRef.current && window.turnstile) {
+      renderTurnstile()
+    }
+  }, [isLight, renderTurnstile])
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
