@@ -43,6 +43,8 @@ const en = {
     portfolio: 'Portfolio',
     post: 'Posts',
     contact: 'Contact',
+    privacy: 'Privacy Policy',
+    terms: 'Terms & Conditions',
     login: 'Login',
     dashboard: 'Dashboard',
     logout: 'Logout',
@@ -161,6 +163,155 @@ const en = {
     successTitle: 'Sent!',
     okButton: 'OK',
     failedMessage: 'Failed to send message. Please try again.',
+  },
+  privacy: {
+    documentTitle: 'Privacy Policy | Eriscoo',
+    title: 'Privacy Policy',
+    lastUpdated: 'Last updated: July 20, 2026',
+    intro: 'Your privacy is important to me. This Privacy Policy explains what information is collected when you visit this website, how it is used, and your rights regarding that information.',
+    sections: {
+      whoAmI: {
+        title: '1. Who I Am',
+        content: 'This website is a personal blog and portfolio operated by Eriscoo (referred to as "I", "me", or "my" throughout this policy). I am an independent developer based in Indonesia. You can reach me via the contact page.',
+      },
+      whatIsCollected: {
+        title: '2. What Information Is Collected',
+        list: [
+          '<strong>Contact Form</strong> — When you submit the contact form, you voluntarily provide your name, email address, phone number (optional), subject, and message. This information is sent to my backend server and used solely to respond to your inquiry.',
+          '<strong>Comments (Disqus)</strong> — Blog post comments are powered by Disqus, a third-party commenting service. When you leave a comment, Disqus may collect your name, email, IP address, and any information you choose to share. Please refer to <a class="text-purple-400 hover:text-purple-300 underline" href="https://help.disqus.com/en/articles/1717103-disqus-privacy-policy" target="_blank" rel="noopener noreferrer">Disqus Privacy Policy</a> for details.',
+          '<strong>CAPTCHA (Cloudflare Turnstile)</strong> — The contact form is protected by Cloudflare Turnstile to prevent spam. Cloudflare may collect certain information (such as IP address and browser data) for security verification. See <a class="text-purple-400 hover:text-purple-300 underline" href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a>.',
+          '<strong>Authentication</strong> — If you have an admin account and log in to the dashboard, your email and a hashed password are stored in the backend database. Login sessions are managed via authentication tokens.',
+          '<strong>Theme Preference</strong> — This website stores your light/dark theme preference in your browser\'s localStorage. No personal data is transmitted or stored on any server for this feature.',
+        ],
+      },
+      automatically: {
+        title: '3. Information Collected Automatically',
+        content: 'I do not use any analytics service (such as Google Analytics) on this website. However, my hosting provider or Cloudflare (if used as a proxy) may log standard server access data including IP addresses, browser type, timestamps, and pages visited for operational and security purposes. These logs are not used to track individual visitors.',
+      },
+      cookies: {
+        title: '4. Cookies and Local Storage',
+        list: [
+          '<strong>Theme preference</strong> — Stored in localStorage only. Not a cookie, and not sent to any server.',
+          '<strong>Authentication token</strong> — Stored as a cookie or in localStorage when you log in to the admin dashboard. Required for session management.',
+          '<strong>Disqus</strong> — Disqus may set cookies for comment functionality. See their privacy policy linked above.',
+          '<strong>Cloudflare Turnstile</strong> — May set a cookie for CAPTCHA verification.',
+        ],
+      },
+      howUsed: {
+        title: '5. How Your Information Is Used',
+        list: [
+          '<strong>Contact form submissions</strong> — Used exclusively to read your message and reply to your inquiry. Your information is not added to any mailing list or used for marketing.',
+          '<strong>Comments</strong> — Managed by Disqus. I do not download, export, or store comment data separately.',
+          '<strong>Login data</strong> — Used to authenticate admin access to the dashboard. Never shared with third parties.',
+        ],
+      },
+      sharing: {
+        title: '6. Data Sharing',
+        content: 'I do not sell, trade, or share your personal information with any third parties for their own marketing purposes. Information may be processed by the third-party services mentioned above (Disqus, Cloudflare) as necessary for the functionality they provide on this website.',
+      },
+      retention: {
+        title: '7. Data Retention',
+        list: [
+          '<strong>Contact form messages</strong> — Retained in the backend database indefinitely for reference, unless you request deletion.',
+          '<strong>Comments</strong> — Managed by Disqus. Please refer to Disqus policies for their retention practices.',
+          '<strong>Login accounts</strong> — Retained as long as the admin account is active.',
+        ],
+      },
+      security: {
+        title: '8. Security',
+        content: 'I take reasonable measures to protect your personal information. The contact form uses Cloudflare Turnstile to prevent automated spam submissions. All API communication is done over HTTPS. However, no method of transmission over the Internet is 100% secure, and I cannot guarantee absolute security.',
+      },
+      rights: {
+        title: '9. Your Rights',
+        list: [
+          'Request a copy of any personal data I hold about you.',
+          'Request correction or deletion of your personal data.',
+          'Withdraw consent at any time where processing is based on consent.',
+          'To exercise any of these rights, please contact me through the contact page.',
+        ],
+      },
+      children: {
+        title: '10. Children\'s Privacy',
+        content: 'This website is not directed at children under the age of 13. I do not knowingly collect personal information from children. If you believe a child has provided personal information through this website, please contact me and I will delete it promptly.',
+      },
+      externalLinks: {
+        title: '11. External Links',
+        content: 'Blog posts and portfolio pages may contain links to external websites. I am not responsible for the privacy practices or content of those third-party sites. Please review their respective privacy policies.',
+      },
+      changes: {
+        title: '12. Changes to This Policy',
+        content: 'I may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date. Continuing to use this website after changes are posted constitutes acceptance of those changes.',
+      },
+      contact: {
+        title: '13. Contact',
+        content: 'If you have questions, concerns, or requests regarding this Privacy Policy or your personal data, please reach out through the <a class="text-purple-400 hover:text-purple-300 underline" href="/contact" data-link="contact">contact page</a>.',
+      },
+    },
+    footer: 'This policy is written in plain language to be as transparent as possible. If anything is unclear, feel free to ask.',
+  },
+  terms: {
+    documentTitle: 'Terms & Conditions | Eriscoo',
+    title: 'Terms & Conditions',
+    lastUpdated: 'Last updated: July 20, 2026',
+    intro: 'Welcome to Eriscoo. By accessing and using this website, you agree to be bound by the following terms and conditions. If you do not agree with any part of these terms, please do not use this website.',
+    sections: {
+      overview: {
+        title: '1. Overview',
+        content: 'This website is a personal blog and portfolio. The terms "I", "me", and "my" refer to Eriscoo, the owner and operator of this website. The term "you" refers to the visitor or user of this website.',
+      },
+      content: {
+        title: '2. Content',
+        list: [
+          '<strong>Blog Posts</strong> — All articles and posts published on this website reflect my personal opinions, experiences, and knowledge at the time of writing. They are provided for informational purposes only and should not be taken as professional advice.',
+          '<strong>Accuracy</strong> — While I strive for accuracy, I make no guarantees that the information on this website is complete, accurate, or up-to-date. Technology evolves quickly, and content may become outdated.',
+          '<strong>Code Samples</strong> — Any code or technical examples shared on this blog are provided "as is" without warranty of any kind. You are responsible for testing and validating any code before using it in your own projects.',
+        ],
+      },
+      intellectualProperty: {
+        title: '3. Intellectual Property',
+        list: [
+          '<strong>Own Content</strong> — Unless otherwise stated, all original content on this website (including text, images, and code) is my intellectual property. You may share excerpts or quotes with proper attribution and a link back to the original post.',
+          '<strong>Restrictions</strong> — You may not reproduce, republish, or redistribute entire articles without my explicit written permission.',
+          '<strong>Third-Party Content</strong> — Some images, libraries, or assets used on this website may belong to third parties and are used under their respective licenses.',
+        ],
+      },
+      userConduct: {
+        title: '4. User Conduct',
+        list: [
+          '<strong>Comments (Disqus)</strong> — Comments are powered by Disqus, a third-party service. By commenting, you agree to comply with Disqus\'s terms of service. I reserve the right to moderate or remove comments that are spam, offensive, harassing, or otherwise inappropriate.',
+          '<strong>Contact Form</strong> — When using the contact form, you agree to provide accurate information and not to submit spam, malicious content, or unsolicited promotional messages.',
+          '<strong>Prohibited Activities</strong> — You may not attempt to gain unauthorized access to any part of this website, its server, or any related systems. Automated scraping, crawling, or data mining is prohibited unless explicitly permitted.',
+        ],
+      },
+      thirdParty: {
+        title: '5. Third-Party Services',
+        list: [
+          '<strong>Disqus</strong> — Comments are handled by Disqus. Your use of the comment section is subject to <a class="text-purple-400 hover:text-purple-300 underline" href="https://help.disqus.com/en/articles/1717103-disqus-privacy-policy" target="_blank" rel="noopener noreferrer">Disqus Terms of Service</a>.',
+          '<strong>Cloudflare Turnstile</strong> — The contact form uses Cloudflare Turnstile for spam protection, subject to <a class="text-purple-400 hover:text-purple-300 underline" href="https://www.cloudflare.com/website-terms/" target="_blank" rel="noopener noreferrer">Cloudflare Terms of Service</a>.',
+          '<strong>External Links</strong> — This website may contain links to third-party websites. I am not responsible for the content, accuracy, or practices of those external sites. Clicking external links is at your own risk.',
+        ],
+      },
+      disclaimer: {
+        title: '6. Disclaimer of Warranties',
+        content: 'This website is provided on an "as is" and "as available" basis. I make no warranties, express or implied, regarding the operation of this website or the information, content, or materials included. I do not warrant that this website will be uninterrupted, error-free, or free of viruses or other harmful components.',
+      },
+      limitation: {
+        title: '7. Limitation of Liability',
+        content: 'To the fullest extent permitted by applicable law, I shall not be liable for any direct, indirect, incidental, consequential, or punitive damages arising from your use of, or inability to use, this website. This includes damages from errors, omissions, interruptions, defects, delays, or any failure of performance.',
+      },
+      changes: {
+        title: '8. Changes to These Terms',
+        content: 'I reserve the right to modify these terms at any time without prior notice. Changes will be effective immediately upon posting on this page. Your continued use of this website after any changes constitutes your acceptance of the revised terms. It is your responsibility to review these terms periodically.',
+      },
+      governing: {
+        title: '9. Governing Law',
+        content: 'These terms and conditions are governed by and construed in accordance with the laws of the Republic of Indonesia. Any disputes arising from or relating to these terms shall be subject to the exclusive jurisdiction of the courts in Indonesia.',
+      },
+      contact: {
+        title: '10. Contact',
+        content: 'If you have any questions or concerns about these Terms & Conditions, please reach out through the <a class="text-purple-400 hover:text-purple-300 underline" href="/contact" data-link="contact">contact page</a>.',
+      },
+    },
   },
   allPosts: {
     documentTitle: 'All Posts | Eriscoo',

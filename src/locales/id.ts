@@ -45,6 +45,8 @@ const id: Locale = {
     portfolio: 'Portofolio',
     post: 'Postingan',
     contact: 'Kontak',
+    privacy: 'Kebijakan Privasi',
+    terms: 'Syarat & Ketentuan',
     login: 'Masuk',
     dashboard: 'Dasbor',
     logout: 'Keluar',
@@ -163,6 +165,155 @@ const id: Locale = {
     successTitle: 'Terkirim!',
     okButton: 'OK',
     failedMessage: 'Gagal mengirim pesan. Silakan coba lagi.',
+  },
+  privacy: {
+    documentTitle: 'Kebijakan Privasi | Eriscoo',
+    title: 'Kebijakan Privasi',
+    lastUpdated: 'Terakhir diperbarui: 20 Juli 2026',
+    intro: 'Privasi Anda penting bagi saya. Kebijakan Privasi ini menjelaskan informasi apa yang dikumpulkan saat Anda mengunjungi website ini, bagaimana informasi tersebut digunakan, dan hak Anda terkait informasi tersebut.',
+    sections: {
+      whoAmI: {
+        title: '1. Siapa Saya',
+        content: 'Website ini adalah blog pribadi dan portofolio yang dikelola oleh Eriscoo (disebut "saya" dalam kebijakan ini). Saya adalah developer independen yang berbasis di Indonesia. Anda dapat menghubungi saya melalui halaman kontak.',
+      },
+      whatIsCollected: {
+        title: '2. Informasi Apa yang Dikumpulkan',
+        list: [
+          '<strong>Formulir Kontak</strong> — Saat Anda mengirim formulir kontak, Anda secara sukarela memberikan nama, alamat email, nomor telepon (opsional), subjek, dan pesan. Informasi ini dikirim ke server backend saya dan digunakan semata-mata untuk membalas pesan Anda.',
+          '<strong>Komentar (Disqus)</strong> — Komentar di postingan blog didukung oleh Disqus, layanan komentar pihak ketiga. Saat Anda meninggalkan komentar, Disqus dapat mengumpulkan nama, email, alamat IP, dan informasi apa pun yang Anda pilih untuk dibagikan. Silakan lihat <a class="text-purple-400 hover:text-purple-300 underline" href="https://help.disqus.com/en/articles/1717103-disqus-privacy-policy" target="_blank" rel="noopener noreferrer">Kebijakan Privasi Disqus</a> untuk detailnya.',
+          '<strong>CAPTCHA (Cloudflare Turnstile)</strong> — Formulir kontak dilindungi oleh Cloudflare Turnstile untuk mencegah spam. Cloudflare dapat mengumpulkan informasi tertentu (seperti alamat IP dan data browser) untuk verifikasi keamanan. Lihat <a class="text-purple-400 hover:text-purple-300 underline" href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Kebijakan Privasi Cloudflare</a>.',
+          '<strong>Autentikasi</strong> — Jika Anda memiliki akun admin dan masuk ke dasbor, email dan kata sandi yang di-hash disimpan di database backend. Sesi login dikelola melalui token autentikasi.',
+          '<strong>Preferensi Tema</strong> — Website ini menyimpan preferensi tema terang/gelap Anda di localStorage browser Anda. Tidak ada data pribadi yang dikirim atau disimpan di server mana pun untuk fitur ini.',
+        ],
+      },
+      automatically: {
+        title: '3. Informasi yang Dikumpulkan Secara Otomatis',
+        content: 'Saya tidak menggunakan layanan analitik apa pun (seperti Google Analytics) di website ini. Namun, penyedia hosting saya atau Cloudflare (jika digunakan sebagai proxy) mungkin mencatat data akses server standar termasuk alamat IP, jenis browser, stempel waktu, dan halaman yang dikunjungi untuk tujuan operasional dan keamanan. Log ini tidak digunakan untuk melacak pengunjung individu.',
+      },
+      cookies: {
+        title: '4. Cookie dan Penyimpanan Lokal',
+        list: [
+          '<strong>Preferensi tema</strong> — Disimpan di localStorage saja. Bukan cookie, dan tidak dikirim ke server mana pun.',
+          '<strong>Token autentikasi</strong> — Disimpan sebagai cookie atau di localStorage saat Anda masuk ke dasbor admin. Diperlukan untuk manajemen sesi.',
+          '<strong>Disqus</strong> — Disqus dapat mengatur cookie untuk fungsionalitas komentar. Lihat kebijakan privasi mereka yang ditautkan di atas.',
+          '<strong>Cloudflare Turnstile</strong> — Dapat mengatur cookie untuk verifikasi CAPTCHA.',
+        ],
+      },
+      howUsed: {
+        title: '5. Bagaimana Informasi Anda Digunakan',
+        list: [
+          '<strong>Pengiriman formulir kontak</strong> — Digunakan secara eksklusif untuk membaca pesan Anda dan membalas pertanyaan Anda. Informasi Anda tidak ditambahkan ke milis atau digunakan untuk pemasaran.',
+          '<strong>Komentar</strong> — Dikelola oleh Disqus. Saya tidak mengunduh, mengekspor, atau menyimpan data komentar secara terpisah.',
+          '<strong>Data login</strong> — Digunakan untuk mengautentikasi akses admin ke dasbor. Tidak pernah dibagikan kepada pihak ketiga.',
+        ],
+      },
+      sharing: {
+        title: '6. Berbagi Data',
+        content: 'Saya tidak menjual, memperdagangkan, atau membagikan informasi pribadi Anda kepada pihak ketiga untuk tujuan pemasaran mereka sendiri. Informasi dapat diproses oleh layanan pihak ketiga yang disebutkan di atas (Disqus, Cloudflare) sebagaimana diperlukan untuk fungsionalitas yang mereka sediakan di website ini.',
+      },
+      retention: {
+        title: '7. Penyimpanan Data',
+        list: [
+          '<strong>Pesan formulir kontak</strong> — Disimpan di database backend tanpa batas waktu untuk referensi, kecuali Anda meminta penghapusan.',
+          '<strong>Komentar</strong> — Dikelola oleh Disqus. Silakan lihat kebijakan Disqus untuk praktik penyimpanan mereka.',
+          '<strong>Akun login</strong> — Disimpan selama akun admin aktif.',
+        ],
+      },
+      security: {
+        title: '8. Keamanan',
+        content: 'Saya mengambil langkah-langkah yang wajar untuk melindungi informasi pribadi Anda. Formulir kontak menggunakan Cloudflare Turnstile untuk mencegah pengiriman spam otomatis. Semua komunikasi API dilakukan melalui HTTPS. Namun, tidak ada metode transmisi melalui Internet yang 100% aman, dan saya tidak dapat menjamin keamanan absolut.',
+      },
+      rights: {
+        title: '9. Hak Anda',
+        list: [
+          'Meminta salinan data pribadi apa pun yang saya simpan tentang Anda.',
+          'Meminta koreksi atau penghapusan data pribadi Anda.',
+          'Menarik persetujuan kapan saja jika pemrosesan didasarkan pada persetujuan.',
+          'Untuk menggunakan hak-hak ini, silakan hubungi saya melalui halaman kontak.',
+        ],
+      },
+      children: {
+        title: '10. Privasi Anak',
+        content: 'Website ini tidak ditujukan untuk anak-anak di bawah usia 13 tahun. Saya tidak dengan sengaja mengumpulkan informasi pribadi dari anak-anak. Jika Anda yakin seorang anak telah memberikan informasi pribadi melalui website ini, silakan hubungi saya dan saya akan segera menghapusnya.',
+      },
+      externalLinks: {
+        title: '11. Tautan Eksternal',
+        content: 'Postingan blog dan halaman portofolio mungkin berisi tautan ke website eksternal. Saya tidak bertanggung jawab atas praktik privasi atau konten situs pihak ketiga tersebut. Silakan tinjau kebijakan privasi masing-masing.',
+      },
+      changes: {
+        title: '12. Perubahan Kebijakan Ini',
+        content: 'Saya dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu. Perubahan akan diposting di halaman ini dengan tanggal revisi yang diperbarui. Melanjutkan penggunaan website ini setelah perubahan diposting merupakan penerimaan atas perubahan tersebut.',
+      },
+      contact: {
+        title: '13. Kontak',
+        content: 'Jika Anda memiliki pertanyaan, kekhawatiran, atau permintaan terkait Kebijakan Privasi ini atau data pribadi Anda, silakan hubungi melalui <a class="text-purple-400 hover:text-purple-300 underline" href="/contact" data-link="contact">halaman kontak</a>.',
+      },
+    },
+    footer: 'Kebijakan ini ditulis dalam bahasa yang sederhana agar setransparan mungkin. Jika ada yang kurang jelas, jangan ragu untuk bertanya.',
+  },
+  terms: {
+    documentTitle: 'Syarat & Ketentuan | Eriscoo',
+    title: 'Syarat & Ketentuan',
+    lastUpdated: 'Terakhir diperbarui: 20 Juli 2026',
+    intro: 'Selamat datang di Eriscoo. Dengan mengakses dan menggunakan website ini, Anda setuju untuk terikat oleh syarat dan ketentuan berikut. Jika Anda tidak setuju dengan bagian mana pun dari ketentuan ini, mohon jangan gunakan website ini.',
+    sections: {
+      overview: {
+        title: '1. Gambaran Umum',
+        content: 'Website ini adalah blog pribadi dan portofolio. Istilah "saya" merujuk pada Eriscoo, pemilik dan pengelola website ini. Istilah "Anda" merujuk pada pengunjung atau pengguna website ini.',
+      },
+      content: {
+        title: '2. Konten',
+        list: [
+          '<strong>Postingan Blog</strong> — Semua artikel dan postingan yang dipublikasikan di website ini mencerminkan opini, pengalaman, dan pengetahuan pribadi saya pada saat penulisan. Konten disediakan untuk tujuan informasi saja dan tidak boleh dianggap sebagai saran profesional.',
+          '<strong>Akurasi</strong> — Meskipun saya berusaha untuk akurat, saya tidak menjamin bahwa informasi di website ini lengkap, akurat, atau terkini. Teknologi berkembang dengan cepat dan konten mungkin menjadi usang.',
+          '<strong>Contoh Kode</strong> — Kode atau contoh teknis apa pun yang dibagikan di blog ini disediakan "sebagaimana adanya" tanpa jaminan apa pun. Anda bertanggung jawab untuk menguji dan memvalidasi kode sebelum menggunakannya di proyek Anda sendiri.',
+        ],
+      },
+      intellectualProperty: {
+        title: '3. Hak Kekayaan Intelektual',
+        list: [
+          '<strong>Konten Sendiri</strong> — Kecuali dinyatakan lain, semua konten asli di website ini (termasuk teks, gambar, dan kode) adalah hak kekayaan intelektual saya. Anda dapat membagikan kutipan dengan atribusi yang tepat dan tautan kembali ke postingan asli.',
+          '<strong>Pembatasan</strong> — Anda tidak boleh mereproduksi, menerbitkan ulang, atau mendistribusikan ulang artikel lengkap tanpa izin tertulis eksplisit dari saya.',
+          '<strong>Konten Pihak Ketiga</strong> — Beberapa gambar, library, atau aset yang digunakan di website ini mungkin milik pihak ketiga dan digunakan di bawah lisensi masing-masing.',
+        ],
+      },
+      userConduct: {
+        title: '4. Perilaku Pengguna',
+        list: [
+          '<strong>Komentar (Disqus)</strong> — Komentar didukung oleh Disqus, layanan pihak ketiga. Dengan berkomentar, Anda setuju untuk mematuhi ketentuan layanan Disqus. Saya berhak memoderasi atau menghapus komentar yang berupa spam, ofensif, melecehkan, atau tidak pantas.',
+          '<strong>Formulir Kontak</strong> — Saat menggunakan formulir kontak, Anda setuju untuk memberikan informasi yang akurat dan tidak mengirimkan spam, konten berbahaya, atau pesan promosi yang tidak diminta.',
+          '<strong>Aktivitas yang Dilarang</strong> — Anda tidak boleh mencoba mendapatkan akses tidak sah ke bagian mana pun dari website ini, servernya, atau sistem terkait apa pun. Scraping otomatis, crawling, atau data mining dilarang kecuali diizinkan secara eksplisit.',
+        ],
+      },
+      thirdParty: {
+        title: '5. Layanan Pihak Ketiga',
+        list: [
+          '<strong>Disqus</strong> — Komentar ditangani oleh Disqus. Penggunaan Anda pada kolom komentar tunduk pada <a class="text-purple-400 hover:text-purple-300 underline" href="https://help.disqus.com/en/articles/1717103-disqus-privacy-policy" target="_blank" rel="noopener noreferrer">Ketentuan Layanan Disqus</a>.',
+          '<strong>Cloudflare Turnstile</strong> — Formulir kontak menggunakan Cloudflare Turnstile untuk perlindungan spam, tunduk pada <a class="text-purple-400 hover:text-purple-300 underline" href="https://www.cloudflare.com/website-terms/" target="_blank" rel="noopener noreferrer">Ketentuan Layanan Cloudflare</a>.',
+          '<strong>Tautan Eksternal</strong> — Website ini mungkin berisi tautan ke website pihak ketiga. Saya tidak bertanggung jawab atas konten, akurasi, atau praktik situs eksternal tersebut. Mengklik tautan eksternal adalah risiko Anda sendiri.',
+        ],
+      },
+      disclaimer: {
+        title: '6. Penyangkalan Jaminan',
+        content: 'Website ini disediakan "sebagaimana adanya" dan "sebagaimana tersedia". Saya tidak memberikan jaminan apa pun, tersurat maupun tersirat, mengenai pengoperasian website ini atau informasi, konten, atau materi yang disertakan. Saya tidak menjamin bahwa website ini akan tidak terganggu, bebas kesalahan, atau bebas dari virus atau komponen berbahaya lainnya.',
+      },
+      limitation: {
+        title: '7. Batasan Tanggung Jawab',
+        content: 'Sejauh diizinkan oleh hukum yang berlaku, saya tidak bertanggung jawab atas kerusakan langsung, tidak langsung, insidental, konsekuensial, atau punitif yang timbul dari penggunaan atau ketidakmampuan Anda menggunakan website ini. Ini termasuk kerusakan akibat kesalahan, kelalaian, gangguan, cacat, keterlambatan, atau kegagalan kinerja apa pun.',
+      },
+      changes: {
+        title: '8. Perubahan Ketentuan Ini',
+        content: 'Saya berhak mengubah ketentuan ini kapan saja tanpa pemberitahuan sebelumnya. Perubahan akan berlaku segera setelah diposting di halaman ini. Penggunaan website ini secara berkelanjutan setelah perubahan apa pun merupakan penerimaan Anda atas ketentuan yang direvisi. Anda bertanggung jawab untuk meninjau ketentuan ini secara berkala.',
+      },
+      governing: {
+        title: '9. Hukum yang Berlaku',
+        content: 'Syarat dan ketentuan ini diatur oleh dan ditafsirkan sesuai dengan hukum Republik Indonesia. Setiap perselisihan yang timbul dari atau berkaitan dengan ketentuan ini akan tunduk pada yurisdiksi eksklusif pengadilan di Indonesia.',
+      },
+      contact: {
+        title: '10. Kontak',
+        content: 'Jika Anda memiliki pertanyaan atau kekhawatiran tentang Syarat & Ketentuan ini, silakan hubungi melalui <a class="text-purple-400 hover:text-purple-300 underline" href="/contact" data-link="contact">halaman kontak</a>.',
+      },
+    },
   },
   allPosts: {
     documentTitle: 'Semua Postingan | Eriscoo',

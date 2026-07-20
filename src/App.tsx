@@ -16,6 +16,8 @@ const Portfolio = lazy(() => import('./pages/portfolio'))
 const Contact = lazy(() => import('./pages/contact'))
 const AllPosts = lazy(() => import('./pages/all-posts'))
 const About = lazy(() => import('./pages/about'))
+const Privacy = lazy(() => import('./pages/privacy'))
+const Terms = lazy(() => import('./pages/terms'))
 const NotFound = lazy(() => import('./pages/not-found'))
 
 function App() {
@@ -91,6 +93,14 @@ function App() {
 
     if (path === '/about') {
       return <About navigate={navigate} />
+    }
+
+    if (path === '/privacy-policy') {
+      return <Privacy navigate={navigate} />
+    }
+
+    if (path === '/terms-and-conditions') {
+      return <Terms navigate={navigate} />
     }
 
     if (path === '/posts') {
