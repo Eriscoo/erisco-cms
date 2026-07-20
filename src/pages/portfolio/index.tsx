@@ -107,6 +107,7 @@ const expertise = [
   { name: 'React.js', icon: '/assets/portfolio/react.png', level: 'advanced', pct: 90 },
   { name: 'Vue.js', icon: '/assets/portfolio/vue.png', level: 'advanced', pct: 90 },
   { name: 'Go', icon: '/assets/portfolio/golang.png', level: 'intermediate', pct: 70 },
+  { name: 'TypeScript', icon: '/assets/portfolio/typescript.png', level: 'intermediate', pct: 85 },
   { name: '.NET', icon: '/assets/portfolio/netframework.png', level: 'intermediate', pct: 85 },
   { name: 'Java', icon: '/assets/portfolio/java.png', level: 'intermediate', pct: 80 },
   { name: 'Figma', icon: '/assets/portfolio/figma.png', darkIcon: '/assets/portfolio/Fima_dark.png', level: 'advanced', pct: 90 },
