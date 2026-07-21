@@ -54,9 +54,10 @@ const en = {
     subtitle: 'See my latest posts',
     recentPosts: 'Stories, thoughts, and ideas.',
     hero: {
-      headline: 'Digital Works, Real Stories',
+      headline: 'Build What Matters, Tell It Your Way',
       description: 'Developer thoughts, project showcases, and tech insights. Sometimes serious, sometimes casual.',
       cta: 'My Portfolio',
+      contact: 'Contact',
     },
   },
   login: {

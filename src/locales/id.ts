@@ -56,9 +56,10 @@ const id: Locale = {
     subtitle: 'Lihat postingan terbaru saya',
     recentPosts: 'Cerita, pemikiran, dan ide.',
     hero: {
-      headline: 'Karya Digital, Cerita Nyata',
+      headline: 'Buat Hal Berarti, Sampaikan Dengan Caramu',
       description: 'Curhatan developer, showcase karya, dan insight teknologi yang kadang serius kadang santai.',
       cta: 'Portofolio Saya',
+      contact: 'Kontak',
     },
   },
   login: {

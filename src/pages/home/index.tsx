@@ -57,21 +57,20 @@ function Home({ navigate }: Props) {
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+          {/* Aurora waves */}
+          <div className="absolute -top-32 left-0 w-[600px] h-[500px] bg-purple-500/[0.08] rounded-full blur-3xl pointer-events-none" style={{ transform: 'rotate(-12deg) skewX(12deg)' }} />
+          <div className="absolute top-1/4 -right-32 w-[500px] h-[400px] bg-fuchsia-500/[0.06] rounded-full blur-3xl pointer-events-none" style={{ transform: 'rotate(6deg) skewX(-8deg)' }} />
+          <div className="absolute -bottom-32 left-1/4 w-[700px] h-[450px] bg-blue-500/[0.07] rounded-full blur-3xl pointer-events-none" style={{ transform: 'rotate(-5deg) skewX(6deg)' }} />
+          <div className="absolute top-0 right-1/4 w-[400px] h-[300px] bg-cyan-500/[0.05] rounded-full blur-2xl pointer-events-none" style={{ transform: 'rotate(15deg) skewX(-4deg)' }} />
 
-          <div className="max-w-[1280px] mx-auto px-4 md:px-8 py-28">
+          <div className="max-w-[1280px] mx-auto px-4 md:px-8 py-16 md:py-28">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
               <div className="flex-1 text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-purple-500/20 bg-purple-500/10 text-purple-300 text-xs md:text-sm font-medium mb-6">
-                  <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
-                  {t.home.welcome}
-                </div>
 
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                  <span className="text-white">{t.home.hero.headline.split(' ').slice(0, 2).join(' ')} </span>
-                  <span className="bg-gradient-to-r from-purple-400 to-purple-200 bg-clip-text text-transparent">
-                    {t.home.hero.headline.split(' ').slice(2).join(' ')}
+                  <span className="text-white">{t.home.hero.headline.split(' ').slice(0, 3).join(' ')} </span>
+                  <span className="bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
+                    {t.home.hero.headline.split(' ').slice(3).join(' ')}
                   </span>
                 </h1>
 
@@ -85,6 +84,9 @@ function Home({ navigate }: Props) {
                     <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
+                  </Button>
+                  <Button variant="outline" size="lg" onClick={() => navigate('/contact')}>
+                    {t.home.hero.contact}
                   </Button>
                 </div>
               </div>
@@ -134,7 +136,7 @@ function Home({ navigate }: Props) {
             {t.home.subtitle}
           </h2>
 
-          <p className="text-zinc-400 text-sm md:text-base mb-8 text-center md:text-left">
+          <p className="text-zinc-400 text-sm md:text-base mb-8 md:mb-12 text-center md:text-left">
             {t.home.recentPosts}
           </p>
 
