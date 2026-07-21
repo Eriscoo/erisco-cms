@@ -61,6 +61,20 @@ const id: Locale = {
       cta: 'Portofolio Saya',
       contact: 'Kontak',
     },
+    highlights: [
+      { title: 'Linux User', description: 'Saya termasuk pecinta linux, terutama KDE.' },
+      { title: 'React', description: 'Saya membangun UI modern dengan React & ekosistemnya.' },
+      { title: 'Figma', description: 'Saya mendesain antarmuka yang bersih dan intuitif.' },
+      { title: 'Go', description: 'Saya menulis backend dan CLI tools yang cepat dengan Go.' },
+      { title: 'TypeScript', description: 'Saya menggunakan TypeScript untuk aplikasi yang skalabel.' },
+      { title: '.NET', description: 'Saya membangun aplikasi enterprise yang solid dengan .NET.' },
+    ],
+    highlightsMore: 'Lebih banyak',
+    philosophy: {
+      title: 'Filosofi Saya',
+      subtitle: 'Apa yang mendorong saya dan bagaimana saya bekerja.',
+      quote: 'Menulis kode yang bertahan lebih lama dari deadline. Membangun hal yang berarti, bukan sekadar yang berfungsi. Setiap baris adalah kesempatan belajar.',
+    },
   },
   login: {
     documentTitle: 'Masuk | Eriscoo',

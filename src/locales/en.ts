@@ -59,6 +59,20 @@ const en = {
       cta: 'My Portfolio',
       contact: 'Contact',
     },
+    highlights: [
+      { title: 'Linux User', description: 'I\'m a Linux enthusiast, especially fond of KDE.' },
+      { title: 'React', description: 'I build modern UIs with React & its ecosystem.' },
+      { title: 'Figma', description: 'I design clean and intuitive interfaces.' },
+      { title: 'Go', description: 'I write performant backends and CLI tools in Go.' },
+      { title: 'TypeScript', description: 'I use TypeScript for scalable applications.' },
+      { title: '.NET', description: 'I build robust enterprise applications with .NET.' },
+    ],
+    highlightsMore: 'More',
+    philosophy: {
+      title: 'My Philosophy',
+      subtitle: 'What drives me and how I approach my work.',
+      quote: 'Write code that outlasts the deadline. Build things that matter, not just things that work. Every line is a chance to learn something new.',
+    },
   },
   login: {
     documentTitle: 'Login | Eriscoo',

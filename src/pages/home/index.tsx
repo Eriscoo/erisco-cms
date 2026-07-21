@@ -130,6 +130,53 @@ function Home({ navigate }: Props) {
           </div>
         </section>
 
+        {/* Highlights section */}
+        <section className="max-w-[1280px] mx-auto px-4 md:px-8 py-16 md:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+            {t.home.highlights.map((item, i) => {
+              const icons = ['opensuse.png', 'react.png', 'figma.png', 'golang.png', 'typescript.png', 'netframework.png']
+              return (
+              <div key={i} className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg border border-white/10 flex items-center justify-center overflow-hidden">
+                  <img src={`/assets/image/${icons[i]}`} alt={item.title} className="w-6 h-6 object-contain" />
+                </div>
+                <div>
+                  <h3 className="text-white font-semibold text-sm md:text-base mb-1">{item.title}</h3>
+                  <p className="text-zinc-400 text-sm leading-relaxed">{item.description}</p>
+                </div>
+              </div>
+              )
+            })}
+          </div>
+          <div className="flex justify-center mt-12">
+            <Button variant="outline" size="lg" onClick={() => navigate('/portfolio')}>
+              {t.home.highlightsMore}
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </Button>
+          </div>
+        </section>
+
+        {/* Philosophy section */}
+        <section className="bg-zinc-950 py-16 md:py-20">
+          <div className="max-w-[1280px] mx-auto px-4 md:px-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 text-center md:text-left">
+              {t.home.philosophy.title}
+            </h2>
+            <p className="text-zinc-400 text-sm md:text-base mb-8 md:mb-12 text-center md:text-left">
+              {t.home.philosophy.subtitle}
+            </p>
+            <div className="max-w-3xl mx-auto md:mx-0">
+              <div className="border-l-2 border-purple-500/30 pl-6">
+                <p className="text-zinc-300 text-base md:text-lg leading-relaxed italic">
+                  "{t.home.philosophy.quote}"
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Recent posts section */}
         <section className="max-w-[1280px] mx-auto px-4 md:px-8 py-16 md:py-20">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-3 text-center md:text-left">
