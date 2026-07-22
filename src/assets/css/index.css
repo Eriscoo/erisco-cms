@@ -816,3 +816,8 @@ html.light .highlight {
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+
+/* Turnstile widget */
+.turnstile-widget {
+  overflow: hidden;
+}

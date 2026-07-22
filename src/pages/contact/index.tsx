@@ -259,7 +259,7 @@ function Contact({ navigate }: Props) {
             />
           </label>
 
-          <div ref={turnstileContainerRef} className="turnstile-widget" />
+          <div ref={turnstileContainerRef} className="turnstile-widget mt-1.5" />
 
           <Button type="submit" loading={submitting} size="lg">
             {submitting ? t.contact.submitting : t.contact.submit}
