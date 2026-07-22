@@ -21,7 +21,7 @@ const colors: Record<string, { primary: string; secondary: string; gradient: str
 }
 
 const variants: Record<string, string> = {
-  outline: 'bg-transparent text-zinc-300 border border-white/10 hover:text-white hover:border-white/20 hover:bg-white/5',
+  outline: 'bg-transparent text-zinc-400 border border-white/10 hover:text-white hover:border-white/20 hover:bg-white/5',
   ghost: 'bg-transparent text-zinc-400 hover:text-white hover:bg-white/5 border-0',
 }
 

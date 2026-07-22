@@ -218,7 +218,7 @@ function Portfolio({ navigate }: Props) {
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
 
-          <div className="max-w-[1280px] mx-auto px-4 md:px-8 py-28">
+          <div className="max-w-[1280px] mx-auto px-4 md:px-8 py-16 md:py-28">
             <div className="text-center max-w-2xl mx-auto">
               {/* Avatar */}
               <div className="relative inline-block mb-10">
@@ -611,7 +611,7 @@ function Portfolio({ navigate }: Props) {
 
         {/* CTA Section */}
         <section className="max-w-[1280px] mx-auto px-4 md:px-8 py-16 md:py-20">
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-600/10 to-blue-600/10 border border-purple-500/20 p-8 md:p-20 text-center">
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-purple-600/10 to-blue-600/10 border border-purple-500/20 p-16 md:p-20 text-center">
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-purple-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none" />
             <h2 className="text-xl md:text-3xl font-bold text-white mb-3 relative z-10">{t.portfolio.cta.title}</h2>
             <p className="text-zinc-400 text-sm md:text-base mb-6 max-w-2xl mx-auto relative z-10">{t.portfolio.cta.text}</p>

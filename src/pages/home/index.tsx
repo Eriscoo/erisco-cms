@@ -76,7 +76,7 @@ function Home({ navigate }: Props) {
                   </span>
                 </h1>
 
-                <p className="text-zinc-400 text-base md:text-lg leading-relaxed max-w-xl mb-12 mx-auto lg:mx-0">
+                <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-xl mb-12 mx-auto lg:mx-0">
                   {t.home.hero.description}
                 </p>
 
