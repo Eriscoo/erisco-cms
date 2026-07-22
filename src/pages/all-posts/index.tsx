@@ -8,6 +8,7 @@ import Footer from '../../components/footer'
 import Breadcrumb from '../../components/breadcrumb'
 import Button from '../../components/button'
 import Spinner from '../../components/spinner'
+import Pagination from '../../components/pagination'
 
 interface Props {
   navigate: (path: string) => void
@@ -39,30 +40,21 @@ function AllPosts({ navigate }: Props) {
   const [page, setPage] = useState(1)
   const [total, setTotal] = useState(0)
   const [loading, setLoading] = useState(true)
-  const [loadingMore, setLoadingMore] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
   const limit = 10
 
-  const fetchPosts = useCallback(async (pageNum: number, append = false) => {
+  const fetchPosts = useCallback(async (pageNum: number) => {
     try {
-      if (append) setLoadingMore(true)
-      else setLoading(true)
-
+      setLoading(true)
       const data = await getPublicPosts(pageNum, limit)
-
-      if (append) {
-        setPosts((prev) => [...prev, ...data.posts])
-      } else {
-        setPosts(data.posts)
-      }
+      setPosts(data.posts)
       setTotal(data.total)
       setError(null)
     } catch (err) {
       setError(err instanceof Error ? err.message : t.allPosts.failed)
     } finally {
       setLoading(false)
-      setLoadingMore(false)
     }
   }, [t])
 
@@ -71,13 +63,11 @@ function AllPosts({ navigate }: Props) {
     fetchPosts(1)
   }, [t, fetchPosts])
 
-  function handleLoadMore() {
-    const nextPage = page + 1
-    setPage(nextPage)
-    fetchPosts(nextPage, true)
+  function handlePageChange(p: number) {
+    setPage(p)
+    fetchPosts(p)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
-
-  const hasMore = posts.length < total
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -183,17 +173,15 @@ function AllPosts({ navigate }: Props) {
               })}
             </div>
 
-            {(error || hasMore) && (
-            <div className="flex justify-center mt-8">
+            {(error || total > limit) && (
+            <div className="mt-6">
               {error ? (
                 <div className="flex flex-col items-center gap-3">
                   <p className="text-pink-400 text-sm">{error}</p>
-                  <Button variant="outline" size="sm" onClick={() => fetchPosts(page, true)}>{t.allPosts.retry}</Button>
+                  <Button variant="outline" size="sm" onClick={() => fetchPosts(page)}>{t.allPosts.retry}</Button>
                 </div>
               ) : (
-                <Button variant="outline" size="lg" onClick={handleLoadMore} loading={loadingMore} disabled={loadingMore}>
-                  {t.allPosts.loadMore}
-                </Button>
+                <Pagination current={page} total={total} perPage={limit} onChange={handlePageChange} />
               )}
             </div>
             )}

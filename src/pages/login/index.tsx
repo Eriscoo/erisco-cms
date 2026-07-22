@@ -69,7 +69,7 @@ function Login({ navigate }: Props) {
       </div>
 
       <div className="flex-1 flex items-center justify-center p-4">
-      <form onSubmit={handleSubmit} className="rounded-2xl p-6 md:p-8 w-full max-w-sm flex flex-col gap-4 mx-4">
+      <form onSubmit={handleSubmit} className="rounded-2xl w-full max-w-sm flex flex-col gap-4 md:gap-6">
         <div className="flex items-center justify-center">
           <img
             src={isLight ? '/assets/header/logo-dark.png' : '/assets/header/logo-light.png'}

@@ -195,9 +195,9 @@ function Contact({ navigate }: Props) {
           {t.contact.description}
         </p>
 
-        <form onSubmit={handleSubmit} className="w-full md:w-2/3 flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="w-full md:w-2/3 flex flex-col gap-4 md:gap-6">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             <label className="flex flex-col gap-1 text-sm text-zinc-400">
               <span>{t.contact.name}</span>
               <input
@@ -224,7 +224,7 @@ function Contact({ navigate }: Props) {
             </label>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             <label className="flex flex-col gap-1 text-sm text-zinc-400">
               <span>{t.contact.subject}</span>
               <input
