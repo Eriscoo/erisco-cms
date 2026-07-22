@@ -130,6 +130,13 @@ function Home({ navigate }: Props) {
           </div>
         </section>
 
+        {/* Section divider */}
+        <div className="max-w-[1280px] mx-auto px-4 md:px-8">
+          <div className="flex items-center gap-4">
+            <div className="h-px flex-1 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
+          </div>
+        </div>
+
         {/* Highlights section */}
         <section className="max-w-[1280px] mx-auto px-4 md:px-8 py-16 md:py-20">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
