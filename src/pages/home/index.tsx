@@ -85,9 +85,7 @@ function Home({ navigate }: Props) {
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </Button>
-                  <Button variant="outline" size="lg" onClick={() => navigate('/contact')}>
-                    {t.home.hero.contact}
-                  </Button>
+
                 </div>
               </div>
 
@@ -155,14 +153,7 @@ function Home({ navigate }: Props) {
               )
             })}
           </div>
-          <div className="flex justify-center mt-12">
-            <Button variant="outline" size="lg" onClick={() => navigate('/portfolio')}>
-              {t.home.highlightsMore}
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </Button>
-          </div>
+
         </section>
 
         {/* Philosophy section */}

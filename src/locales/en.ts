@@ -51,8 +51,8 @@ const en = {
   },
   home: {
     welcome: 'Welcome to Eriscoo',
-    subtitle: 'See my latest posts',
-    recentPosts: 'Stories, thoughts, and ideas.',
+    subtitle: 'Stories, Thoughts, and Ideas',
+    recentPosts: 'See my latest posts',
     hero: {
       headline: 'Build What Matters, Tell It Your Way',
       description: 'Developer thoughts, project showcases, and tech insights. Sometimes serious, sometimes casual.',
@@ -67,11 +67,10 @@ const en = {
       { title: 'TypeScript', description: 'I use TypeScript for scalable applications.' },
       { title: '.NET', description: 'I build robust enterprise applications with .NET.' },
     ],
-    highlightsMore: 'More',
     philosophy: {
       title: 'My Philosophy',
       subtitle: 'What drives me and how I approach my work.',
-      quote: 'Write code that outlasts the deadline. Build things that matter, not just things that work. Every line is a chance to learn something new.',
+      quote: 'Programming isn\'t about what you know; it\'s about what you can figure out. – Chris Pine, Learn to Program',
     },
   },
   login: {

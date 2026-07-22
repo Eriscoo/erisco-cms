@@ -53,8 +53,8 @@ const id: Locale = {
   },
   home: {
     welcome: 'Selamat Datang di Eriscoo',
-    subtitle: 'Lihat postingan terbaru saya',
-    recentPosts: 'Cerita, pemikiran, dan ide.',
+    subtitle: 'Cerita, Pemikiran, dan Ide',
+    recentPosts: 'Lihat postingan terbaru saya',
     hero: {
       headline: 'Buat Hal Berarti, Sampaikan Dengan Caramu',
       description: 'Curhatan developer, showcase karya, dan insight teknologi yang kadang serius kadang santai.',
@@ -69,11 +69,10 @@ const id: Locale = {
       { title: 'TypeScript', description: 'Saya menggunakan TypeScript untuk aplikasi yang skalabel.' },
       { title: '.NET', description: 'Saya membangun aplikasi enterprise yang solid dengan .NET.' },
     ],
-    highlightsMore: 'Lebih banyak',
     philosophy: {
       title: 'Filosofi Saya',
       subtitle: 'Apa yang mendorong saya dan bagaimana saya bekerja.',
-      quote: 'Menulis kode yang bertahan lebih lama dari deadline. Membangun hal yang berarti, bukan sekadar yang berfungsi. Setiap baris adalah kesempatan belajar.',
+      quote: 'Pemrograman bukan tentang apa yang Anda ketahui; tetapi tentang apa yang dapat Anda cari tahu. – Chris Pine, Learn to Program',
     },
   },
   login: {
