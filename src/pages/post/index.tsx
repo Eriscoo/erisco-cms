@@ -104,6 +104,46 @@ function PostDetail({ navigate, slug }: Props) {
       const headerHtml = '<div class="code-block-header"><span class="code-block-lang">' + langLabel + '</span>' + btn + '</div>'
       el.outerHTML = '<div class="editor-code-block">' + headerHtml + highlighted + '</div>'
     })
+
+    function walkInlineCode(node: Node) {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        const el = node as HTMLElement
+        if (el.tagName === 'PRE' || el.tagName === 'CODE') return
+        Array.from(el.childNodes).forEach(walkInlineCode)
+      } else if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent || ''
+        const regex = /`([^`]+)`/g
+        let match: RegExpExecArray | null
+        const parts: (string | Element)[] = []
+        let lastIndex = 0
+        let found = false
+        while ((match = regex.exec(text)) !== null) {
+          found = true
+          if (match.index > lastIndex) {
+            parts.push(text.slice(lastIndex, match.index))
+          }
+          const code = document.createElement('code')
+          code.textContent = match[1]
+          parts.push(code)
+          lastIndex = regex.lastIndex
+        }
+        if (!found) return
+        if (lastIndex < text.length) {
+          parts.push(text.slice(lastIndex))
+        }
+        const fragment = document.createDocumentFragment()
+        parts.forEach(part => {
+          if (typeof part === 'string') {
+            fragment.appendChild(document.createTextNode(part))
+          } else {
+            fragment.appendChild(part)
+          }
+        })
+        node.parentNode!.replaceChild(fragment, node)
+      }
+    }
+    walkInlineCode(dom.body)
+
     return dom.body.innerHTML
   }, [post?.body])
 
