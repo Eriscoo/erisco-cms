@@ -69,7 +69,7 @@ const id: Locale = {
       { title: 'TypeScript', description: 'Saya menggunakan TypeScript untuk aplikasi yang skalabel.' },
       { title: '.NET', description: 'Saya membangun aplikasi enterprise yang solid dengan .NET.' },
     ],
-    getInTouch: 'Hubungi Saya →',
+    getInTouch: 'Hubungi Saya',
     philosophy: {
       title: 'Filosofi Saya',
       subtitle: 'Apa yang menjadi motivasi saya dan bagaimana saya bekerja.',

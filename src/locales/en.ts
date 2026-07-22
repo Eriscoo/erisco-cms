@@ -67,7 +67,7 @@ const en = {
       { title: 'TypeScript', description: 'I use TypeScript for scalable applications.' },
       { title: '.NET', description: 'I build robust enterprise applications with .NET.' },
     ],
-    getInTouch: 'Get In Touch →',
+    getInTouch: 'Get In Touch',
     philosophy: {
       title: 'My Philosophy',
       subtitle: 'What drives me and how I approach my work.',

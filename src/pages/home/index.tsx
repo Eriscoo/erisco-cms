@@ -157,6 +157,9 @@ function Home({ navigate }: Props) {
           <div className="mt-12 md:mt-16">
             <Button variant="ghost" size="lg" className="w-full md:w-auto" onClick={() => navigate('/contact')}>
               {t.home.getInTouch}
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
             </Button>
           </div>
 
