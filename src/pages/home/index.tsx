@@ -65,7 +65,7 @@ function Home({ navigate }: Props) {
           <div className="absolute -bottom-32 left-1/4 w-[700px] h-[450px] bg-blue-500/[0.07] rounded-full blur-3xl pointer-events-none" style={{ transform: 'rotate(-5deg) skewX(6deg)' }} />
           <div className="absolute top-0 right-1/4 w-[400px] h-[300px] bg-cyan-500/[0.05] rounded-full blur-2xl pointer-events-none" style={{ transform: 'rotate(15deg) skewX(-4deg)' }} />
 
-          <div className="max-w-[1280px] mx-auto px-4 md:px-8 py-25 md:py-30">
+          <div className="max-w-[1280px] mx-auto px-4 md:px-8 py-38 md:py-30">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
               <div className="flex-1 text-left">
 
