@@ -74,7 +74,7 @@ function Home({ navigate }: Props) {
                   </span>
                 </h1>
 
-                <p className="text-zinc-400 text-base md:text-lg leading-relaxed max-w-xl mb-8 mx-auto lg:mx-0">
+                <p className="text-zinc-400 text-base md:text-lg leading-relaxed max-w-xl mb-12 mx-auto lg:mx-0">
                   {t.home.hero.description}
                 </p>
 
@@ -137,7 +137,7 @@ function Home({ navigate }: Props) {
 
         {/* Highlights section */}
         <section className="max-w-[1280px] mx-auto px-4 md:px-8 py-16 md:py-20">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
             {t.home.highlights.map((item, i) => {
               const icons = ['opensuse.png', 'react.png', 'figma.png', 'golang.png', 'typescript.png', 'netframework.png']
               return (
@@ -152,6 +152,12 @@ function Home({ navigate }: Props) {
               </div>
               )
             })}
+          </div>
+
+          <div className="mt-12 md:mt-16">
+            <Button variant="ghost" size="lg" className="w-full md:w-auto" onClick={() => navigate('/contact')}>
+              {t.home.getInTouch}
+            </Button>
           </div>
 
         </section>

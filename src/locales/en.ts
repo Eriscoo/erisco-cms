@@ -60,13 +60,14 @@ const en = {
       contact: 'Contact',
     },
     highlights: [
-      { title: 'Linux User', description: 'I\'m a Linux enthusiast, especially fond of KDE.' },
+      { title: 'Linux Lovers', description: 'I\'m a Linux enthusiast, especially fond of KDE.' },
       { title: 'React', description: 'I build modern UIs with React & its ecosystem.' },
-      { title: 'Figma', description: 'I design clean and intuitive interfaces.' },
-      { title: 'Go', description: 'I write performant backends and CLI tools in Go.' },
+      { title: 'Figma', description: 'I love clean design and intuitive interfaces.' },
+      { title: 'Golang', description: 'I write performant backends and CLI tools in Go, include this website.' },
       { title: 'TypeScript', description: 'I use TypeScript for scalable applications.' },
       { title: '.NET', description: 'I build robust enterprise applications with .NET.' },
     ],
+    getInTouch: 'Get In Touch →',
     philosophy: {
       title: 'My Philosophy',
       subtitle: 'What drives me and how I approach my work.',
