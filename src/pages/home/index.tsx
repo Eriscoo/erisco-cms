@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useLocale } from '../../locales'
+import { useRouter } from '../../utils/router'
 import { ENV } from '../../constants/env'
 import { getPublicPosts, type Post } from '../../modules/posts/api'
 import Header from '../../components/header'
@@ -32,6 +33,7 @@ function formatDate(dateStr: string | null): string {
 
 function Home({ navigate }: Props) {
   const { t } = useLocale()
+  const { prefetch } = useRouter()
   const [posts, setPosts] = useState<Post[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -207,6 +209,7 @@ function Home({ navigate }: Props) {
                     key={post.id}
                     className="group flex flex-col bg-zinc-900 border border-white/5 rounded-xl overflow-hidden hover:border-purple-500/20 transition-shadow duration-300 cursor-pointer"
                     onClick={() => navigate(`/${post.slug}`)}
+                    onMouseEnter={() => prefetch(`/${post.slug}`)}
                   >
                     <div className="aspect-video flex-shrink-0 overflow-hidden">
                       {post.image_url ? (
@@ -214,6 +217,7 @@ function Home({ navigate }: Props) {
                           src={`${ENV.API_URL}${post.image_url}`}
                           alt={post.title}
                           className="w-full h-full object-cover group-hover:opacity-90 transition-opacity duration-300"
+                          loading="lazy" decoding="async"
                         />
                       ) : (
                         <div className="w-full h-full bg-zinc-800 flex items-center justify-center group-hover:bg-zinc-700 transition-colors duration-300">

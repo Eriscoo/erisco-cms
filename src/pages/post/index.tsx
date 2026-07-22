@@ -167,7 +167,7 @@ function PostDetail({ navigate, slug }: Props) {
           <div className="flex items-center gap-3">
             {post.author_avatar_url ? (
               <img src={`${ENV.API_URL}${post.author_avatar_url}`} alt={post.created_by_name}
-                className="w-9 h-9 rounded-full object-cover flex-shrink-0" />
+                className="w-9 h-9 rounded-full object-cover flex-shrink-0" loading="lazy" />
             ) : (
               <div className="w-9 h-9 rounded-full bg-gradient-to-br from-purple-500 to-teal-400 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">
                 {post.created_by_name ? post.created_by_name.charAt(0).toUpperCase() : 'U'}
@@ -191,7 +191,7 @@ function PostDetail({ navigate, slug }: Props) {
         {post.image_url && (
           <div className="w-full aspect-video rounded-lg overflow-hidden mb-8 cursor-pointer" onClick={() => setLightbox(`${ENV.API_URL}${post.image_url}`)}>
             <img src={`${ENV.API_URL}${post.image_url}`} alt={post.title}
-              className="w-full h-full object-cover hover:opacity-90 transition-opacity" />
+              className="w-full h-full object-cover hover:opacity-90 transition-opacity" fetchPriority="high" loading="eager" />
           </div>
         )}
 

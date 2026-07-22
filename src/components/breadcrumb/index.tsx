@@ -1,3 +1,5 @@
+import { useRouter } from '../../utils/router'
+
 interface Crumb {
   label: string
   path?: string
@@ -12,6 +14,7 @@ interface Props {
 
 function Breadcrumb({ items, navigate, variant = 'dashboard', className = '' }: Props) {
   const isDefault = variant === 'default'
+  const { prefetch } = useRouter()
 
   return (
     <nav className={`flex items-center text-xs text-zinc-500 ${isDefault ? 'gap-2' : 'gap-1.5'} ${className}`}>
@@ -32,6 +35,7 @@ function Breadcrumb({ items, navigate, variant = 'dashboard', className = '' }: 
             {item.path && !isLast ? (
               <button
                 onClick={() => navigate(item.path!)}
+                onMouseEnter={() => prefetch(item.path!)}
                 className={`cursor-pointer transition-colors font-normal bg-transparent border-0 p-0 ${isDefault ? 'hover:text-purple-300 text-zinc-500' : 'text-zinc-500 hover:text-purple-400'}`}
               >
                 {item.label}

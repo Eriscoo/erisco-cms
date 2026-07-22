@@ -21,7 +21,7 @@ interface Props {
 
 function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, navigate, onMenuToggle }: Props) {
   const { t } = useLocale()
-  const { path } = useRouter()
+  const { path, prefetch } = useRouter()
   const loggedIn = isLoggedIn()
   const isLight = useIsLight()
   const [userName, setUserName] = useState(propUserName || '')
@@ -98,6 +98,7 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
               <button
                 key={item.path}
                 onClick={() => handleMobileNav(item.path)}
+                onMouseEnter={() => prefetch(item.path)}
                 className={`flex items-center h-10 rounded-lg text-sm cursor-pointer w-full px-3 gap-2.5 transition-colors ${
                 path === item.path ? 'bg-purple-500/15 text-purple-300 font-medium' : 'text-zinc-400 hover:bg-white/5 hover:text-zinc-200'
               }`}
@@ -147,6 +148,7 @@ function Header({ variant, userName: propUserName, avatarUrl: propAvatarUrl, nav
                 variant={path === item.path ? 'secondary' : 'ghost'}
                 size="sm"
                 onClick={() => navigate(item.path)}
+                onMouseEnter={() => prefetch(item.path)}
               >
                 {item.label}
               </Button>

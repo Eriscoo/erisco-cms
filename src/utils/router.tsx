@@ -1,9 +1,16 @@
 import { createContext, useContext, useState, useEffect, useRef, type ReactNode } from 'react'
 
+const prefetchMap = new Map<string, () => Promise<unknown>>()
+
+export function registerPrefetch(path: string, loader: () => Promise<unknown>) {
+  if (!prefetchMap.has(path)) prefetchMap.set(path, loader)
+}
+
 interface RouterState {
   path: string
   navigate: (to: string) => void
   navigating: boolean
+  prefetch: (path: string) => void
 }
 
 const RouterContext = createContext<RouterState | null>(null)
@@ -30,8 +37,15 @@ export function RouterProvider({ children }: { children: ReactNode }) {
     timerRef.current = setTimeout(() => setNavigating(false), 400)
   }
 
+  function prefetch(path: string) {
+    const loader = prefetchMap.get(path)
+    if (loader) { loader(); return }
+    const slugLoader = prefetchMap.get('/:slug')
+    if (slugLoader && path.match(/^\/[^/]+$/)) slugLoader()
+  }
+
   return (
-    <RouterContext.Provider value={{ path, navigate, navigating }}>
+    <RouterContext.Provider value={{ path, navigate, navigating, prefetch }}>
       {children}
     </RouterContext.Provider>
   )

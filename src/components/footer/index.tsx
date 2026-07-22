@@ -1,4 +1,5 @@
 import { useIsLight } from '../../hooks/use-is-light'
+import { useRouter } from '../../utils/router'
 
 interface Props {
   navigate: (path: string) => void
@@ -6,6 +7,7 @@ interface Props {
 
 function Footer({ navigate }: Props) {
   const isLight = useIsLight()
+  const { prefetch } = useRouter()
 
   return (
     <footer className="text-xs text-zinc-600">
@@ -31,10 +33,10 @@ function Footer({ navigate }: Props) {
               </span>
             </span>
             <span className="flex items-center gap-4">
-              <button onClick={() => navigate('/privacy-policy')} className="text-purple-400 hover:text-purple-200 transition-colors cursor-pointer bg-transparent border-0 p-0 font-semibold">
+              <button onClick={() => navigate('/privacy-policy')} onMouseEnter={() => prefetch('/privacy-policy')} className="text-purple-400 hover:text-purple-200 transition-colors cursor-pointer bg-transparent border-0 p-0 font-semibold">
                 Privacy Policy
               </button>
-              <button onClick={() => navigate('/terms-and-conditions')} className="text-purple-400 hover:text-purple-200 transition-colors cursor-pointer bg-transparent border-0 p-0 font-semibold">
+              <button onClick={() => navigate('/terms-and-conditions')} onMouseEnter={() => prefetch('/terms-and-conditions')} className="text-purple-400 hover:text-purple-200 transition-colors cursor-pointer bg-transparent border-0 p-0 font-semibold">
                 T&amp;C
               </button>
             </span>
@@ -45,10 +47,10 @@ function Footer({ navigate }: Props) {
             &copy; {new Date().getFullYear()} Eriscoo.com | All Rights Reserved.
           </span>
           <span className="flex items-center gap-4 md:hidden">
-            <button onClick={() => navigate('/privacy-policy')} className="text-purple-400 hover:text-purple-200 transition-colors cursor-pointer bg-transparent border-0 p-0 font-semibold text-xs">
+            <button onClick={() => navigate('/privacy-policy')} onMouseEnter={() => prefetch('/privacy-policy')} className="text-purple-400 hover:text-purple-200 transition-colors cursor-pointer bg-transparent border-0 p-0 font-semibold text-xs">
               Privacy Policy
             </button>
-            <button onClick={() => navigate('/terms-and-conditions')} className="text-purple-400 hover:text-purple-200 transition-colors cursor-pointer bg-transparent border-0 p-0 font-semibold text-xs">
+            <button onClick={() => navigate('/terms-and-conditions')} onMouseEnter={() => prefetch('/terms-and-conditions')} className="text-purple-400 hover:text-purple-200 transition-colors cursor-pointer bg-transparent border-0 p-0 font-semibold text-xs">
               T&amp;C
             </button>
           </span>

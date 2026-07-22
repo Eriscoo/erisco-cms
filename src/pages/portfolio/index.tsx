@@ -480,7 +480,7 @@ function Portfolio({ navigate }: Props) {
                 title={tech.name}
                 className="h-12 md:h-18 w-auto rounded-xl border border-white/5 flex items-center justify-center p-3 md:p-5 hover:border-purple-500/30"
               >
-                <img src={!isLight && tech.darkIcon ? tech.darkIcon : tech.icon} alt={tech.name} className="h-full w-auto object-contain" />
+                <img src={!isLight && tech.darkIcon ? tech.darkIcon : tech.icon} alt={tech.name} className="h-full w-auto object-contain" loading="lazy" />
               </div>
             ))}
           </div>
@@ -553,7 +553,7 @@ function Portfolio({ navigate }: Props) {
                         {/* Bottom-left decorative */}
                         <div className="absolute -bottom-3 -left-3 w-10 h-10 bg-purple-500/10 rounded-lg -rotate-6 pointer-events-none hidden lg:block" />
                         {project.image && (
-                          <img src={project.image} alt={project.title} className="relative w-full object-cover aspect-video rounded-lg" />
+                          <img src={project.image} alt={project.title} className="relative w-full object-cover aspect-video rounded-lg" loading="lazy" />
                         )}
                         {/* Top-right decorative in front */}
                         <div className="absolute -top-4 -right-4 w-14 h-14 border border-purple-500/20 rounded-xl rotate-12 pointer-events-none hidden lg:block" />
