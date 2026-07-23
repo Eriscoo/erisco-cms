@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useLocale } from '../../locales'
 import { useIsLight } from '../../hooks/use-is-light'
 import Header from '../../components/header'
@@ -194,6 +194,29 @@ function Portfolio({ navigate }: Props) {
   const isLight = useIsLight()
   const [activeProject, setActiveProject] = useState(0)
   const [paused, setPaused] = useState(false)
+  const [expertisePaused, setExpertisePaused] = useState(false)
+  const expertiseTrackRef = useRef<HTMLDivElement>(null)
+  const expertisePosRef = useRef(0)
+
+  useEffect(() => {
+    if (expertisePaused) return
+    const el = expertiseTrackRef.current
+    if (!el) return
+
+    let animId: number
+    const animate = () => {
+      expertisePosRef.current -= 1
+      const singleSetWidth = el.scrollWidth / 2
+      if (Math.abs(expertisePosRef.current) >= singleSetWidth) {
+        expertisePosRef.current += singleSetWidth
+      }
+      el.style.transform = `translateX(${expertisePosRef.current}px)`
+      animId = requestAnimationFrame(animate)
+    }
+
+    animId = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(animId)
+  }, [expertisePaused])
 
   useEffect(() => {
     if (paused) return
@@ -267,19 +290,19 @@ function Portfolio({ navigate }: Props) {
               <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-12 max-w-2xl mx-auto" dangerouslySetInnerHTML={{ __html: t.portfolio.hero.description }} />
 
               {/* Quick Stats */}
-              <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
+              <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center gap-y-12">
                 {[
                   { label: t.portfolio.stats.experience, value: '6+ Years' },
                   { label: t.portfolio.stats.projects, value: '10+' },
                   { label: t.portfolio.stats.roles, value: '4' },
                   { label: t.portfolio.stats.expertise, value: '12+' },
-                ].map((stat) => (
+                ].map((stat, i) => (
                   <div
                     key={stat.label}
-                    className="bg-zinc-900 border border-white/5 rounded-xl px-5 py-3.5 min-w-[96px] hover:border-purple-500/20 transition-shadow duration-300"
+                    className={`text-center px-3 md:px-6 ${i < 3 ? 'sm:border-r border-zinc-700/20' : ''}`}
                   >
                     <div className="text-lg md:text-xl font-bold text-purple-400">{stat.value}</div>
-                    <div className="text-[11px] text-zinc-500 mt-0.5">{stat.label}</div>
+                    <div className="text-[12px] text-zinc-500 mt-0.5">{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -473,16 +496,39 @@ function Portfolio({ navigate }: Props) {
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">{t.portfolio.expertise.title}</h2>
             <p className="text-zinc-400 text-sm md:text-base">{t.portfolio.expertise.subtitle}</p>
           </div>
-          <div className="flex flex-wrap justify-center gap-6">
-            {expertiseWithIcons.map((tech) => (
-              <div
-                key={tech.name}
-                title={tech.name}
-                className="h-12 md:h-18 w-auto rounded-xl border border-white/5 flex items-center justify-center p-3 md:p-5 hover:border-purple-500/30"
-              >
-                <img src={!isLight && tech.darkIcon ? tech.darkIcon : tech.icon} alt={tech.name} className="h-full w-auto object-contain" loading="lazy" />
-              </div>
-            ))}
+          <div className="flex justify-center mb-6">
+            <button
+              onClick={() => setExpertisePaused(!expertisePaused)}
+              className="text-zinc-500 hover:text-purple-400 transition-colors cursor-pointer bg-transparent border-0 p-1"
+              title={expertisePaused ? 'Play' : 'Pause'}
+            >
+              {expertisePaused ? (
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                  <polygon points="6 3 20 12 6 21 6 3" />
+                </svg>
+              ) : (
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                  <rect x="5" y="3" width="5" height="18" />
+                  <rect x="14" y="3" width="5" height="18" />
+                </svg>
+              )}
+            </button>
+          </div>
+          <div className="overflow-hidden">
+            <div
+              ref={expertiseTrackRef}
+              className="flex gap-8"
+            >
+              {[...expertiseWithIcons, ...expertiseWithIcons].map((tech, idx) => (
+                <div
+                  key={`${tech.name}-${idx}`}
+                  title={tech.name}
+                  className="h-10 w-auto flex items-center justify-center flex-shrink-0"
+                >
+                  <img src={!isLight && tech.darkIcon ? tech.darkIcon : tech.icon} alt={tech.name} className="h-full w-auto object-contain" loading="lazy" />
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="mt-14 max-w-3xl mx-auto space-y-3">
