@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import DOMPurify from 'dompurify'
 import { useLocale } from '../../locales'
 import Breadcrumb from '../../components/breadcrumb'
 import Sidebar from '../../components/sidebar'
@@ -93,7 +94,7 @@ function CreatePost({ navigate }: Props) {
       await createPost({
         title: title.trim(),
         slug: slug || undefined,
-        body,
+        body: DOMPurify.sanitize(body),
         image_url: imageURL || undefined,
         categories: selectedCategories.join(','),
         tags: selectedTags.join(','),

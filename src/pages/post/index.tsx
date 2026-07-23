@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
+import DOMPurify from 'dompurify'
 import { useLocale } from '../../locales'
 import { getPostBySlug } from '../../modules/posts/api'
 import type { Post } from '../../modules/posts/api'
@@ -87,11 +88,12 @@ function PostDetail({ navigate, slug }: Props) {
 
   const processedBody = useMemo(() => {
     if (!post?.body) return ''
+    const cleanBody = DOMPurify.sanitize(post.body)
     const parser = new DOMParser()
-    const dom = parser.parseFromString(post.body, 'text/html')
+    const dom = parser.parseFromString(cleanBody, 'text/html')
     dom.body.querySelectorAll('pre').forEach((el) => {
-      const withNewlines = el.innerHTML.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '')
-      const code = withNewlines.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ').trim()
+      el.querySelectorAll('br').forEach(br => br.replaceWith('\n'))
+      const code = el.textContent?.trim() || ''
       if (!code) return
       const manualLang = el.getAttribute('data-language')
       const validLang = manualLang && hljs.getLanguage(manualLang) ? manualLang : null
@@ -100,7 +102,7 @@ function PostDetail({ navigate, slug }: Props) {
         : hljs.highlightAuto(code)
       const langLabel = manualLang || result.language || 'text'
       const highlighted = '<pre class="code-block-pre"><code class="hljs' + (result.language ? ' language-' + result.language : '') + '">' + result.value + '</code></pre>'
-      const btn = '<button class="copy-btn" title="Copy code" data-code="' + code.replace(/"/g, '&quot;') + '">' + copyBtnSvg + '</button>'
+      const btn = '<button class="copy-btn" title="Copy code" data-code="' + code.replace(/&/g, '&amp;').replace(/"/g, '&quot;') + '">' + copyBtnSvg + '</button>'
       const headerHtml = '<div class="code-block-header"><span class="code-block-lang">' + langLabel + '</span>' + btn + '</div>'
       el.outerHTML = '<div class="editor-code-block">' + headerHtml + highlighted + '</div>'
     })

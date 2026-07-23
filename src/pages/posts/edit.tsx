@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import DOMPurify from 'dompurify'
 import { useLocale } from '../../locales'
 import Breadcrumb from '../../components/breadcrumb'
 import Sidebar from '../../components/sidebar'
@@ -119,7 +120,7 @@ function EditPost({ navigate, postId }: Props) {
       await updatePost(postId, {
         title: title.trim(),
         slug,
-        body,
+        body: DOMPurify.sanitize(body),
         image_url: url || undefined,
         categories: selectedCategories.join(','),
         tags: selectedTags.join(','),

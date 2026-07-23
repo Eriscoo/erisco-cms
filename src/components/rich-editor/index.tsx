@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
+import DOMPurify from 'dompurify'
 import { ENV } from '../../constants/env'
 import {
   createEditorSystem,
@@ -20,8 +21,7 @@ import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary'
 import { $generateHtmlFromNodes, $generateNodesFromDOM } from '@lexical/html'
 import { $getRoot, $getSelection, $isRangeSelection, $isTextNode, $createLineBreakNode, KEY_ENTER_COMMAND, COMMAND_PRIORITY_CRITICAL } from 'lexical'
 import { $isLinkNode, $toggleLink } from '@lexical/link'
-import { registerCodeHighlighting } from '@lexical/code'
-import { $isCodeNode } from '@lexical/code'
+import { registerCodeHighlighting, $isCodeNode } from '@lexical/code'
 
 const extensions = [
   boldExtension,
@@ -86,7 +86,7 @@ function EditorInner({ value, onChange }: Props) {
       try {
         editor.update(() => {
           const parser = new DOMParser()
-          const dom = parser.parseFromString(value, 'text/html')
+          const dom = parser.parseFromString(DOMPurify.sanitize(value), 'text/html')
           const nodes = $generateNodesFromDOM(editor, dom.body)
           if (nodes.length > 0) {
             const root = $getRoot()
@@ -207,8 +207,9 @@ function EditorInner({ value, onChange }: Props) {
     if (!editor) return
     editor.update(() => {
       try {
+        const cleanHtml = DOMPurify.sanitize(htmlContent)
         const parser = new DOMParser()
-        const dom = parser.parseFromString(htmlContent, 'text/html')
+        const dom = parser.parseFromString(cleanHtml, 'text/html')
         const nodes = $generateNodesFromDOM(editor, dom.body)
         if (nodes.length > 0) {
           const root = $getRoot()
@@ -318,6 +319,10 @@ html.light .editor-root .editor-code-block { background: #f1f3f5; border-color: 
           } else {
             const url = prompt('Enter link URL:', 'https://')
             if (url) {
+              if (!/^(https?:|\/|mailto:|tel:)/i.test(url)) {
+                alert('Invalid URL protocol. Only http, https, mailto, tel, or relative paths are allowed.')
+                return
+              }
               editor.update(() => {
                 const sel = $getSelection()
                 if ($isRangeSelection(sel)) {
