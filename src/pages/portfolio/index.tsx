@@ -264,25 +264,9 @@ function Portfolio({ navigate }: Props) {
               </div>
 
               {/* Description */}
-              <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-12 max-w-2xl mx-auto" dangerouslySetInnerHTML={{ __html: t.portfolio.hero.description }} />
+              <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-0 max-w-2xl mx-auto" dangerouslySetInnerHTML={{ __html: t.portfolio.hero.description }} />
 
-              {/* Quick Stats */}
-              <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
-                {[
-                  { label: t.portfolio.stats.experience, value: '6+ Years' },
-                  { label: t.portfolio.stats.projects, value: '10+' },
-                  { label: t.portfolio.stats.roles, value: '4' },
-                  { label: t.portfolio.stats.expertise, value: '12+' },
-                ].map((stat) => (
-                  <div
-                    key={stat.label}
-                    className="bg-zinc-900 border border-white/5 rounded-xl px-5 py-3.5 min-w-[96px] hover:border-purple-500/20 transition-shadow duration-300"
-                  >
-                    <div className="text-lg md:text-xl font-bold text-purple-400">{stat.value}</div>
-                    <div className="text-[11px] text-zinc-500 mt-0.5">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
+
             </div>
           </div>
 
@@ -414,7 +398,7 @@ function Portfolio({ navigate }: Props) {
                   {
                     school: t.portfolio.education.schools.vocational,
                     degree: t.portfolio.education.degrees.computerNetwork,
-                    year: '2014',
+                    year: '2015',
                     label: t.portfolio.education.labels.seniorHighSchool,
                     icon: (
                       <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -427,7 +411,7 @@ function Portfolio({ navigate }: Props) {
                   {
                     school: t.portfolio.education.schools.juniorHigh,
                     degree: t.portfolio.education.degrees.general,
-                    year: '2011',
+                    year: '2012',
                     label: t.portfolio.education.labels.juniorHighSchool,
                     icon: (
                       <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -439,7 +423,7 @@ function Portfolio({ navigate }: Props) {
                   {
                     school: t.portfolio.education.schools.elementary,
                     degree: t.portfolio.education.degrees.general,
-                    year: '2008',
+                    year: '2009',
                     label: t.portfolio.education.labels.elementarySchool,
                     icon: (
                       <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -478,7 +462,7 @@ function Portfolio({ navigate }: Props) {
               <div
                 key={tech.name}
                 title={tech.name}
-                className="h-12 md:h-18 w-auto rounded-xl border border-white/5 flex items-center justify-center p-3 md:p-5 hover:border-purple-500/30"
+                className="h-12 md:h-18 w-auto flex items-center justify-center p-3 md:p-5"
               >
                 <img src={!isLight && tech.darkIcon ? tech.darkIcon : tech.icon} alt={tech.name} className="h-full w-auto object-contain" loading="lazy" />
               </div>
@@ -502,7 +486,7 @@ function Portfolio({ navigate }: Props) {
         </section>
 
         {/* Portfolio Projects */}
-        <section className="bg-white/[0.02]">
+        <section className={isLight ? 'bg-white' : 'bg-white/[0.02]'}>
           <div className="max-w-[1280px] mx-auto px-4 md:px-8 py-16 md:py-20">
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">{t.portfolio.projects.title}</h2>
@@ -546,7 +530,7 @@ function Portfolio({ navigate }: Props) {
                 {(() => {
                   const project = portfolioProjects[activeProject]
                   return (
-                    <div className={`flex flex-col ${activeProject % 2 === 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-start gap-12`}>
+                    <div className={`flex flex-col ${activeProject % 2 === 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-start gap-6 lg:gap-12`}>
                       <div className="lg:w-3/5 w-full relative">
                         {/* Glow behind */}
                         <div className="absolute -inset-2 bg-purple-500/10 blur-2xl pointer-events-none hidden lg:block" />
@@ -559,7 +543,7 @@ function Portfolio({ navigate }: Props) {
                         <div className="absolute -top-4 -right-4 w-14 h-14 border border-purple-500/20 rounded-xl rotate-12 pointer-events-none hidden lg:block" />
                       </div>
 
-                      <div className="lg:w-2/5 w-full bg-zinc-900 border border-white/5 rounded-xl p-5 md:p-6 hover:border-purple-500/20">
+                      <div className="lg:w-2/5 w-full p-4 md:p-6">
                         <h3 className="text-white font-semibold text-base md:text-lg leading-tight mb-3">
                           {project.title}
                         </h3>
@@ -603,11 +587,6 @@ function Portfolio({ navigate }: Props) {
             </div>
           </div>
         </section>
-
-        {/* Section divider */}
-        <div className="max-w-[1280px] mx-auto px-4 md:px-8">
-          <div className="h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
-        </div>
 
         {/* CTA Section */}
         <section className="max-w-[1280px] mx-auto px-4 md:px-8 py-16 md:py-20">

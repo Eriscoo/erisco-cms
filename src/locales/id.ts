@@ -159,7 +159,7 @@ const id: Locale = {
   contact: {
     documentTitle: 'Kontak | Eriscoo',
     title: 'Kontak',
-    description: 'Punya pertanyaan, ide proyek, atau hanya ingin menyapa? Isi formulir di bawah dan saya akan menghubungi Anda kembali secepatnya. 👋',
+    description: 'Punya pertanyaan, ide proyek, atau hanya ingin menyapa? Isi formulir di bawah dan saya akan menghubungi Anda kembali secepatnya👋',
     name: 'Nama',
     namePlaceholder: 'Nama Anda',
     email: 'Email',
@@ -405,7 +405,7 @@ const id: Locale = {
       expertise: 'Keahlian',
     },
     cta: {
-      title: 'Mari Bekerja Sama ✨',
+      title: 'Mari Bekerja Sama✨',
       text: 'Mari bangun sesuatu yang hebat bersama. Saya selalu bersemangat menjelajahi tantangan baru dan kolaborasi yang bermakna.',
       contact: 'Kontak',
     },
