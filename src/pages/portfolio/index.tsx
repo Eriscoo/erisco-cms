@@ -486,7 +486,7 @@ function Portfolio({ navigate }: Props) {
         </section>
 
         {/* Portfolio Projects */}
-        <section className={isLight ? 'bg-white' : 'bg-white/[0.02]'}>
+        <section> 
           <div className="max-w-[1280px] mx-auto px-4 md:px-8 py-16 md:py-20">
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">{t.portfolio.projects.title}</h2>
@@ -587,6 +587,11 @@ function Portfolio({ navigate }: Props) {
             </div>
           </div>
         </section>
+
+        {/* Section divider */}
+        <div className="max-w-[1280px] mx-auto px-4 md:px-8">
+          <div className="h-px bg-gradient-to-r from-transparent via-purple-500/30 to-transparent" />
+        </div>
 
         {/* CTA Section */}
         <section className="max-w-[1280px] mx-auto px-4 md:px-8 py-16 md:py-20">
