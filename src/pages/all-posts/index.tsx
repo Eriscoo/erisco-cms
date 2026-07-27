@@ -149,22 +149,32 @@ function AllPosts({ navigate }: Props) {
 
                       {(categories.length > 0 || tags.length > 0) && (
                         <div className="flex flex-wrap items-center gap-1.5">
-                          {categories.map((cat) => (
-                            <span
-                              key={cat}
-                              className="text-[11px] font-medium text-purple-300 bg-purple-500/10 px-2 py-0.5 rounded-full"
-                            >
-                              {cat}
-                            </span>
-                          ))}
-                          {tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="text-[11px] font-medium text-zinc-400 bg-white/5 px-2 py-0.5 rounded-full"
-                            >
-                              #{tag}
-                            </span>
-                          ))}
+                          {(() => {
+                            const catSlugs = post.category_slugs ? post.category_slugs.split(', ').filter(Boolean) : []
+                            return categories.map((cat, i) => (
+                              <span
+                                key={cat}
+                                className="text-[11px] font-medium text-purple-300 bg-purple-500/10 px-2 py-0.5 rounded-full cursor-pointer hover:bg-purple-500/20 transition-colors"
+                                onClick={(e) => { e.stopPropagation(); navigate(`/posts/categories/${encodeURIComponent(catSlugs[i] || cat)}`) }}
+                                onMouseEnter={() => prefetch('/posts/categories')}
+                              >
+                                {cat}
+                              </span>
+                            ))
+                          })()}
+                          {(() => {
+                            const tagSlugs = post.tag_slugs ? post.tag_slugs.split(', ').filter(Boolean) : []
+                            return tags.map((tag, i) => (
+                              <span
+                                key={tag}
+                                className="text-[11px] font-medium text-zinc-400 bg-white/5 px-2 py-0.5 rounded-full cursor-pointer hover:bg-white/10 transition-colors"
+                                onClick={(e) => { e.stopPropagation(); navigate(`/posts/tags/${encodeURIComponent(tagSlugs[i] || tag)}`) }}
+                                onMouseEnter={() => prefetch('/posts/tags')}
+                              >
+                                #{tag}
+                              </span>
+                            ))
+                          })()}
                         </div>
                       )}
                     </div>

@@ -223,15 +223,19 @@ function PostDetail({ navigate, slug }: Props) {
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-2">
-            {post.category_names && post.category_names.split(', ').filter(Boolean).map((cat) => (
-              <span key={cat}
-                className="text-xs px-2.5 py-1 rounded-lg bg-purple-600/20 text-purple-300 border border-purple-600/30 hover:bg-purple-600/30 hover:text-purple-200 transition-colors cursor-pointer"
-                onClick={(e) => { e.stopPropagation(); navigate(`/posts/categories/${encodeURIComponent(cat)}`) }}
-                onMouseEnter={() => prefetch('/posts/categories')}
-              >
-                {cat}
-              </span>
-            ))}
+            {post.category_names && post.category_slugs && (() => {
+              const names = post.category_names.split(', ').filter(Boolean)
+              const slugs = post.category_slugs.split(', ').filter(Boolean)
+              return names.map((cat, i) => (
+                <span key={cat}
+                  className="text-xs px-2.5 py-1 rounded-lg bg-purple-600/20 text-purple-300 border border-purple-600/30 hover:bg-purple-600/30 hover:text-purple-200 transition-colors cursor-pointer"
+                  onClick={(e) => { e.stopPropagation(); navigate(`/posts/categories/${encodeURIComponent(slugs[i] || cat)}`) }}
+                  onMouseEnter={() => prefetch('/posts/categories')}
+                >
+                  {cat}
+                </span>
+              ))
+            })()}
           </div>
         </div>
 
@@ -253,18 +257,22 @@ function PostDetail({ navigate, slug }: Props) {
         )}
 
         {/* Tags */}
-        {post.tag_names && post.tag_names.split(', ').filter(Boolean).length > 0 && (
+        {post.tag_names && post.tag_slugs && post.tag_names.split(', ').filter(Boolean).length > 0 && (
           <div className="flex flex-wrap items-center gap-2 mt-8">
             <span className="text-xs text-zinc-400 font-medium">Tag:</span>
-            {post.tag_names.split(', ').filter(Boolean).map((tag) => (
-              <span key={tag}
-                className="text-xs px-2.5 py-1 rounded-full bg-zinc-800 text-zinc-300 border border-white/5 hover:bg-zinc-700 hover:text-zinc-100 transition-colors cursor-pointer"
-                onClick={(e) => { e.stopPropagation(); navigate(`/posts/tags/${encodeURIComponent(tag)}`) }}
-                onMouseEnter={() => prefetch('/posts/tags')}
-              >
-                #{tag}
-              </span>
-            ))}
+            {(() => {
+              const names = post.tag_names.split(', ').filter(Boolean)
+              const slugs = post.tag_slugs.split(', ').filter(Boolean)
+              return names.map((tag, i) => (
+                <span key={tag}
+                  className="text-xs px-2.5 py-1 rounded-full bg-zinc-800 text-zinc-300 border border-white/5 hover:bg-zinc-700 hover:text-zinc-100 transition-colors cursor-pointer"
+                  onClick={(e) => { e.stopPropagation(); navigate(`/posts/tags/${encodeURIComponent(slugs[i] || tag)}`) }}
+                  onMouseEnter={() => prefetch('/posts/tags')}
+                >
+                  #{tag}
+                </span>
+              ))
+            })()}
           </div>
         )}
 
