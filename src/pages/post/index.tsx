@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import DOMPurify from 'dompurify'
 import { useLocale } from '../../locales'
+import { useRouter } from '../../utils/router'
 import { getPostBySlug } from '../../modules/posts/api'
 import type { Post } from '../../modules/posts/api'
 import Header from '../../components/header'
@@ -50,6 +51,7 @@ interface Props {
 
 function PostDetail({ navigate, slug }: Props) {
   const { t } = useLocale()
+  const { prefetch } = useRouter()
   const [post, setPost] = useState<Post | null>(null)
   const [fetching, setFetching] = useState(true)
   const [error, setError] = useState('')
@@ -223,7 +225,10 @@ function PostDetail({ navigate, slug }: Props) {
           <div className="flex flex-wrap items-center gap-2">
             {post.category_names && post.category_names.split(', ').filter(Boolean).map((cat) => (
               <span key={cat}
-                className="text-xs px-2.5 py-1 rounded-lg bg-purple-600/20 text-purple-300 border border-purple-600/30 hover:bg-purple-600/30 hover:text-purple-200 transition-colors cursor-pointer">
+                className="text-xs px-2.5 py-1 rounded-lg bg-purple-600/20 text-purple-300 border border-purple-600/30 hover:bg-purple-600/30 hover:text-purple-200 transition-colors cursor-pointer"
+                onClick={(e) => { e.stopPropagation(); navigate(`/posts/categories/${encodeURIComponent(cat)}`) }}
+                onMouseEnter={() => prefetch('/posts/categories')}
+              >
                 {cat}
               </span>
             ))}
@@ -253,7 +258,10 @@ function PostDetail({ navigate, slug }: Props) {
             <span className="text-xs text-zinc-400 font-medium">Tag:</span>
             {post.tag_names.split(', ').filter(Boolean).map((tag) => (
               <span key={tag}
-                className="text-xs px-2.5 py-1 rounded-full bg-zinc-800 text-zinc-300 border border-white/5 hover:bg-zinc-700 hover:text-zinc-100 transition-colors cursor-pointer">
+                className="text-xs px-2.5 py-1 rounded-full bg-zinc-800 text-zinc-300 border border-white/5 hover:bg-zinc-700 hover:text-zinc-100 transition-colors cursor-pointer"
+                onClick={(e) => { e.stopPropagation(); navigate(`/posts/tags/${encodeURIComponent(tag)}`) }}
+                onMouseEnter={() => prefetch('/posts/tags')}
+              >
                 #{tag}
               </span>
             ))}

@@ -27,6 +27,10 @@ const Contact = lazy(() => import('./pages/contact'))
 registerPrefetch('/contact', () => import('./pages/contact'))
 const AllPosts = lazy(() => import('./pages/all-posts'))
 registerPrefetch('/posts', () => import('./pages/all-posts'))
+const CategoryPosts = lazy(() => import('./pages/category-posts'))
+registerPrefetch('/posts/categories', () => import('./pages/category-posts'))
+const TagPosts = lazy(() => import('./pages/tag-posts'))
+registerPrefetch('/posts/tags', () => import('./pages/tag-posts'))
 const About = lazy(() => import('./pages/about'))
 registerPrefetch('/about', () => import('./pages/about'))
 const Privacy = lazy(() => import('./pages/privacy'))
@@ -120,6 +124,18 @@ function App() {
 
     if (path === '/posts') {
       return <AllPosts navigate={navigate} />
+    }
+
+    if (path.startsWith('/posts/categories/')) {
+      const name = path.replace('/posts/categories/', '')
+      if (!name) return <NotFound navigate={navigate} />
+      return <CategoryPosts navigate={navigate} category={decodeURIComponent(name)} />
+    }
+
+    if (path.startsWith('/posts/tags/')) {
+      const name = path.replace('/posts/tags/', '')
+      if (!name) return <NotFound navigate={navigate} />
+      return <TagPosts navigate={navigate} tag={decodeURIComponent(name)} />
     }
 
     if (path === '/') {

@@ -42,6 +42,14 @@ export function getPublicPosts(page = 1, limit = 10) {
   return api.get<PaginatedPosts>(`/api/v1/public/posts/all?page=${page}&limit=${limit}`)
 }
 
+export function getPublicPostsByCategory(name: string, page = 1, limit = 10) {
+  return api.get<PaginatedPosts>(`/api/v1/public/posts/categories/${encodeURIComponent(name)}?page=${page}&limit=${limit}`)
+}
+
+export function getPublicPostsByTag(name: string, page = 1, limit = 10) {
+  return api.get<PaginatedPosts>(`/api/v1/public/posts/tags/${encodeURIComponent(name)}?page=${page}&limit=${limit}`)
+}
+
 export function createPost(data: { title: string; slug?: string; body?: string; image_url?: string; categories?: string; tags?: string; status?: string }) {
   return api.post<Post>('/api/v1/posts', data)
 }

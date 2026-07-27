@@ -13,12 +13,21 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
     },
   })
 
+  const body = await res.json().catch(() => ({}))
+
   if (!res.ok) {
-    const body = await res.json().catch(() => ({}))
-    throw new Error(body.error || res.statusText)
+    const err = new Error(body?.error || res.statusText) as Error & { status: number }
+    err.status = res.status
+    throw err
   }
 
-  return res.json()
+  if (body && typeof body === 'object' && 'error' in body) {
+    const err = new Error(String(body.error)) as Error & { status: number }
+    err.status = 404
+    throw err
+  }
+
+  return body
 }
 
 export const api = {
