@@ -26,6 +26,7 @@ export interface PaginatedPosts {
   page: number
   limit: number
   total: number
+  name?: string
 }
 
 export function getPosts() {

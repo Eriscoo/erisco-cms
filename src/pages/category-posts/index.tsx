@@ -44,6 +44,7 @@ function CategoryPosts({ navigate, category }: Props) {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [notFound, setNotFound] = useState(false)
+  const [displayName, setDisplayName] = useState(category)
 
   const limit = 10
 
@@ -55,6 +56,10 @@ function CategoryPosts({ navigate, category }: Props) {
       setTotal(data.total)
       setError(null)
       setNotFound(false)
+      if (data.name) {
+        setDisplayName(data.name)
+        document.title = t.categoryPosts.documentTitle.replace('{name}', data.name)
+      }
     } catch (err) {
       const status = (err as Error & { status?: number }).status
       if (status === 404) {
@@ -70,7 +75,6 @@ function CategoryPosts({ navigate, category }: Props) {
   }, [category, t])
 
   useEffect(() => {
-    document.title = t.categoryPosts.documentTitle.replace('{name}', category)
     fetchPosts(1)
   }, [category, t, fetchPosts])
 
@@ -91,17 +95,17 @@ function CategoryPosts({ navigate, category }: Props) {
       <div className="flex-1 max-w-[1280px] w-full mx-auto px-4 md:px-8 py-8 md:py-12">
         <Breadcrumb
           variant="default"
-          items={[{ label: t.nav.home, path: '/' }, { label: t.allPosts.title, path: '/posts' }, { label: `${t.categoryPosts.breadcrumbLabel}: ${category}` }]}
+          items={[{ label: t.nav.home, path: '/' }, { label: t.allPosts.title, path: '/posts' }, { label: `${t.categoryPosts.breadcrumbLabel}: ${displayName}` }]}
           navigate={navigate}
           className="mb-6"
         />
 
         <h1 className="text-2xl md:text-4xl font-bold text-white leading-snug mb-4">
-          {t.categoryPosts.title.replace('{name}', category)}
+          {t.categoryPosts.title.replace('{name}', displayName)}
         </h1>
 
         <p className="text-zinc-400 text-sm md:text-base leading-relaxed mb-8 max-w-xl">
-          {t.categoryPosts.description.replace('{name}', category)}
+          {t.categoryPosts.description.replace('{name}', displayName)}
         </p>
 
         {loading && posts.length === 0 ? (
