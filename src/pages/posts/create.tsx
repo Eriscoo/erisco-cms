@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import DOMPurify from 'dompurify'
 import { useLocale } from '../../locales'
 import Breadcrumb from '../../components/breadcrumb'
@@ -109,12 +109,24 @@ function CreatePost({ navigate }: Props) {
     }
   }
 
+  const lastScrollRef = useRef(0)
+  const handleMainScroll = useCallback(() => {
+    const el = document.querySelector<HTMLElement>('[data-main-scroll]')
+    if (!el) return
+    const current = el.scrollTop
+    if (current === 0 && lastScrollRef.current > 100) {
+      el.scrollTop = lastScrollRef.current
+      return
+    }
+    if (current > 0) lastScrollRef.current = current
+  }, [])
+
   return (
     <div className="flex flex-col h-screen">
       <Header variant="dashboard" navigate={navigate} onMenuToggle={() => setSidebarOpen(!sidebarOpen)} />
       <div className="flex flex-1 overflow-hidden">
         <Sidebar currentPath="/dashboard/posts" navigate={navigate} open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-        <main className="flex-1 p-6 md:p-8 overflow-y-auto">
+        <main className="flex-1 p-6 md:p-8 overflow-y-auto" style={{ overflowAnchor: 'none' }} data-main-scroll onScroll={handleMainScroll}>
           <Breadcrumb items={[
             { label: t.dashboard.title, path: '/dashboard' },
             { label: t.sidebar.posts, path: '/dashboard/posts' },
