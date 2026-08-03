@@ -90,6 +90,8 @@ const en = {
     signIn: 'Sign In',
     signingIn: 'Signing in...',
     loginFailed: 'Login failed',
+    tooManyAttempts: 'Too many attempts, try again in {seconds} seconds',
+    tooManyAttemptsCountdown: 'Wait {seconds}s',
     backToHome: 'Back to Home',
   },
   dashboard: {

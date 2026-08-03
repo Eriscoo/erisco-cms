@@ -1,4 +1,4 @@
-import { useState, type FormEvent, useEffect } from 'react'
+import { useState, type FormEvent, useEffect, useRef } from 'react'
 import { useLocale } from '../../locales'
 import { useAuth } from '../../modules/auth'
 import LangSwitch from '../../components/language-switch'
@@ -6,9 +6,28 @@ import ThemeSwitch from '../../components/theme-switch'
 import Button from '../../components/button'
 import Footer from '../../components/footer'
 import { useIsLight } from '../../hooks/use-is-light'
+import type { ApiError } from '../../utils/api'
+
+const COOLDOWN_KEY = 'login_cooldown_deadline'
 
 interface Props {
   navigate: (path: string) => void
+}
+
+function getStoredCooldown(): number {
+  const raw = sessionStorage.getItem(COOLDOWN_KEY)
+  if (!raw) return 0
+  const deadline = parseInt(raw, 10)
+  const remaining = Math.ceil((deadline - Date.now()) / 1000)
+  return remaining > 0 ? remaining : 0
+}
+
+function saveCooldown(seconds: number) {
+  sessionStorage.setItem(COOLDOWN_KEY, String(Date.now() + seconds * 1000))
+}
+
+function clearCooldown() {
+  sessionStorage.removeItem(COOLDOWN_KEY)
 }
 
 function Login({ navigate }: Props) {
@@ -25,7 +44,43 @@ function Login({ navigate }: Props) {
   const [error, setError] = useState('')
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
+  const [cooldown, setCooldown] = useState(() => {
+    const stored = getStoredCooldown()
+    return stored > 0 ? stored : 0
+  })
+  const cooldownRef = useRef(cooldown)
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+  useEffect(() => {
+    cooldownRef.current = cooldown
+  }, [cooldown])
+
+  useEffect(() => {
+    if (cooldown <= 0) {
+      clearCooldown()
+      return
+    }
+
+    const timer = setInterval(() => {
+      cooldownRef.current -= 1
+      if (cooldownRef.current <= 0) {
+        setCooldown(0)
+        setError('')
+        clearCooldown()
+      } else {
+        setCooldown(cooldownRef.current)
+      }
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [cooldown])
+
+  useEffect(() => {
+    if (cooldown > 0) {
+      const remaining = cooldown
+      setError(t.login.tooManyAttempts.replace('{seconds}', String(remaining)))
+    }
+  }, [cooldown, t.login.tooManyAttempts])
 
   function validate(): boolean {
     let valid = true
@@ -55,11 +110,20 @@ function Login({ navigate }: Props) {
 
     try {
       await login(email, password, remember)
+      clearCooldown()
       navigate('/dashboard')
     } catch (err) {
-      setError(err instanceof Error ? err.message : t.login.loginFailed)
+      const apiErr = err as ApiError
+      if (apiErr.status === 429 && apiErr.retryAfterSeconds) {
+        saveCooldown(apiErr.retryAfterSeconds)
+        setCooldown(apiErr.retryAfterSeconds)
+      } else {
+        setError(err instanceof Error ? err.message : t.login.loginFailed)
+      }
     }
   }
+
+  const blocked = cooldown > 0
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -88,8 +152,9 @@ function Login({ navigate }: Props) {
           <input
             type="text"
             value={email}
+            disabled={blocked}
             onChange={(e) => { setEmail(e.target.value); if (emailError) setEmailError('') }}
-            className={'px-3 py-2.5 rounded-lg border border-white/10 bg-white/5 text-zinc-100 text-sm outline-none focus:border-purple-500/50' + (emailError ? ' border-pink-500/50' : '')}
+            className={'px-3 py-2.5 rounded-lg border border-white/10 bg-white/5 text-zinc-100 text-sm outline-none focus:border-purple-500/50 disabled:opacity-40 disabled:cursor-not-allowed' + (emailError ? ' border-pink-500/50' : '')}
             placeholder={t.login.emailPlaceholder}
             autoFocus
           />
@@ -103,8 +168,9 @@ function Login({ navigate }: Props) {
           <input
             type="password"
             value={password}
+            disabled={blocked}
             onChange={(e) => { setPassword(e.target.value); if (passwordError) setPasswordError('') }}
-            className={'px-3 py-2.5 rounded-lg border border-white/10 bg-white/5 text-zinc-100 text-sm outline-none focus:border-purple-500/50' + (passwordError ? ' border-pink-500/50' : '')}
+            className={'px-3 py-2.5 rounded-lg border border-white/10 bg-white/5 text-zinc-100 text-sm outline-none focus:border-purple-500/50 disabled:opacity-40 disabled:cursor-not-allowed' + (passwordError ? ' border-pink-500/50' : '')}
             placeholder={t.login.passwordPlaceholder}
           />
           {passwordError && (
@@ -114,7 +180,7 @@ function Login({ navigate }: Props) {
 
         <div className="flex justify-between items-center text-sm">
           <label className="flex items-center gap-2 text-zinc-400 cursor-pointer">
-            <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} />
+            <input type="checkbox" checked={remember} disabled={blocked} onChange={(e) => setRemember(e.target.checked)} />
             {t.login.remember}
           </label>
           <button type="button" className="bg-transparent border-0 text-purple-400 cursor-pointer text-sm p-0 hover:text-purple-300">
@@ -122,8 +188,8 @@ function Login({ navigate }: Props) {
           </button>
         </div>
 
-        <Button type="submit" loading={loading} size="lg">
-          {loading ? t.login.signingIn : t.login.signIn}
+        <Button type="submit" loading={loading} disabled={blocked} size="lg">
+          {loading ? t.login.signingIn : blocked ? t.login.tooManyAttemptsCountdown.replace('{seconds}', String(cooldown)) : t.login.signIn}
         </Button>
 
         <Button variant="outline" size="lg" onClick={() => navigate('/')}>

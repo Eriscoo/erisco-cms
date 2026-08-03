@@ -92,6 +92,8 @@ const id: Locale = {
     signIn: 'Masuk',
     signingIn: 'Memproses...',
     loginFailed: 'Gagal masuk',
+    tooManyAttempts: 'Terlalu banyak percobaan, coba lagi dalam {seconds} detik',
+    tooManyAttemptsCountdown: 'Tunggu {seconds}s',
     backToHome: 'Kembali ke Beranda',
   },
   dashboard: {

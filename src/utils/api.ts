@@ -1,5 +1,10 @@
 import { ENV } from '../constants/env'
 
+export interface ApiError extends Error {
+  status: number
+  retryAfterSeconds?: number
+}
+
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const token = localStorage.getItem('token') || sessionStorage.getItem('token')
   const isFormData = options.body instanceof FormData
@@ -16,8 +21,11 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const body = await res.json().catch(() => ({}))
 
   if (!res.ok) {
-    const err = new Error(body?.error || res.statusText) as Error & { status: number }
+    const err = new Error(body?.error || res.statusText) as ApiError
     err.status = res.status
+    if (res.status === 429 && typeof body?.retry_after_seconds === 'number') {
+      err.retryAfterSeconds = body.retry_after_seconds
+    }
     throw err
   }
 
