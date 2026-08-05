@@ -74,7 +74,8 @@ function EditorInner({ value, onChange }: Props) {
       })
       if (!res.ok) return
       const data = await res.json()
-      ;(commands as any).insertImage?.({ src: `${ENV.API_URL}${data.url}` })
+      const alt = file.name.replace(/\.[^.]+$/, '').replace(/[-_]/g, ' ')
+      ;(commands as any).insertImage?.({ src: `${ENV.API_URL}${data.url}`, altText: alt })
     } catch {}
     if (fileRef.current) fileRef.current.value = ''
   }, [commands])
