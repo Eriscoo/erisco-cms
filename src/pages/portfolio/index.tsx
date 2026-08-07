@@ -58,66 +58,46 @@ const workExperience = [
   },
 ]
 
-const strengths = [
-  {
-    name: 'Detail-Oriented',
-    icon: (
-      <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="11" cy="11" r="8" />
-        <path d="m21 21-4.35-4.35" />
-        <path d="M11 8v6M8 11h6" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Strong Collaboration',
-    icon: (
-      <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Continuous Learner',
-    icon: (
-      <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-      </svg>
-    ),
-  },
-  {
-    name: 'Well Organized & Documented',
-    icon: (
-      <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-        <polyline points="14 2 14 8 20 8" />
-        <line x1="16" y1="13" x2="8" y2="13" />
-        <line x1="16" y1="17" x2="8" y2="17" />
-        <polyline points="10 9 9 9 8 9" />
-      </svg>
-    ),
-  },
+const strengthIcons = [
+  <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.35-4.35" />
+    <path d="M11 8v6M8 11h6" />
+  </svg>,
+  <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+  </svg>,
+  <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+  </svg>,
+  <svg className="w-5 h-5 text-purple-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+    <polyline points="14 2 14 8 20 8" />
+    <line x1="16" y1="13" x2="8" y2="13" />
+    <line x1="16" y1="17" x2="8" y2="17" />
+    <polyline points="10 9 9 9 8 9" />
+  </svg>,
 ]
 
 const expertise = [
-  { name: 'React.js', icon: '/assets/portfolio/react.png', level: 'advanced', pct: 85 },
-  { name: 'Vue.js', icon: '/assets/portfolio/vue.png', level: 'advanced', pct: 85 },
-  { name: 'Go', icon: '/assets/portfolio/golang.png', level: 'intermediate', pct: 70 },
-  { name: 'TypeScript', icon: '/assets/portfolio/typescript.png', level: 'intermediate', pct: 85 },
-  { name: '.NET', icon: '/assets/portfolio/netframework.png', level: 'intermediate', pct: 85 },
-  { name: 'Java', icon: '/assets/portfolio/java.png', level: 'intermediate', pct: 80 },
-  { name: 'Figma', icon: '/assets/portfolio/figma.png', darkIcon: '/assets/portfolio/Fima_dark.png', level: 'advanced', pct: 90 },
-  { name: 'SQL', icon: '/assets/portfolio/sql.png', level: 'intermediate', pct: 90 },
-  { name: 'Postman', icon: '/assets/portfolio/postman.png', level: 'advanced', pct: 95 },
-  { name: 'Selenium', icon: '/assets/portfolio/selenium.png', level: 'intermediate', pct: 80 },
-  { name: 'Appium', icon: '/assets/portfolio/appium.png', level: 'intermediate', pct: 80 },
-  { name: 'Robot Framework', icon: '/assets/portfolio/robotframework.png', darkIcon: '/assets/portfolio/robotframework_dark.png', level: 'intermediate', pct: 80 },
-  { name: 'Playwright', icon: '/assets/portfolio/playwright.png', darkIcon: '/assets/portfolio/playwright_dark.png', level: 'intermediate', pct: 80 },
-  { name: 'Cypress', icon: '/assets/portfolio/cypress.png', level: 'intermediate', pct: 80 },
+  { name: 'React.js', icon: '/assets/portfolio/react.png' },
+  { name: 'Vue.js', icon: '/assets/portfolio/vue.png' },
+  { name: 'Go', icon: '/assets/portfolio/golang.png' },
+  { name: 'TypeScript', icon: '/assets/portfolio/typescript.png' },
+  { name: '.NET', icon: '/assets/portfolio/netframework.png' },
+  { name: 'Java', icon: '/assets/portfolio/java.png' },
+  { name: 'Figma', icon: '/assets/portfolio/figma.png', darkIcon: '/assets/portfolio/Fima_dark.png' },
+  { name: 'SQL', icon: '/assets/portfolio/sql.png' },
+  { name: 'Postman', icon: '/assets/portfolio/postman.png' },
+  { name: 'Selenium', icon: '/assets/portfolio/selenium.png' },
+  { name: 'Appium', icon: '/assets/portfolio/appium.png' },
+  { name: 'Robot Framework', icon: '/assets/portfolio/robotframework.png', darkIcon: '/assets/portfolio/robotframework_dark.png' },
+  { name: 'Playwright', icon: '/assets/portfolio/playwright.png', darkIcon: '/assets/portfolio/playwright_dark.png' },
+  { name: 'Cypress', icon: '/assets/portfolio/cypress.png' },
 ]
 
 const portfolioProjects = [
@@ -285,15 +265,20 @@ function Portfolio({ navigate }: Props) {
             <p className="text-zinc-400 text-sm md:text-base max-w-lg mx-auto">{t.portfolio.strengths.subtitle}</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {strengths.map((s) => (
+            {[
+              t.portfolio.strengths.items.detailOriented,
+              t.portfolio.strengths.items.strongCollaboration,
+              t.portfolio.strengths.items.continuousLearner,
+              t.portfolio.strengths.items.wellOrganized,
+            ].map((name, i) => (
               <div
-                key={s.name}
+                key={name}
                 className="group bg-zinc-900 border border-white/5 rounded-xl p-6 text-center hover:border-purple-500/20 hover:bg-white/5 transition-shadow duration-300"
               >
                 <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-purple-500/10 flex items-center justify-center group-hover:bg-purple-500/15">
-                  {s.icon}
+                  {strengthIcons[i]}
                 </div>
-                <h3 className="text-white text-sm font-semibold">{s.name}</h3>
+                <h3 className="text-white text-sm font-semibold">{name}</h3>
               </div>
             ))}
           </div>
@@ -469,20 +454,7 @@ function Portfolio({ navigate }: Props) {
             ))}
           </div>
 
-          <div className="mt-14 max-w-3xl mx-auto space-y-3">
-            {expertise.map((tech) => (
-              <div key={tech.name} className="flex items-center gap-3 group cursor-default">
-                <span className="text-xs text-zinc-400 w-28 flex-shrink-0 text-right group-hover:text-zinc-200">{tech.name}</span>
-                <div className="flex-1 h-1.5 rounded-full bg-zinc-600 overflow-hidden">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-purple-500 to-purple-400 transition-all duration-700 group-hover:from-purple-400 group-hover:to-purple-300 group-hover:shadow-[0_0_8px_rgba(168,85,247,0.3)]"
-                    style={{ width: `${tech.pct}%` }}
-                  />
-                </div>
-                <span className="text-xs text-zinc-500 w-8 flex-shrink-0 group-hover:text-purple-400 group-hover:font-semibold">{tech.pct}%</span>
-              </div>
-            ))}
-          </div>
+
         </section>
 
         {/* Portfolio Projects */}
